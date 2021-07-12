@@ -1,30 +1,88 @@
+<style type="text/css">
+  
+.center {
+  padding: 200px 0;
+  text-align: center;
+}
+.p-t-136 {
+    padding-top: 10px !important;
+}
+.wrap-login100 {
+    padding: 120px 130px 120px 95px !important;
+}
+</style>
+
 <?php
-
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \common\models\LoginForm */
-
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use kartik\widgets\ActiveForm;
+use yii\helpers\Url;
+use common\models\Common;
+use backend\assets\LoginAsset;
 
-$this->title = 'Login';
+LoginAsset::register($this);
+
+$this->title = 'Sign In';
+
+$dirAssests = Yii::$app->assetManager->getPublishedUrl('@backend/assets/loginAsset');
+
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
 
-    <p>Please fill out the following fields to login:</p>
-
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-                <?= $form->field($model, 'password')->passwordInput() ?>
-
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary btn-block', 'name' => 'login-button']) ?>
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="<?= $dirAssests?>/images/img-01.png" alt="IMG">
                 </div>
 
-            <?php ActiveForm::end(); ?>
-</div>
+                <div class="login100-form validate-form">
+                    <span class="login100-form-title">
+                        Member Login
+                    </span>
+
+                    <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
+                    <!-- <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="email" placeholder="Email">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </span>
+                    </div> -->
+                    <?= $form->field($model, 'username', ['template' => '
+                           <div class="wrap-input100">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </span>
+                              {input}
+                           </div>
+                           {error}{hint}
+                           '])->textInput(['placeholder' => $model->getAttributeLabel('username'), 'class' => 'input100'])
+                    ?>
+
+                    <!-- <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                        <input class="input100" type="password" name="pass" placeholder="Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div> -->
+                    <?= $form->field($model, 'password', ['template' => '
+                           <div class="wrap-input100">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                </span>
+                              {input}
+                           </div>
+                           {error}{hint}
+                           '])->passwordInput(['placeholder' => 'Password', 'class' => 'input100'])
+                        ?>
+                    <div class="container-login100-form-btn">
+                        <?= Html::submitButton('Login', ['class' => 'login100-form-btn', 'name' => 'submit']) ?>
+                    </div>
+                    <?php ActiveForm::end(); ?>
+                    
+                </div>
+            </div>
+        </div>
+    </div>

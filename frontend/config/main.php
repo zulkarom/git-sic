@@ -8,7 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
-    'name'=>'frontend',
+	'name'=>'frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'language' => 'en-US',
@@ -31,6 +31,12 @@ return [
             'enableUnconfirmedLogin' => true,
             'enableFlashMessages' => false,
         ],
+        'usahawan' => [
+            'class' => 'frontend\modules\usahawan\Module',
+        ],
+        'supplier' => [
+            'class' => 'frontend\modules\supplier\Module',
+        ],
     ],
     'components' => [
         'i18n' => [
@@ -49,14 +55,14 @@ return [
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
-        
-        'view' => [
-            'theme' => [
-                'pathMap' => [
-                    '@dektrium/user/views' => '@frontend/views/user'
-                ],
-            ],
-        ],
+		
+		'view' => [
+			'theme' => [
+				'pathMap' => [
+					'@dektrium/user/views' => '@frontend/views/user'
+				],
+			],
+		],
         // 'user' => [
         //     'identityClass' => 'common\models\User',
         //     'enableAutoLogin' => true,
@@ -104,19 +110,19 @@ return [
         ],
         */
     ],
-    
-    /* 'modules' => [
+	
+	/* 'modules' => [
         'supplier' => [
             'class' => 'frontend\modules\supplier\Module',
         ],
-        'catalog' => [
+		'catalog' => [
             'class' => 'frontend\modules\catalog\Module',
         ],
-        'client' => [
+		'client' => [
             'class' => 'frontend\modules\client\Module',
         ],
     ], */
-    
-    
+	
+	
     'params' => $params,
 ];

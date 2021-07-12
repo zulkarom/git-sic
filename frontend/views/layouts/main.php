@@ -43,7 +43,7 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@backend/assets/swissAss
  
       <h3 class="heading">SWISS INNOVATION CHALLENGE 2021</h3>
       <p>Competition for creativity, innovation, and new ventures</p>
-      <footer><a class="btn btn-danger btn-lg" href="login-page.html">Join us now ! <i class="fas fa-angle-right"></i></a></footer>
+      <footer><?= Html::a('Join us now ! <i class="fas fa-angle-right"></i>', ['/user-form/register'], ['class' => 'btn btn-danger btn-lg']) ?></footer>
     </article>
 
   </div>

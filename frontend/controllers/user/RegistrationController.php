@@ -19,7 +19,44 @@ class RegistrationController extends BaseRegistrationController
     public function actionRegister()
     {
 		$this->layout = "//main-login";
-		return parent::actionRegister();
+
+		$request = Yii::$app->request;
+
+		$username = $request->get('param1');
+		$password = $request->get('param2');
+		$password_repeat = $request->get('param3');
+
+		if (!$this->module->enableRegistration) {
+            throw new NotFoundHttpException();
+        }
+
+        /** @var RegistrationForm $model */
+        $model = \Yii::createObject(RegistrationForm::className());
+        $event = $this->getFormEvent($model);
+		
+		$model->username = $username;
+		$model->password = $password;
+		$model->password_repeat = $password_repeat;
+		$model->email = $username;
+
+		// echo "<pre>";
+		// print_r($model);
+		// die();
+
+        $this->trigger(self::EVENT_BEFORE_REGISTER, $event);
+
+        $this->performAjaxValidation($model);
+
+        if ($model->register()) {
+            $this->trigger(self::EVENT_AFTER_REGISTER, $event);
+
+            return $this->render('/message', [
+                'title'  => \Yii::t('user', 'Your account has been created'),
+                'module' => $this->module,
+            ]);
+        }else{
+        	$model->flashError();
+        }
 	}
 	
 	public function actionResend(){

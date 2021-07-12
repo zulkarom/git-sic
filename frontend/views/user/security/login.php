@@ -1,97 +1,101 @@
-<style type="text/css">
-  
-.center {
-  padding: 200px 0;
-  text-align: center;
-}
-.p-t-136 {
-    padding-top: 10px !important;
-}
-.wrap-login100 {
-    padding: 120px 130px 120px 95px !important;
-}
-</style>
-
 <?php
+
 use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
 use yii\helpers\Url;
 use common\models\Common;
-use dektrium\user\widgets\Connect;
 
-$this->title = 'Sign In';
 
-$dirAssests = Yii::$app->assetManager->getPublishedUrl('@backend/assets/loginAsset');
+$dirAssests = Yii::$app->assetManager->getPublishedUrl('@backend/assets/swissAsset');
+
+$this->title = 'Sign Up/Sign In';
+$this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<div class="limiter">
-        <div class="container-login100">
-            <div class="wrap-login100">
 
-                <div class="login100-pic js-tilt" data-tilt>
-                    <br/>
-                    <img src="<?= $dirAssests?>/images/img-01.png" alt="IMG">
-                </div>
+<div class="wrapper row3">
+  <main class="hoc container clear" style="padding-top:40px;"> 
+  
+  <h2 style="padding-bottom:40px;text-align:center">LOGIN OR REGISTER TO SUBMIT OR VIEW YOUR APPLICATION.</h2>
+  
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div class="sidebar one_half first"> 
+        <h3>LOGIN</h3>
+        
+        <div class="row">
+        <div class="col-md-10">
+        
+        <form action="#" method="post">
+          <div class="form-group">
+            <label for="name">Email <span>*</span></label>
+            <input type="text" name="name" id="name" value="" class="form-control form-control-lg" size="22" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Password <span>*</span></label>
+            <input type="email" name="email" id="email" class="form-control form-control-lg" value="" size="22" required>
+          </div>
 
-                <div class="login100-form validate-form">
-                    <span class="login100-form-title">
-                        Member Login
-                    </span>
-
-                    <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
-                    <?= $form->field($model, 'role', ['template' => '
-                           <div class="wrap-input100">
-                                <span class="focus-input100"></span>
-                                <span class="symbol-input100">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                </span>
-                              {input}
-                           </div>
-                           {error}{hint}
-                           '])->dropDownList(Common::role(), ['prompt' => 'Select User Category', 'class' => 'input100', 'style' => 'height:50px !important'])
-                        ?>
-                    <?= $form->field($model, 'login', ['template' => '
-                           <div class="wrap-input100">
-                                <span class="focus-input100"></span>
-                                <span class="symbol-input100">
-                                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                                </span>
-                              {input}
-                           </div>
-                           {error}{hint}
-                           '])->textInput(['placeholder' => $model->getAttributeLabel('login'), 'class' => 'input100'])
-                    ?>
-                    <?= $form->field($model, 'password', ['template' => '
-                           <div class="wrap-input100">
-                                <span class="focus-input100"></span>
-                                <span class="symbol-input100">
-                                    <i class="fa fa-lock" aria-hidden="true"></i>
-                                </span>
-                              {input}
-                           </div>
-                           {error}{hint}
-                           '])->passwordInput(['placeholder' => 'Password', 'class' => 'input100'])
-                        ?>
-                    <div class="container-login100-form-btn">
-                        <?= Html::submitButton('Login', ['class' => 'login100-form-btn', 'name' => 'submit']) ?>
-                    </div>
-
-                    <div class="text-center p-t-12">
-                        <?= Html::a('Forgot Password?', ['/user/forgot'], ['class' => 'txt1']) ?>
-                    </div>
-
-                    
-                    <div class="text-center p-t-136">
-                        <?= Html::a('Create your Account', ['/user/registration/register'], ['class' => 'txt2']) ?>
-                        <!-- <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> -->
-                    </div>
-                    <?php ActiveForm::end(); ?>
-                </div>
-            </div>
+          <div class="form-group">
+            <button type="submit" name="submit" class="btn btn-danger" value="Submit Form"><i class="fas fa-sign-in-alt"></i>  Log in  </button>
+          </div>
+        </form>
+        
+        
         </div>
+        <div></div>
+        </div>
+        
+        
+        
+        
+        
+
+      
+
     </div>
-		
-		
-        <?= Connect::widget([
-            'baseAuthUrl' => ['/user/security/auth'],
-        ]) ?>
+
+    <div class="content one_half"> 
+
+      <h3>REGISTER</h3>
+      
+      
+      <div class="row">
+        <div class="col-md-10">
+        
+        <form action="#" method="post">
+          <div class="form-group">
+            <label for="name">Email <span>*</span></label>
+            <input type="text" name="name" id="name" value="" class="form-control form-control-lg" size="22" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Password <span>*</span></label>
+            <input type="password" name="email" id="email" class="form-control form-control-lg" value="" size="22" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Repeat Password <span>*</span></label>
+            <input type="password" name="email" id="email" class="form-control form-control-lg" value="" size="22" required>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" name="submit" class="btn btn-danger" value="Submit Form"><i class="fas fa-sign-in-alt"></i>  Register  </button>
+          </div>
+        </form>
+        
+        
+        </div>
+        <div></div>
+        </div>
+        
+      
+      
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <!-- ################################################################################################ -->
+    </div>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+

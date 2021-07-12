@@ -6,7 +6,8 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
-
+use backend\models\Usahawan;
+use backend\models\Supplier;
 /**
  * User model
  *
@@ -57,7 +58,7 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
         ];
     }
-
+    
     /**
      * {@inheritdoc}
      */

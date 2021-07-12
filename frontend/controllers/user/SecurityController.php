@@ -5,7 +5,6 @@ namespace frontend\controllers\user;
 use Yii;
 use dektrium\user\controllers\SecurityController as BaseSecurityController;
 use frontend\models\user\LoginForm;
-use frontend\models\KadetLevel;
 use common\models\User;
 
 class SecurityController extends BaseSecurityController
@@ -13,6 +12,12 @@ class SecurityController extends BaseSecurityController
     public function actionLogin()
     {
         $this->layout = "//main-login";
+
+        $request = Yii::$app->request;
+
+        $username = $request->get('param1');
+        $password = $request->get('param2');
+
         if (!\Yii::$app->user->isGuest) {
             //$this->goHome();
             $this->redirect(['/dashboard/index']);
@@ -22,11 +27,14 @@ class SecurityController extends BaseSecurityController
         $model = \Yii::createObject(LoginForm::className());
         $event = $this->getFormEvent($model);
 
+        $model->username = $username;
+        $model->password = $password;
+
         $this->performAjaxValidation($model);
 
         $this->trigger(self::EVENT_BEFORE_LOGIN, $event);
 
-        if ($model->load(\Yii::$app->getRequest()->post()) && $model->login()) {
+        if ($model->login()) {
             $this->trigger(self::EVENT_AFTER_LOGIN, $event);
             //$this->goHome();
             $this->redirect(['/dashboard/index']);

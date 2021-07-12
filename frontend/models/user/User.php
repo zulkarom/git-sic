@@ -3,8 +3,6 @@
 namespace frontend\models\user; 
 
 use Yii;
-use backend\models\Usahawan;
-use backend\models\Supplier;
 
 class User extends \dektrium\user\models\User
 {
@@ -31,7 +29,7 @@ class User extends \dektrium\user\models\User
 		
 		// $rules['roleRequired'] = ['role', 'required', 'on' => ['register']];
 		
-		$rules['fullnameLength']   = ['fullname', 'string', 'min' => 3, 'max' => 255];
+		// $rules['fullnameLength']   = ['fullname', 'string', 'min' => 3, 'max' => 255];
 		
         
         return $rules;
@@ -39,17 +37,9 @@ class User extends \dektrium\user\models\User
 	
 	public function attributeLabels(){
 		$arr = parent::attributeLabels();
-		$arr['fullname'] = "Nama Penuh";
+		// $arr['fullname'] = "Nama Penuh";
 		return $arr;
 	}
-	
-	// public function getUsahawan(){
-	// 	return $this->hasOne(Usahawan::className(), ['user_id' => 'id']);
-	// }
-	
-	// public function getSupplier(){
-	// 	return $this->hasOne(Supplier::className(), ['user_id' => 'id']);
-	// }
 	
 	public function register(){
 		$this->status = self::STATUS_ACTIVE;
