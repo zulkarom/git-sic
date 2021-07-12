@@ -8,31 +8,28 @@ use dektrium\user\models\LoginForm as BaseLoginForm;
  */
 class LoginForm extends BaseLoginForm
 {
-	public $role;
 	
 	public function rules()
     {
         $rules = parent::rules();
-        $rules[]  = ['role', 'required'];
        
-		$rules[]  = ['login', 'email'];
-		$rules[]  = ['role', 'validateRole'];
+        $rules[]  = ['login', 'email'];
         return $rules;
     }
-	
-	public function attributeLabels()
+    
+    public function attributeLabels()
     {
-		$labels = parent::attributeLabels();
-		$labels['login'] = 'Email';
+        $labels = parent::attributeLabels();
+        $labels['login'] = 'Email';
         return $labels;
     }
     
-    public function validateRole($attribute, $params, $validator)
-    {
-        if(!User::checkRoleExistByUsername($this->login, $this->role)){
-            $this->addError($attribute, 'Sila pilih fungsi yang berkenaan sahaja.');
-        }
-    }
+    // public function validateRole($attribute, $params, $validator)
+    // {
+    //     if(!User::checkRoleExistByUsername($this->login, $this->role)){
+    //         $this->addError($attribute, 'Sila pilih fungsi yang berkenaan sahaja.');
+    //     }
+    // }
     
     
 }

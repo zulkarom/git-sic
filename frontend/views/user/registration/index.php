@@ -19,14 +19,7 @@ $fieldOptions1 = [
     'inputTemplate' => "{input}<span>*</span>"
 ];
 ?>
-<?php $form = ActiveForm::begin([
-                    'id' => 'login-form',
-                    'enableAjaxValidation' => true,
-                    'enableClientValidation' => false,
-                    'validateOnBlur' => false,
-                    'validateOnType' => false,
-                    'validateOnChange' => false,
-                ]) ?>
+
 <div class="wrapper row3">
   <main class="hoc container clear" style="padding-top:40px;"> 
   
@@ -34,13 +27,22 @@ $fieldOptions1 = [
   
     <!-- main body -->
     <!-- ################################################################################################ -->
+
+    <?php $form = ActiveForm::begin([
+                    'id' => 'login-form',
+                    'enableAjaxValidation' => true,
+                    'enableClientValidation' => false,
+                    'validateOnBlur' => false,
+                    'validateOnType' => false,
+                    'validateOnChange' => false,
+                ]) ?>
     <div class="sidebar one_half first"> 
         <h3>LOGIN</h3>
         
         <div class="row">
         <div class="col-md-10">
         
-            <?= $form->field($model, 'username', ['template' => '
+            <?= $form->field($modelLogin, 'username', ['template' => '
                <div class="form-group">
                     <label for="email">Email <span>*</span></label>
                   {input}
@@ -48,7 +50,7 @@ $fieldOptions1 = [
                '])->textInput(['class' => 'form-control form-control-lg'])
             ?>
         
-          <?= $form->field($model, 'password', ['template' => '
+          <?= $form->field($modelLogin, 'password', ['template' => '
                <div class="form-group">
                     <label for="email">Password <span>*</span></label>
                   {input}
@@ -65,15 +67,19 @@ $fieldOptions1 = [
         <div></div>
         </div>
         
-        
-        
-        
-        
-
-      
-
     </div>
 
+<?php ActiveForm::end(); ?>
+
+
+<?php $form = ActiveForm::begin([
+                    'id' => 'login-form',
+                    'enableAjaxValidation' => true,
+                    'enableClientValidation' => false,
+                    'validateOnBlur' => false,
+                    'validateOnType' => false,
+                    'validateOnChange' => false,
+                ]) ?>
     <div class="content one_half"> 
 
       <h3>REGISTER</h3>
@@ -119,11 +125,11 @@ $fieldOptions1 = [
       <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       <!-- ################################################################################################ -->
     </div>
+    <?php ActiveForm::end(); ?>
     <!-- ################################################################################################ -->
     <!-- / main body -->
     <div class="clear"></div>
   </main>
 </div>
 
-<?php ActiveForm::end(); ?>
 

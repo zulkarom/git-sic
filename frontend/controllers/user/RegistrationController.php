@@ -26,6 +26,10 @@ class RegistrationController extends BaseRegistrationController
 		$password = $request->get('param2');
 		$password_repeat = $request->get('param3');
 
+		//echo "<pre>";
+  		//print_r($request->get('param2'));
+		//die();
+
 		if (!$this->module->enableRegistration) {
             throw new NotFoundHttpException();
         }

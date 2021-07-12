@@ -18,6 +18,9 @@ class SecurityController extends BaseSecurityController
         $username = $request->get('param1');
         $password = $request->get('param2');
 
+        // echo $password;
+        // die();
+
         if (!\Yii::$app->user->isGuest) {
             //$this->goHome();
             $this->redirect(['/dashboard/index']);
@@ -27,7 +30,7 @@ class SecurityController extends BaseSecurityController
         $model = \Yii::createObject(LoginForm::className());
         $event = $this->getFormEvent($model);
 
-        $model->username = $username;
+        $model->login = $username;
         $model->password = $password;
 
         $this->performAjaxValidation($model);
