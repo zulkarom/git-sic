@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use Yii;
 use backend\models\Application;
+use backend\models\ApplicationItem;
 use frontend\models\ApplicationSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -68,6 +69,7 @@ class ApplicationController extends Controller
     {
         $this->layout = "//member";
         $model = new Application();
+        $items = [new ApplicationItem];
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,6 +77,7 @@ class ApplicationController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'items' => $items,
         ]);
     }
 

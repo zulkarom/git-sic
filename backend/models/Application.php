@@ -53,20 +53,20 @@ class Application extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'category' => 'Category',
+            'category' => 'Choose Your Category',
             'applicant_name' => 'Applicant Name',
             'nationality' => 'Nationality',
-            'ic_number' => 'Ic Number',
+            'ic_number' => 'Identity/Passport No',
             'gender' => 'Gender',
             'age' => 'Age',
-            'phoneNo' => 'Phone No',
+            'phoneNo' => 'Mobile No',
             'officeNo' => 'Office No',
             'faxNo' => 'Fax No',
             'email' => 'Email',
-            'instiBusName' => 'Insti Bus Name',
-            'type' => 'Type',
+            'instiBusName' => 'Institution/Business Name ',
+            'type' => 'Type of Business',
             'address' => 'Address',
-            'logo_file' => 'Logo File',
+            'logo_file' => 'Logo',
         ];
     }
 }

@@ -120,7 +120,7 @@ class Common {
     }
 	
 	public static function gender(){
-		return [1 => 'Lelaki', 0 => 'Perempuan'];
+		return [1 => 'Man', 0 => 'Woman'];
 	}
 	
 	public static function marital(){
@@ -146,4 +146,9 @@ class Common {
 	public static function reportStatus(){
 		return [0 => 'Not Submit', 10 => 'Draft', 20 => 'Submit', 30 => 'Approved'];
 	}
+
+	public static function category(){
+		return [1 => 'SICOpen', 2 => 'SICStartup', 3 => 'SICYouth'];
+	}
+
 }

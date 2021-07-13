@@ -21,10 +21,10 @@ class SecurityController extends BaseSecurityController
         // echo $password;
         // die();
 
-        // if (!\Yii::$app->user->isGuest) {
-        //     //$this->goHome();
-        //     $this->redirect(['/dashboard/index']);
-        // }
+        if (!\Yii::$app->user->isGuest) {
+            //$this->goHome();
+            $this->redirect(['/dashboard/index']);
+        }
 
         /** @var LoginForm $model */
         $model = \Yii::createObject(LoginForm::className());

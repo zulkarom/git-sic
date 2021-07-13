@@ -23,7 +23,8 @@
         "kartik-v/yii2-widgets": "*",
         "kartik-v/yii2-checkbox-x": "dev-master",
         "karpoff/yii2-crop-image-upload": "*",
-        "djabiev/yii2-autosize-textarea": "dev-master"
+        "djabiev/yii2-autosize-textarea": "dev-master",
+        "wbraganca/yii2-dynamicform": "*"
         
     },
     "require-dev": {

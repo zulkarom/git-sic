@@ -12,6 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="application-create">
     <?= $this->render('_form', [
         'model' => $model,
+        'items' => $items,
     ]) ?>
 
 </div>
