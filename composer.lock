@@ -4,54 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "482994e5247fc62fb72142d38b7cbdb7",
+    "content-hash": "0632fdf7ef3c5427f338d717f0aa5f0c",
     "packages": [
-        {
-            "name": "aminkt/yii2-map-location-picker",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/aminkt/yii2-map-location-picker.git",
-                "reference": "6e5deb94c403a454ba25b203292abd5516c74d74"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/aminkt/yii2-map-location-picker/zipball/6e5deb94c403a454ba25b203292abd5516c74d74",
-                "reference": "6e5deb94c403a454ba25b203292abd5516c74d74",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2": "*"
-            },
-            "default-branch": true,
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "aminkt\\widgets\\google\\map\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Amin Keshavarz",
-                    "email": "ak_1596@yahoo.com"
-                }
-            ],
-            "description": "A widget based on https://innostudio.de/fileuploader to create a file input to upload files for yii2 framework",
-            "keywords": [
-                "google map",
-                "location",
-                "location picker",
-                "map",
-                "yii",
-                "yii2"
-            ],
-            "support": {
-                "issues": "https://github.com/aminkt/yii2-map-location-picker/issues",
-                "source": "https://github.com/aminkt/yii2-map-location-picker"
-            },
-            "time": "2018-06-11T19:05:19+00:00"
-        },
         {
             "name": "bower-asset/autosize",
             "version": "4.0.2",
@@ -72,7 +26,7 @@
             "version": "v3.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
+                "url": "git@github.com:twbs/bootstrap.git",
                 "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "dist": {
@@ -121,24 +75,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/4c0e4becb8263bb5b3e6dadc448d8e7305ef8215",
                 "reference": "4c0e4becb8263bb5b3e6dadc448d8e7305ef8215"
-            },
-            "type": "bower-asset",
-            "license": [
-                "MIT"
-            ]
-        },
-        {
-            "name": "bower-asset/jquery-locationpicker-plugin",
-            "version": "0.1.16",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:Logicify/jquery-locationpicker-plugin.git",
-                "reference": "fac8658119043e830e0cbccd14b8b22bde08436b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Logicify/jquery-locationpicker-plugin/zipball/fac8658119043e830e0cbccd14b8b22bde08436b",
-                "reference": "fac8658119043e830e0cbccd14b8b22bde08436b"
             },
             "type": "bower-asset",
             "license": [
@@ -609,64 +545,6 @@
             "time": "2020-11-03T22:35:03+00:00"
         },
         {
-            "name": "kalyabin/yii2-select-google-map-location",
-            "version": "1.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kalyabin/yii2-select-google-map-location.git",
-                "reference": "ed34105d783f6db07bd22d0423c8ccb5c7782627"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kalyabin/yii2-select-google-map-location/zipball/ed34105d783f6db07bd22d0423c8ccb5c7782627",
-                "reference": "ed34105d783f6db07bd22d0423c8ccb5c7782627",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "yiisoft/yii2": "2.*"
-            },
-            "type": "package",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "kalyabin\\maplocation\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Max Kalyabin",
-                    "email": "maksim@kalyabin.ru"
-                },
-                {
-                    "name": "Kirill Arutyunov",
-                    "email": "kirill@arutyunov.me"
-                }
-            ],
-            "description": "Yii2 widget to select location at map and choose map coordinates",
-            "keywords": [
-                "framework",
-                "input widget",
-                "location",
-                "map",
-                "widgets",
-                "yii2"
-            ],
-            "support": {
-                "issues": "https://github.com/kalyabin/yii2-select-google-map-location/issues",
-                "source": "https://github.com/kalyabin/yii2-select-google-map-location/tree/master"
-            },
-            "time": "2018-06-26T15:20:51+00:00"
-        },
-        {
             "name": "karpoff/yii2-crop-image-upload",
             "version": "0.0.1",
             "source": {
@@ -714,6 +592,59 @@
                 "source": "https://github.com/karpoff/yii2-crop-image-upload/tree/v0.0.1"
             },
             "time": "2014-12-15T18:32:02+00:00"
+        },
+        {
+            "name": "kartik-v/bootstrap-checkbox-x",
+            "version": "v1.5.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/bootstrap-checkbox-x.git",
+                "reference": "326460d8e36b13cef4d1cd05ee801b9e79bc2bf5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-checkbox-x/zipball/326460d8e36b13cef4d1cd05ee801b9e79bc2bf5",
+                "reference": "326460d8e36b13cef4d1cd05ee801b9e79bc2bf5",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\plugins\\checkbox\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "An extended checkbox plugin for bootstrap with three states and additional styles.",
+            "homepage": "https://github.com/kartik-v/bootstrap-checkbox-x",
+            "keywords": [
+                "bootstrap",
+                "checkbox",
+                "indeterminate",
+                "jquery",
+                "null",
+                "state",
+                "three"
+            ],
+            "support": {
+                "issues": "https://github.com/kartik-v/bootstrap-checkbox-x/issues",
+                "source": "https://github.com/kartik-v/bootstrap-checkbox-x/tree/v1.5.6"
+            },
+            "time": "2021-05-19T13:12:24+00:00"
         },
         {
             "name": "kartik-v/bootstrap-fileinput",
@@ -882,6 +813,64 @@
                 "source": "https://github.com/kartik-v/dependent-dropdown/tree/master"
             },
             "time": "2019-03-09T10:53:11+00:00"
+        },
+        {
+            "name": "kartik-v/yii2-checkbox-x",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-checkbox-x.git",
+                "reference": "702f4cdbdd10b969ec5cbc4d2ba7c0c677df9a17"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-checkbox-x/zipball/702f4cdbdd10b969ec5cbc4d2ba7c0c677df9a17",
+                "reference": "702f4cdbdd10b969ec5cbc4d2ba7c0c677df9a17",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/bootstrap-checkbox-x": "~1.5",
+                "kartik-v/yii2-krajee-base": ">=2.0.0"
+            },
+            "default-branch": true,
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\checkbox\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "Extended checkbox widget for bootstrap with three states and additional styles.",
+            "homepage": "https://github.com/kartik-v/yii2-checkbox-x",
+            "keywords": [
+                "bootstrap",
+                "checkbox",
+                "indeterminate",
+                "jquery",
+                "null",
+                "state",
+                "three"
+            ],
+            "support": {
+                "issues": "https://github.com/kartik-v/yii2-checkbox-x/issues",
+                "source": "https://github.com/kartik-v/yii2-checkbox-x/tree/master"
+            },
+            "time": "2019-07-03T08:00:52+00:00"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
@@ -2136,98 +2125,6 @@
             "license": [
                 "MIT"
             ]
-        },
-        {
-            "name": "pavle/yii2-location-picker",
-            "version": "v1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Liv1020/yii2-location-picker.git",
-                "reference": "5bd95cff2813b5a17e16671e43b7d9e5ea45fbcd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Liv1020/yii2-location-picker/zipball/5bd95cff2813b5a17e16671e43b7d9e5ea45fbcd",
-                "reference": "5bd95cff2813b5a17e16671e43b7d9e5ea45fbcd",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/jquery-locationpicker-plugin": "*",
-                "yiisoft/yii2": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "pavle\\location\\picker\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Pavle",
-                    "email": "523260513@qq.com"
-                }
-            ],
-            "description": "yii2 location picker",
-            "keywords": [
-                "extension",
-                "location picker",
-                "yii2"
-            ],
-            "support": {
-                "issues": "https://github.com/Liv1020/yii2-location-picker/issues",
-                "source": "https://github.com/Liv1020/yii2-location-picker/tree/v1.0"
-            },
-            "time": "2016-10-19T10:36:46+00:00"
-        },
-        {
-            "name": "pigochu/yii2-jquery-locationpicker",
-            "version": "0.2.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pigochu/yii2-jquery-locationpicker.git",
-                "reference": "8c042c5c0a33402703b5a5a5e0392e0c65d4ea08"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pigochu/yii2-jquery-locationpicker/zipball/8c042c5c0a33402703b5a5a5e0392e0c65d4ea08",
-                "reference": "8c042c5c0a33402703b5a5a5e0392e0c65d4ea08",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/jquery-locationpicker-plugin": ">=0.1.15"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "pigolab\\locationpicker\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Pigo Chu",
-                    "email": "pigochu@gmail.com"
-                }
-            ],
-            "description": "jquery location picker widget for yii2",
-            "homepage": "https://github.com/pigochu/yii2-jquery-locationpicker",
-            "keywords": [
-                "extension",
-                "locationpicker",
-                "yii2"
-            ],
-            "support": {
-                "issues": "https://github.com/pigochu/yii2-jquery-locationpicker/issues",
-                "source": "https://github.com/pigochu/yii2-jquery-locationpicker/tree/0.2.5"
-            },
-            "time": "2018-03-31T16:00:51+00:00"
         },
         {
             "name": "select2/select2",
@@ -4068,16 +3965,16 @@
         },
         {
             "name": "fakerphp/faker",
-            "version": "v1.14.1",
+            "version": "v1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "ed22aee8d17c7b396f74a58b1e7fefa4f90d5ef1"
+                "reference": "89c6201c74db25fa759ff16e78a4d8f32547770e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/ed22aee8d17c7b396f74a58b1e7fefa4f90d5ef1",
-                "reference": "ed22aee8d17c7b396f74a58b1e7fefa4f90d5ef1",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/89c6201c74db25fa759ff16e78a4d8f32547770e",
+                "reference": "89c6201c74db25fa759ff16e78a4d8f32547770e",
                 "shasum": ""
             },
             "require": {
@@ -4127,9 +4024,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
-                "source": "https://github.com/FakerPHP/Faker/tree/v.1.14.1"
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.15.0"
             },
-            "time": "2021-03-30T06:27:33+00:00"
+            "time": "2021-07-06T20:39:40+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -5962,16 +5859,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.4.25",
+            "version": "v4.4.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "a62acecdf5b50e314a4f305cd01b5282126f3095"
+                "reference": "9aa1eb46c1b12fada74dc0c529e93d1ccef22576"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/a62acecdf5b50e314a4f305cd01b5282126f3095",
-                "reference": "a62acecdf5b50e314a4f305cd01b5282126f3095",
+                "url": "https://api.github.com/repos/symfony/console/zipball/9aa1eb46c1b12fada74dc0c529e93d1ccef22576",
+                "reference": "9aa1eb46c1b12fada74dc0c529e93d1ccef22576",
                 "shasum": ""
             },
             "require": {
@@ -6031,7 +5928,7 @@
             "description": "Eases the creation of beautiful and testable command line interfaces",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/console/tree/v4.4.25"
+                "source": "https://github.com/symfony/console/tree/v4.4.26"
             },
             "funding": [
                 {
@@ -6047,7 +5944,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-26T11:20:16+00:00"
+            "time": "2021-06-06T09:12:27+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -6799,16 +6696,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.4.25",
+            "version": "v4.4.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "81cdac5536925c1c4b7b50aabc9ff6330b9eb5fc"
+                "reference": "e096ef4b4c4c9a2f72c2ac660f54352cd31c60f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/81cdac5536925c1c4b7b50aabc9ff6330b9eb5fc",
-                "reference": "81cdac5536925c1c4b7b50aabc9ff6330b9eb5fc",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/e096ef4b4c4c9a2f72c2ac660f54352cd31c60f8",
+                "reference": "e096ef4b4c4c9a2f72c2ac660f54352cd31c60f8",
                 "shasum": ""
             },
             "require": {
@@ -6850,7 +6747,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v4.4.25"
+                "source": "https://github.com/symfony/yaml/tree/v4.4.26"
             },
             "funding": [
                 {
@@ -6866,7 +6763,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-26T17:39:37+00:00"
+            "time": "2021-06-23T19:06:53+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -7199,7 +7096,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "aminkt/yii2-map-location-picker": 20,
+        "kartik-v/yii2-checkbox-x": 20,
         "djabiev/yii2-autosize-textarea": 20
     },
     "prefer-stable": false,

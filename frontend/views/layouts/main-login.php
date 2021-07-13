@@ -50,7 +50,6 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@backend/assets/swissAss
     
     <?= Alert::widget() ?>
     <?= $content ?>
-    <?=$this->render('footer');?>
     
 <?php $this->endBody() ?>
 </body>

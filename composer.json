@@ -21,12 +21,10 @@
         "yiisoft/yii2-bootstrap4": "~2.0.6",
         "dektrium/yii2-user": "^0.9.14",
         "kartik-v/yii2-widgets": "*",
+        "kartik-v/yii2-checkbox-x": "dev-master",
         "karpoff/yii2-crop-image-upload": "*",
-        "aminkt/yii2-map-location-picker": "@dev",
-        "djabiev/yii2-autosize-textarea": "dev-master",
-        "pavle/yii2-location-picker": "*",
-        "pigochu/yii2-jquery-locationpicker": ">=0.2.0",
-        "kalyabin/yii2-select-google-map-location": "*"
+        "djabiev/yii2-autosize-textarea": "dev-master"
+        
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
