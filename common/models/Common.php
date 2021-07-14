@@ -120,7 +120,7 @@ class Common {
     }
 	
 	public static function gender(){
-		return [1 => 'Man', 0 => 'Woman'];
+		return [1 => 'Male', 0 => 'Female'];
 	}
 	
 	public static function marital(){

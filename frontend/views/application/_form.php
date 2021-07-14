@@ -18,14 +18,7 @@ use kartik\widgets\FileInput;
 <div class="application-form">
 
     <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
-    <div class="row">
-        <div class="col-md-12">
-            <?= $form->field($model, 'category')->checkboxList(
-                Common::category(), ['inline'=>true])->label('Choose Your Category') ?>
-
-
-        </div>
-    </div>
+    
     <div class="row">
         <div class="col-md-6">
             <?= $form->field($model, 'applicant_name')->textInput(['maxlength' => true]) ?>
@@ -225,15 +218,7 @@ use kartik\widgets\FileInput;
        }
     ?>
 
-    <div class="row">
-        <div class="col-md-12">
-            <?= $form->field($model, 'medium')->checkboxList(
-                Common::medium(), ['inline'=>true, 'class'=>'medium'])->label('How did you hear about this SIC 2021 (you may tick more than one):') ?>
-            <div id="group-medium" <?php echo $hide?>>
-                <?= $form->field($model, 'reference')->textInput()->label('Please state')?>
-            </div>
-        </div>
-    </div>
+    
     <div class="row">
         <div class="col-md-12">
              <b>DECLARATION</b>
@@ -247,8 +232,8 @@ use kartik\widgets\FileInput;
 
     <div class="row">
         <div class="col-md-12">                    
-            <?= $form->field($model, 'aggrement_disclaimer')->checkboxList(
-                [1 => 'Agree'], ['inline'=>true])->label(false) ?>
+            
+        <?= $form->field($model, 'aggrement_disclaimer')->checkbox()->label('<b>Agree</b>'); ?>
         </div>
     </div>
 
@@ -267,8 +252,11 @@ $this->registerJs('
 
 $(".medium").change(function(){
     var val = $(this).val();
-    if(val == 3){
+    if(val == 1 || val == 2){
+        $("#group-medium").slideUp();
+    }else{
         $("#group-medium").slideDown();
+        
     }
 });
 

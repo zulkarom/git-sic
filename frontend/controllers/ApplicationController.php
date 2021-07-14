@@ -9,6 +9,8 @@ use frontend\models\ApplicationSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
+use common\models\Model;
 
 /**
  * ApplicationController implements the CRUD actions for Application model.
@@ -71,16 +73,68 @@ class ApplicationController extends Controller
         $model = new Application();
         $items = [new ApplicationItem];
 
-        Yii::$app->session->addFlash('success', "New Client Payment Added");
+        // if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        //     return $this->redirect(['view', 'id' => $model->id]);
+        // }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+
+            echo "<pre>";
+            print_r(Yii::$app->request->post());
+            die();
+
+            if($this->processInvoice($model, $items)){
+                Yii::$app->session->addFlash('success', "Application Submit");
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('create', [
             'model' => $model,
             'items' => $items,
         ]);
+    }
+
+    private function processInvoice($model, $items){
+        $oldIDs = ArrayHelper::map($items, 'id', 'id');
+        $items = Model::createMultiple(ApplicationItem::classname(), $items);
+        Model::loadMultiple($items, Yii::$app->request->post());
+        $deletedIDs = array_diff($oldIDs, array_filter(ArrayHelper::map($items, 'id', 'id')));
+        
+        // validate all models
+        $valid = $model->validate();
+        $valid = Model::validateMultiple($items) && $valid; 
+
+        if ($valid) {
+                $transaction = \Yii::$app->db->beginTransaction();
+                try {
+                    if ($flag = $model->save(false)){
+                            if (! empty($deletedIDs)) {
+                                ApplicationItem::deleteAll(['id' => $deletedIDs]);
+                            }
+                            if($flag = $model->upload()){
+                                foreach ($items as $item) {
+                                    $item->application_id = $model->id;
+                                    if (! ($flag = $item->save(false))) {
+                                        $transaction->rollBack();
+                                        break;
+                                    }
+                                }
+                            }
+                            
+                    }else{
+                        $model->flashError();
+                    }
+                    if ($flag) {
+                        $transaction->commit();
+                        return $this->redirect(['view', 'id' => $model->id]);
+                    }
+                } catch (Exception $e) {
+                    $transaction->rollBack();
+                }
+            }      
+
+        return false;
     }
 
     /**
