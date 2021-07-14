@@ -10,6 +10,7 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@backend/assets/swissAss
 $this->title = 'My Application';
 ?>
 <?php $this->beginPage() ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

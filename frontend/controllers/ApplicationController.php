@@ -71,6 +71,8 @@ class ApplicationController extends Controller
         $model = new Application();
         $items = [new ApplicationItem];
 
+        Yii::$app->session->addFlash('success', "New Client Payment Added");
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }

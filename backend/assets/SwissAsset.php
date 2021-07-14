@@ -19,12 +19,12 @@ class SwissAsset extends AssetBundle
         'css/styles/bootstrap.css',
     ];
     public $js = [
-        'js/scripts/jquery.min.js',
+        // 'js/scripts/jquery.min.js',
         'js/scripts/jquery.backtotop.js',
         'js/scripts/jquery.mobilemenu.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap4\BootstrapAsset',
     ];
 }

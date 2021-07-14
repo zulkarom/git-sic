@@ -151,4 +151,8 @@ class Common {
 		return [1 => 'SICOpen', 2 => 'SICStartup', 3 => 'SICYouth'];
 	}
 
+	public static function medium(){
+		return [1 => 'Website', 2 => 'Email', 3 => 'Others'];
+	}
+
 }
