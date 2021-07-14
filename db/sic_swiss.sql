@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2021 at 05:59 PM
+-- Generation Time: Jul 15, 2021 at 12:00 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.3.21
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `application` (
   `id` int(11) NOT NULL,
-  `category` int(11) NOT NULL,
+  `category` varchar(10) NOT NULL,
   `applicant_name` varchar(225) NOT NULL,
   `nationality` varchar(225) NOT NULL,
   `id_number` varchar(15) NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE `application` (
   `logo_file` varchar(225) NOT NULL,
   `project_name` varchar(225) NOT NULL,
   `project_description` text NOT NULL,
-  `medium` tinyint(2) NOT NULL,
+  `medium` varchar(10) NOT NULL,
   `reference` varchar(100) DEFAULT NULL,
   `aggrement_disclaimer` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
@@ -458,7 +458,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `fullname`, `email`, `password_hash`, `auth_key`, `confirmed_at`, `unconfirmed_email`, `blocked_at`, `registration_ip`, `created_at`, `updated_at`, `flags`, `last_login_at`, `status`, `password_reset_token`) VALUES
-(3, 'iqramrafien21@gmail.com', '', 'iqramrafien21@gmail.com', '$2y$10$Ky2Vd8q4cmJhs15pZhrYDefiioIMJpG4PIaMLy3Pw0LH6.mrvKSze', 'PumdGONlKAzCKqXEY4CbW9YpbpXy_bf4', 1626127406, NULL, NULL, '::1', 1626127374, 1626127374, 0, 1626243526, 10, ''),
+(3, 'iqramrafien21@gmail.com', '', 'iqramrafien21@gmail.com', '$2y$10$Ky2Vd8q4cmJhs15pZhrYDefiioIMJpG4PIaMLy3Pw0LH6.mrvKSze', 'PumdGONlKAzCKqXEY4CbW9YpbpXy_bf4', 1626127406, NULL, NULL, '::1', 1626127374, 1626127374, 0, 1626292234, 10, ''),
 (4, 'iqramrafien@gmail.com', '', 'iqramrafien@gmail.com', '$2y$10$2J2pUPr3ATjr76ywNoojrOZqj4zan12LksIBeuqXQr77W1OPbHZqK', 'gJBv5DJKVds8BgWA13w0wbWmPufkRwNA', NULL, NULL, NULL, '::1', 1626228829, 1626228829, 0, NULL, 10, '');
 
 --
