@@ -47,7 +47,7 @@ class Application extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['applicant_name', 'nationality', 'id_number', 'gender', 'age', 'phoneNo', 'officeNo', 'faxNo', 'email', 'instiBusName', 'type', 'address', 'project_name', 'project_description', 'aggrement_disclaimer', 'created_at', 'updated_at'], 'required'],
+            [['applicant_name', 'nationality', 'id_number', 'gender', 'age', 'phoneNo', 'officeNo', 'faxNo', 'email', 'instiBusName', 'type', 'address', 'project_name', 'project_description', 'aggrement_disclaimer', 'created_at'], 'required'],
 
             [['gender', 'age', 'aggrement_disclaimer'], 'integer'],
 

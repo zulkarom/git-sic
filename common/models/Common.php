@@ -152,7 +152,7 @@ class Common {
 	}
 
 	public static function medium(){
-		return [1 => 'Website', 2 => 'Email', 3 => 'Others'];
+		return [1 => 'Website', 2 => 'Email', 3 => 'Others (please state)   : '];
 	}
 
 }

@@ -78,10 +78,12 @@ class ApplicationController extends Controller
         // }
 
         if ($model->load(Yii::$app->request->post())) {
-
-            echo "<pre>";
-            print_r(Yii::$app->request->post());
-            die();
+                    $model->created_at = new Expression('NOW()');
+                    $model->updated_at = new Expression('NOW()');
+                    $model->aggrement_disclaimer = 1;
+                    $model->category = 'aaa';
+                    $model->medium = 'bcd';
+            
 
             if($this->processInvoice($model, $items)){
                 Yii::$app->session->addFlash('success', "Application Submit");
@@ -132,6 +134,11 @@ class ApplicationController extends Controller
                 } catch (Exception $e) {
                     $transaction->rollBack();
                 }
+            }else{
+                echo "<pre>";
+print_r($model->getErrors());
+die();
+
             }      
 
         return false;

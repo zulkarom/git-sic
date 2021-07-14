@@ -18,7 +18,14 @@ use kartik\widgets\FileInput;
 <div class="application-form">
 
     <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
-    
+    <div class="row">
+        <div class="col-md-12">
+            <?= $form->field($model, 'category')->checkboxList(
+                Common::category(), ['inline'=>true])->label('<b>Choose Your Category</b>') ?>
+
+
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-6">
             <?= $form->field($model, 'applicant_name')->textInput(['maxlength' => true]) ?>
@@ -218,7 +225,16 @@ use kartik\widgets\FileInput;
        }
     ?>
 
-    
+    <b>How did you hear about this SIC 2021 (you may tick more than one):</b>
+    <div class="row">
+        <div class="col-md-5">
+            <?= $form->field($model, 'medium')->checkboxList(
+                Common::medium(), ['inline'=>true, 'class'=>'medium'])->label(false)?>
+        </div>
+        <div class="col-md-4">
+             <?= $form->field($model, 'reference')->textInput()->label(false)?>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-12">
              <b>DECLARATION</b>
