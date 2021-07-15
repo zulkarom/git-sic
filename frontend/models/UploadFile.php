@@ -222,16 +222,14 @@ class UploadFile
 		return '';
 	}
 	
-	public static function download($model){
+	public static function downloadLogo($model){
 		
-		$file = Yii::getAlias('@upload/expenses/' . $model->receipt_url);
-        echo $file;
-        die();
-        if($model->receipt_url){
+		$file = Yii::getAlias('@uploaded/application/' . $model->logo_file);
+        if($model->logo_file){
             if (file_exists($file)) {
-            $ext = pathinfo($model->receipt_url, PATHINFO_EXTENSION);
+            $ext = pathinfo($model->logo_file, PATHINFO_EXTENSION);
 
-            $filename =  'expenses.' . $ext ;
+            $filename =  'application.' . $ext ;
             
             self::sendFile($file, $filename, $ext);
             

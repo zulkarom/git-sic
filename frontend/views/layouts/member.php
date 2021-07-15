@@ -58,7 +58,7 @@ $this->title = 'My Application';
         <h3>My Profile</h3>
         <address>
         Full Name<br>
-        Email <br>
+        <?=Yii::$app->user->identity->email?> <br>
     <p><?= Html::a('<i class="fas fa-sign-out-alt"></i>  Log Out ',['/site/logout'],['data-method' => 'post', 'class' => 'btn btn-danger btn-sm']) ?>
     </p>
         
@@ -67,23 +67,7 @@ $this->title = 'My Application';
     
       <h3>Participant Menu</h3>
     
-      <nav class="sdb_holder">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-      <li><a href="#">My Application</a>
-
-          </li>
-          <li><a href="#">My Award</a>
-
-          </li>
-
-          <li><a href="#">My Result</a></li>
-      
-      <li><a href="#">My Session</a>
-
-          </li>  
-        </ul>
-      </nav>
+      <?=$this->render('menu')?>
      
 
       <!-- ################################################################################################ -->

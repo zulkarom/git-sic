@@ -28,6 +28,11 @@ class UserFormController extends \yii\web\Controller
 	public function actionRegister(){
 
         $this->layout = "//main-login";
+
+        if (!\Yii::$app->user->isGuest) {
+            //$this->goHome();
+            $this->redirect(['/application/index']);
+        }
         
         $model = new NewUserForm();
         $model->scenario = 'register';

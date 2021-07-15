@@ -13,10 +13,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="application-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -30,11 +28,26 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'category',
+            [
+                'label' => 'Category',
+                'value' => function($model){
+                    return $model->categoryText;
+                }
+            ],
             'applicant_name',
-            'nationality',
-            'ic_number',
-            'gender',
+            [
+                'label' => 'Nationality',
+                'value' => function($model){
+                    return $model->country->country_enName;
+                }
+            ],
+            'id_number',
+            [
+                'label' => 'Gender',
+                'value' => function($model){
+                    return $model->genderText;
+                }
+            ],
             'age',
             'phoneNo',
             'officeNo',
@@ -43,8 +56,50 @@ $this->params['breadcrumbs'][] = $this->title;
             'instiBusName',
             'type',
             'address',
-            'logo_file',
+            [
+                'format' => 'raw',
+                'label' => 'Logo Image',
+                'value' => function($model){
+                    if($model->logo_file){
+                        return Html::a(' Download <span class="glyphicon glyphicon-download-alt"></span>', ['logo-image', 'id' => $model->id], [
+                                   'target' => '_blank']);
+                    }
+                }
+            ],
+            [
+                'format' => 'html',
+                'label' => 'Status',
+                'value' => function($model){
+                    return $model->statusLabel;
+                }
+            ],
         ],
     ]) ?>
+    <br/>
+    <p><b>TEAM MEMBERS INFORMATION</b></p>
+    <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name And Designation<br/>(PROJECT LEADER / TEAM MEMBER)</th>
+              <th>Iden.Doc./Passport No.</th>
+              <th>Institution/Business Name</th>
+              <th>Mobile No.</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($items as $item) : ?>
+            <tr>
+                <td><?= $item->name?></td>
+                <td><?= $item->idNumber?></td>
+                <td><?= $item->instiBusName?></td>
+                <td><?= $item->phoneNo?></td>
+                <td><?= $item->email?></td>
+            </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
 
 </div>

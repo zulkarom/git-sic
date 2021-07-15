@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use backend\models\Application;
@@ -17,8 +18,8 @@ class ApplicationSearch extends Application
     public function rules()
     {
         return [
-            [['id', 'category', 'ic_number', 'gender', 'age'], 'integer'],
-            [['applicant_name', 'nationality', 'phoneNo', 'officeNo', 'faxNo', 'email', 'instiBusName', 'type', 'address', 'logo_file'], 'safe'],
+            [['id', 'category', 'gender', 'age', 'medium_web', 'medium_email', 'medium_others', 'aggrement_disclaimer'], 'integer'],
+            [['applicant_name', 'nationality', 'id_number', 'phoneNo', 'officeNo', 'faxNo', 'email', 'instiBusName', 'type', 'address', 'logo_file', 'project_name', 'project_description', 'reference', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -40,7 +41,8 @@ class ApplicationSearch extends Application
      */
     public function search($params)
     {
-        $query = Application::find();
+        $query = Application::find()
+        ->where(['user_id' => Yii::$app->user->identity->id]);
 
         // add conditions that should always apply here
 
@@ -60,13 +62,19 @@ class ApplicationSearch extends Application
         $query->andFilterWhere([
             'id' => $this->id,
             'category' => $this->category,
-            'ic_number' => $this->ic_number,
             'gender' => $this->gender,
             'age' => $this->age,
+            'medium_web' => $this->medium_web,
+            'medium_email' => $this->medium_email,
+            'medium_others' => $this->medium_others,
+            'aggrement_disclaimer' => $this->aggrement_disclaimer,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'applicant_name', $this->applicant_name])
             ->andFilterWhere(['like', 'nationality', $this->nationality])
+            ->andFilterWhere(['like', 'id_number', $this->id_number])
             ->andFilterWhere(['like', 'phoneNo', $this->phoneNo])
             ->andFilterWhere(['like', 'officeNo', $this->officeNo])
             ->andFilterWhere(['like', 'faxNo', $this->faxNo])
@@ -74,7 +82,10 @@ class ApplicationSearch extends Application
             ->andFilterWhere(['like', 'instiBusName', $this->instiBusName])
             ->andFilterWhere(['like', 'type', $this->type])
             ->andFilterWhere(['like', 'address', $this->address])
-            ->andFilterWhere(['like', 'logo_file', $this->logo_file]);
+            ->andFilterWhere(['like', 'logo_file', $this->logo_file])
+            ->andFilterWhere(['like', 'project_name', $this->project_name])
+            ->andFilterWhere(['like', 'project_description', $this->project_description])
+            ->andFilterWhere(['like', 'reference', $this->reference]);
 
         return $dataProvider;
     }

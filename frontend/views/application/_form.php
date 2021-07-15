@@ -20,10 +20,7 @@ use kartik\widgets\FileInput;
     <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
     <div class="row">
         <div class="col-md-12">
-            <?= $form->field($model, 'category')->checkboxList(
-                Common::category(), ['inline'=>true])->label('<b>Choose Your Category</b>') ?>
-
-
+            <?= $form->field($model, 'category')->radioList(Common::category(), ['inline'=>true])->label('<b>Choose Your Category</b>') ?>
         </div>
     </div>
     <div class="row">
@@ -84,7 +81,16 @@ use kartik\widgets\FileInput;
     <div class="row">
         <div class="col-6">
             <?= $form->field($model, 'logo_file')->fileInput() ?>
+            <?php
+
+                if($model->logo_file){
+                    echo '<div class="form-group">Attached File: ' . Html::a($model->logo_file, ['logo-image', 'id' => $model->id], [
+                           'target' => '_blank']);
+                    echo '</div>';
+                }
+            ?>
         </div>
+
         
     </div>
     <br/>
@@ -217,22 +223,13 @@ use kartik\widgets\FileInput;
         </div>
     </div>
 
-    <?php 
-       if($model->isNewRecord || in_array($model->medium,[1,2])){ //website / email
-           $hide = 'style="display:none"';
-       }else{
-           $hide = '';
-       }
-    ?>
-
     <b>How did you hear about this SIC 2021 (you may tick more than one):</b>
     <div class="row">
-        <div class="col-md-5">
-            <?= $form->field($model, 'medium')->checkboxList(
-                Common::medium(), ['inline'=>true, 'class'=>'medium'])->label(false)?>
-        </div>
-        <div class="col-md-4">
-             <?= $form->field($model, 'reference')->textInput()->label(false)?>
+        <div class="col-md-6">
+            <?= $form->field($model, 'medium_web')->checkbox(['value' => '1', 'label'=> 'Website']); ?>
+            <?= $form->field($model, 'medium_email')->checkbox(['value' => '1', 'label'=> 'Email']); ?>
+            <?= $form->field($model, 'medium_others')->checkbox(['value' => '1', 'label'=> 'Others (please state):</b>']); ?>
+            <?= $form->field($model, 'reference')->textInput()->label(false)?>
         </div>
     </div>
     <div class="row">
@@ -249,34 +246,17 @@ use kartik\widgets\FileInput;
     <div class="row">
         <div class="col-md-12">                    
             
-        <?= $form->field($model, 'aggrement_disclaimer')->checkbox()->label('<b>Agree</b>'); ?>
+        <?= $form->field($model, 'aggrement_disclaimer')->checkbox(['value' => '1', 'label'=> '<b>Agree</b>']); ?>
         </div>
     </div>
 
     <div class="form-group">
-
-        <?= Html::submitButton('Save Application', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('<i class="fa fa-save"></i> Save as Draft', ['class' => 'btn btn-info', 'name' => 'btn-submit', 'value' => 0]) ?> 
+         <?= Html::submitButton('<i class="fa fa-submit"></i> Submit Application', ['class' => 'btn btn-success', 'name' => 'btn-submit', 'value' => 10]) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
 
-
-<?php 
-$this->registerJs('
-
-$(".medium").change(function(){
-    var val = $(this).val();
-    if(val == 1 || val == 2){
-        $("#group-medium").slideUp();
-    }else{
-        $("#group-medium").slideDown();
-        
-    }
-});
-
-
-');
-?>
 

@@ -31,7 +31,7 @@ class ApplicationItem extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['application_id', 'name', 'idNumber', 'instiBusName', 'phoneNo', 'email'], 'required'],
+            [['name', 'idNumber', 'instiBusName', 'phoneNo', 'email'], 'required'],
             [['application_id'], 'integer'],
             [['name', 'instiBusName', 'email'], 'string', 'max' => 225],
             [['idNumber'], 'string', 'max' => 15],

@@ -35,11 +35,9 @@ class DashboardController extends Controller
      */
     public function actionIndex()
     {
-        $num = 1;
         $this->layout = "//member";
         return $this->render('index', [
-            'num' => $num,
-        ]);
+                    ]);
     }
 	
 
