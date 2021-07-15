@@ -37,10 +37,11 @@ class SecurityController extends BaseSecurityController
         $this->performAjaxValidation($model);
 
         $this->trigger(self::EVENT_BEFORE_LOGIN, $event);
-
+        // echo $role;
+        // die();
         if ($model->login()) {
             if($role == 0){
-                return $this->redirect(['/dashboard/index-admin']);
+                return $this->redirect(['/admin-application/index']);
             }else if($role == 1){
                 return $this->redirect(['/application/index']);
 

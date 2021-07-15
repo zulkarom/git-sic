@@ -47,14 +47,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn',
                         'header'=>"ACTION",
                         'headerOptions' => ['style' => 'width:15%'],
-                        'template' => '{view} {update}',
+                        'template' => '{view}',
                         //'visible' => false,
                         'buttons'=>[
                             'view'=>function ($url, $model) {
                                 return Html::a('<span class="fa fa-search"></span> VIEW',['view', 'id' => $model->id],['class'=>'btn btn-warning btn-sm']);
-                            },
-                            'update'=>function ($url, $model) {
-                                return Html::a('<span class="fa fa-edit"></span>  UPDATE',['update', 'id' => $model->id],['class'=>'btn btn-info btn-sm']);
                             },
                         ],
             

@@ -7,9 +7,9 @@ use common\widgets\Menu;
   <nav class="sdb_holder">
         <ul>
                         <?=Menu::widget([
-			['label' => \Yii::t('app', 'Home'), 'level' => 1, 'url' => ['/application/index']],
+			['label' => \Yii::t('app', 'Home'), 'level' => 1, 'url' => ['/dashboard/index-admin']],
 
-			['label' => \Yii::t('app', 'Applicant'), 'level' => 1,'url' => ['/application/index'], 'icon' => 'mdi mdi-settings-box'],
+			['label' => \Yii::t('app', 'Applications'), 'level' => 1,'url' => ['/admin-application/index'], 'icon' => 'mdi mdi-settings-box'],
 		]
 	
 	)?>

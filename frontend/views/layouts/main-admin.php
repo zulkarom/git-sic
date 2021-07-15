@@ -7,7 +7,7 @@ use kartik\widgets\ActiveForm;
 
 SwissAsset::register($this);
 $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAsset');
-$this->title = 'My Application';
+$this->title = 'Applications';
 ?>
 <?php $this->beginPage() ?>
 
@@ -57,7 +57,7 @@ $this->title = 'My Application';
        <div class="sdb_holder">
         <h3>My Profile</h3>
         <address>
-        Full Name<br>
+        <?=Yii::$app->user->identity->fullname?><br>
         <?=Yii::$app->user->identity->email?> <br>
     <p><?= Html::a('<i class="fas fa-sign-out-alt"></i>  Log Out ',['/site/logout'],['data-method' => 'post', 'class' => 'btn btn-danger btn-sm']) ?>
     </p>
@@ -79,11 +79,6 @@ $this->title = 'My Application';
       
     <div class="row form-group">
       <div class="col-md-6"><h3><?= Html::encode($this->title) ?></h3></div>
-
-      
-        <div class="col-md-6" align="right">
-          <?= Html::a('<i class="fas fa-plus"></i>  Apply New ',['/application/create'],['data-method' => 'post', 'class' => 'btn btn-success btn-sm']) ?>
-        </div>
      
     </div>
 
