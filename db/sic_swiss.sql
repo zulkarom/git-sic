@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2021 at 05:07 PM
+-- Generation Time: Jul 15, 2021 at 05:42 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.3.21
 
@@ -512,8 +512,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `fullname`, `email`, `role`, `password_hash`, `auth_key`, `confirmed_at`, `unconfirmed_email`, `blocked_at`, `registration_ip`, `created_at`, `updated_at`, `flags`, `last_login_at`, `status`, `password_reset_token`) VALUES
-(1, 'superadmin', 'Super Administrator', '', 0, '$2y$10$G2CqfuUqiTshvYmzFbh/seDgLVXbHRvUrb8fu.8UxCHgyaF9vd3pG', '', 1624467684, NULL, NULL, NULL, 1624467474, 1624467474, 0, NULL, 10, ''),
-(3, 'iqramrafien21@gmail.com', '', 'iqramrafien21@gmail.com', 1, '$2y$10$Ky2Vd8q4cmJhs15pZhrYDefiioIMJpG4PIaMLy3Pw0LH6.mrvKSze', 'PumdGONlKAzCKqXEY4CbW9YpbpXy_bf4', 1626127406, NULL, NULL, '::1', 1626127374, 1626127374, 0, 1626355969, 10, ''),
+(1, 'superadmin', 'Super Administrator', '', 0, '$2y$10$Ky2Vd8q4cmJhs15pZhrYDefiioIMJpG4PIaMLy3Pw0LH6.mrvKSze', '', 1624467684, NULL, NULL, NULL, 1624467474, 1624467474, 0, NULL, 10, ''),
+(3, 'iqramrafien21@gmail.com', '', 'iqramrafien21@gmail.com', 1, '$2y$10$Ky2Vd8q4cmJhs15pZhrYDefiioIMJpG4PIaMLy3Pw0LH6.mrvKSze', 'PumdGONlKAzCKqXEY4CbW9YpbpXy_bf4', 1626127406, NULL, NULL, '::1', 1626127374, 1626127374, 0, 1626362009, 10, ''),
 (4, 'iqramrafien@gmail.com', '', 'iqramrafien@gmail.com', 1, '$2y$10$2J2pUPr3ATjr76ywNoojrOZqj4zan12LksIBeuqXQr77W1OPbHZqK', 'gJBv5DJKVds8BgWA13w0wbWmPufkRwNA', NULL, NULL, NULL, '::1', 1626228829, 1626228829, 0, 1626350670, 10, '');
 
 --

@@ -39,6 +39,13 @@ class DashboardController extends Controller
         return $this->render('index', [
                     ]);
     }
+
+    public function actionIndexAdmin()
+    {
+        $this->layout = "//member";
+        return $this->render('index_admin', [
+                    ]);
+    }
 	
 
 	
