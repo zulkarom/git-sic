@@ -17,11 +17,14 @@ class SwissAsset extends AssetBundle
     public $css = [
         'css/styles/layout.css',
         'css/styles/bootstrap.css',
+        'menu/menu.css',
+        'menu/hamburgers.min.css',
     ];
     public $js = [
         // 'js/scripts/jquery.min.js',
         'js/scripts/jquery.backtotop.js',
-        'js/scripts/jquery.mobilemenu.js',
+        //'js/scripts/jquery.mobilemenu.js',
+        'menu/menu.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

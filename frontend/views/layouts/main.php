@@ -29,13 +29,106 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@backend/assets/swissAss
 
     
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title>SWISS INNOVATION CHALLENGE 2021</title>
     <?php $this->registerCsrfMetaTags() ?>
 
     <?php $this->head() ?>
+    
+    
 </head>
 <body id="top">
 <?php $this->beginBody() ?>
+
+
+<header class="header1" style="height:80px">
+		<!-- Header desktop -->
+		<div class="container-menu-header">
+
+
+			<div class="wrap_header">
+			
+			
+
+				<!-- Menu -->
+				<div class="wrap_menu">
+					<nav class="menu">
+						<ul class="main_menu">
+						<li>
+                            <a href="#">
+                                Home</a>
+                        </li><li>
+                            <a href="#type-competition">
+                                Competition Type</a>
+                        </li><li>
+                            <a href="#">
+                                Awards</a>
+                        </li><li>
+                            <a href="#">
+                                Login</a>
+                        </li><li>
+                            <a href="#">
+                                Contact Us</a>
+                        </li>							
+						</ul>
+					</nav>
+				</div>
+
+				<!-- Header Icon -->
+				<div class="header-icons">
+					
+										
+					
+
+				
+				</div>
+			</div>
+		</div>
+
+		<!-- Header Mobile -->
+		<div class="wrap_header_mobile">
+			<a href="index.html" class="logo-mobile">
+				
+			</a>
+
+			<!-- Button show menu -->
+			<div class="btn-show-menu">
+				<!-- Header Icon mobile -->
+				
+				
+				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Menu Mobile -->
+		<div class="wrap-side-menu">
+			<nav class="side-menu">
+				<ul class="main-menu">
+				
+				<li class="item-menu-mobile">
+                            <a href="#">
+                                HOME</a>
+                        </li><li class="item-menu-mobile">
+                            <a href="#">
+                                COMPETITION TYPE</a>
+                        </li><li class="item-menu-mobile">
+                            <a href="#">
+                                AWARDS</a>
+                        </li><li class="item-menu-mobile">
+                            <a href="#">
+                                LOGIN</a>
+                        </li><li class="item-menu-mobile">
+                            <a href="#">
+                                CONTACT US</a>
+                        </li>
+					
+				</ul>
+			</nav>
+		</div>
+	</header>
 
 <div class="wrapper bgded" style="background-image:url('<?= $dirAssests?>/images/banner.png');">
 <div id="pageintro" class="hoc clear"> 
@@ -69,13 +162,14 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@backend/assets/swissAss
 
 
 
-<div class="wrapper row3">
+<div class="wrapper web-display  row3">
   <main class="hoc container clear"> 
 
     <div class="group center btmspace-80">
       <article class="one_half first">
-        <h6 class="heading">What is the Swiss Innovation Challenge?</h6>
-        <p style="text-align:justify">The Swiss Innovation Challenge is an innovation promotion program with competition, in which 25 finalists and one winner (“Award Winner”) are selected from over 100 innovation projects in three elimination rounds (“pitches”). The participants in the competition are SMEs and start-ups from all over Switzerland. In addition to the award, participants can receive special prizes in the areas of “Life Sciences” and “Construction”win. The competition lasts eight months. During this time, participants can take part in free, user-oriented seminars. In addition, the participants have access to mentoring and coaching programs in which they are supported and encouraged with practical knowledge. In addition to these advantages, the participants and their innovation projects benefit from network events and various publicity measures.</p>
+        <h6 class="heading" style="font-size:30px">What is the Swiss Innovation Challenge?</h6>
+        <p style="text-align:justify;font-size:16px">Swiss Innovation Challenge (SIC) is the first innovation promotion programme in Switzerland with an integrated competition that takes a holistic approach to realising innovative business ideas along the lifecycle of the enterprise. SIC is an annual prestigious program led by the University of Applied Sciences and Arts Northwestern Switzerland (FHNW) with the full support from the Swiss Government. To date, SIC has already developed worldwide including Indonesia, Vietnam, Thailand, China and Malaysia. This year, DRB-HICOM University of Automotive Malaysia (DRB-HICOM U) has the honour to host the Swiss Innovation Challenge (SIC 2020) which will commence from Jun 2021 til November 2021. DRB-HICOM U collaborates with FHNW, Swiss Malaysia Business Association (SMBA), National Knowledge Transfer Programme and other institutions and industries. This program aims to help entrepreneurs and potential entrepreneurs in innovation-based business and commercial development.
+</p>
       </article>
       <article class="one_half">
 
@@ -91,7 +185,12 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@backend/assets/swissAss
   </main>
 </div>
 
-<div class="wrapper row2">
+<?=$this->render('categories', [    
+    'dirAssests' => $dirAssests,
+]);
+?>
+
+<div class="wrapper row3">
   <main class="hoc container clear"> 
 
     <div class="group center btmspace-80">
@@ -103,10 +202,26 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@backend/assets/swissAss
       
       
       <article class="one_half">
+      
+      
+      
+      
         <h6 class="heading">For more information and inquiries</h6>
-        <p style="text-align:center">Contact Dr. Norzalizah Binti Bahari
+        
+        <h6 class="heading">Contact </h6>
+        
+        
+        <p style="text-align:center">Dr. Norzalizah Binti Bahari
         <br />+6017-607 8767 <br /> norzalizah.b@umk.edu.my
 </p>
+
+<p style="text-align:center">Dr. Zaminor Binti Zamzamir @ Zamzamin
+        <br />+6017-607 8767 <br /> zaminor@umk.edu.my
+</p>
+
+
+
+
       </article>
       
 

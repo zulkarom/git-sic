@@ -10,7 +10,7 @@ File: Layout CSS
 */
 
 @import url("fontawesome-free/css/fontawesome-all.min.css");
-@import url("framework.css");
+@import url("frameworks.css");
 
 /* Rows
 --------------------------------------------------------------------------------------------------------------- */
@@ -117,7 +117,6 @@ File: Layout CSS
 --------------------------------------------------------------------------------------------------------------- */
 #latest{margin-bottom:80px;}
 #latest article{}
-#latest article img{width:100%;}/* Force the image to have the full width of parent at all times */
 #latest article .heading{font-size:1.3rem;}
 #latest article .excerpt{padding:20px; border:solid; border-width:0 1px 1px 1px;}
 
@@ -155,7 +154,7 @@ This gives a smooth transition to "ALL" elements used in the layout - other than
 If you don't want it to fade all elements, you have to list the ones you want to be faded individually
 Delete it completely to stop fading
 --------------------------------------------------------------------------------------------------------------- */
-*, *::before, *::after{transition:all .3s ease-in-out;}
+
 #mainav form *{transition:none !important;}
 
 
@@ -358,7 +357,9 @@ input:focus, textarea:focus, *:required:focus{border-color:#95103B;}
 #backtotop{color:#FFFFFF; background-color:#95103B;}
 
 
-
+.heading-category {
+	font-size: 25px;margin:50px;font-weight:800;color: #2b4b80; 
+}
 
 
 /* ------------------------------------------------------------------------------------------------------------ */
@@ -426,7 +427,6 @@ input:focus, textarea:focus, *:required:focus{border-color:#95103B;}
 
 	.overview > li:nth-last-child(-n+3){margin-bottom:30px;}
 
-	#latest article{max-width:348px;}/* Change it to suit your needs - default is the one_third grid width */
 
 	#footer{padding-bottom:50px;}/* Not required, just looks a little better */
 }
