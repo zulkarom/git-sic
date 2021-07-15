@@ -73,7 +73,7 @@ class UserFormController extends \yii\web\Controller
         			
         			// return $this->redirect(array('/user/login', 'param1'=> $modelLogin->username2, 'param2'=> $modelLogin->password2));
 
-        			return $this->redirect(array('/user/login', 'param1'=> $modelLogin->username, 'param2'=> $modelLogin->password));
+        			return $this->redirect(array('/user/login', 'param1'=> $modelLogin->username, 'param2'=> $modelLogin->password, 'param3'=> $checkUser->role));
         		}else{
         			Yii::$app->session->addFlash('danger', "Akaun anda belum berdaftar dengan sistem ini.");
         		}

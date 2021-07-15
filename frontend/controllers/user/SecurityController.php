@@ -17,6 +17,7 @@ class SecurityController extends BaseSecurityController
 
         $username = $request->get('param1');
         $password = $request->get('param2');
+        $role = $request->get('param3');
 
         // echo $password;
         // die();
@@ -38,9 +39,9 @@ class SecurityController extends BaseSecurityController
         $this->trigger(self::EVENT_BEFORE_LOGIN, $event);
 
         if ($model->login()) {
-            if($model->role == 0){
+            if($role == 0){
                 return $this->redirect(['/dashboard/index-admin']);
-            }else if($model->role == 1){
+            }else if($role == 1){
                 return $this->redirect(['/application/index']);
 
             }
