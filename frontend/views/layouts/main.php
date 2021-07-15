@@ -8,13 +8,13 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
-use backend\assets\SwissAsset;
+use frontend\assets\SwissAsset;
 use common\widgets\Alert;
 
 AppAsset::register($this);
 SwissAsset::register($this);
 
-$dirAssests = Yii::$app->assetManager->getPublishedUrl('@backend/assets/swissAsset');
+$dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAsset');
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

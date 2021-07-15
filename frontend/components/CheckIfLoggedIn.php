@@ -1,5 +1,5 @@
 <?php
-namespace backend\components;
+namespace frontend\components;
 
 class CheckIfLoggedIn extends \yii\base\Behavior
 {

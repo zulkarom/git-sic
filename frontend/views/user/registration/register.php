@@ -20,7 +20,7 @@ use yii\helpers\Url;
 use common\models\Common;
 
 
-$dirAssests = Yii::$app->assetManager->getPublishedUrl('@backend/assets/loginAsset');
+$dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/loginAsset');
 
 $this->title = 'Sign Up';
 $this->params['breadcrumbs'][] = $this->title;

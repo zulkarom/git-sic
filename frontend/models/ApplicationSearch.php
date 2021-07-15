@@ -5,7 +5,7 @@ namespace frontend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Application;
+use frontend\models\Application;
 
 /**
  * ApplicationSearch represents the model behind the search form of `backend\models\Application`.

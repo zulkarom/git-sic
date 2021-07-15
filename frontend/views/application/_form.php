@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
 use common\models\Common;
 use kartik\checkbox\CheckboxX;
-use backend\models\Countries;
+use frontend\models\Countries;
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use wbraganca\dynamicform\DynamicFormWidget;

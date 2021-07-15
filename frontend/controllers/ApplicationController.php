@@ -3,8 +3,8 @@
 namespace frontend\controllers;
 
 use Yii;
-use backend\models\Application;
-use backend\models\ApplicationItem;
+use frontend\models\Application;
+use frontend\models\ApplicationItem;
 use frontend\models\ApplicationSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
