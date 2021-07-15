@@ -12,9 +12,6 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use yii\helpers\Url;
-use backend\modules\classSession\models\ClassSession;
-use backend\models\Announcement;
-use backend\modules\frontend\models\frontend;
 /**
  * Site controller
  */
@@ -73,6 +70,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+
        return $this->render('index');
         
     }

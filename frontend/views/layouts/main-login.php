@@ -1,12 +1,12 @@
 <?php
 use common\widgets\Alert;
 use yii\helpers\Html;
-use backend\assets\SwissAsset;
-use backend\assets\AppAsset;
+use frontend\assets\SwissAsset;
+use frontend\assets\AppAsset;
 use kartik\widgets\ActiveForm;
 
 SwissAsset::register($this);
-$dirAssests = Yii::$app->assetManager->getPublishedUrl('@backend/assets/swissAsset');
+$dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAsset');
 
 ?>
 <?php $this->beginPage() ?>

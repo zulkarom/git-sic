@@ -6,7 +6,7 @@ use yii\helpers\Url;
 use common\models\Common;
 
 
-$dirAssests = Yii::$app->assetManager->getPublishedUrl('@backend/assets/swissAsset');
+$dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAsset');
 
 $this->title = 'Sign Up/Sign In';
 $this->params['breadcrumbs'][] = $this->title;

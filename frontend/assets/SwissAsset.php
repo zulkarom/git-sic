@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\assets;
+namespace frontend\assets;
 
 use yii\web\AssetBundle;
 
@@ -12,7 +12,7 @@ use yii\web\AssetBundle;
  */
 class SwissAsset extends AssetBundle
 {
-    public $sourcePath = '@backend/assets/swissAsset';
+    public $sourcePath = '@frontend/assets/swissAsset';
 
     public $css = [
         'css/styles/layout.css',

@@ -5,7 +5,7 @@ use kartik\widgets\ActiveForm;
 
 $this->title = 'Sign In';
 
-$dirAssests = Yii::$app->assetManager->getPublishedUrl('@backend/assets/adminpress');
+$dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/adminpress');
 $fieldOptions1 = [
     'options' => ['class' => 'input-group mb-3'],
     'inputTemplate' => "{input}

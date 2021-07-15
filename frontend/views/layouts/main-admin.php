@@ -67,7 +67,7 @@ $this->title = 'My Application';
     
       <h3>Participant Menu</h3>
     
-      <?=$this->render('menu')?>
+      <?=$this->render('menu-admin')?>
      
 
       <!-- ################################################################################################ -->

@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Html;
-use backend\modules\journal\models\EmailTemplate;
+use frontend\modules\journal\models\EmailTemplate;
 
 /* @var $this yii\web\View */
 /* @var $user common\models\User */

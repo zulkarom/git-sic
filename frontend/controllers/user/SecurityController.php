@@ -17,13 +17,14 @@ class SecurityController extends BaseSecurityController
 
         $username = $request->get('param1');
         $password = $request->get('param2');
+        $role = $request->get('param3');
 
         // echo $password;
         // die();
 
         if (!\Yii::$app->user->isGuest) {
             //$this->goHome();
-            $this->redirect(['/dashboard/index']);
+            $this->redirect(['/application/index']);
         }
 
         /** @var LoginForm $model */
@@ -38,9 +39,14 @@ class SecurityController extends BaseSecurityController
         $this->trigger(self::EVENT_BEFORE_LOGIN, $event);
 
         if ($model->login()) {
-            $this->trigger(self::EVENT_AFTER_LOGIN, $event);
+            if($role == 0){
+                return $this->redirect(['/dashboard/index-admin']);
+            }else if($role == 1){
+                return $this->redirect(['/application/index']);
+
+            }
             //$this->goHome();
-            $this->redirect(['/dashboard/index']);
+            
             //return $this->goBack();
         }
 

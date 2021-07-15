@@ -3,30 +3,36 @@
 namespace frontend\controllers;
 
 use Yii;
-use backend\models\Application;
-use backend\models\ApplicationItem;
+use frontend\models\Application;
+use frontend\models\ApplicationItem;
 use frontend\models\ApplicationSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use common\models\Model;
+use yii\db\Expression;
+use frontend\models\UploadFile;
 
 /**
  * ApplicationController implements the CRUD actions for Application model.
  */
 class ApplicationController extends Controller
 {
+    public $layout = "//member";
     /**
      * {@inheritdoc}
      */
     public function behaviors()
     {
         return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
                 ],
             ],
         ];
@@ -38,7 +44,6 @@ class ApplicationController extends Controller
      */
     public function actionIndex()
     {
-        $this->layout = "//main-login";
 
         $searchModel = new ApplicationSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -57,8 +62,11 @@ class ApplicationController extends Controller
      */
     public function actionView($id)
     {
+        $items = ApplicationItem::find()->where(['application_id' => $id])->all();
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'items' => $items,
         ]);
     }
 
@@ -69,7 +77,7 @@ class ApplicationController extends Controller
      */
     public function actionCreate()
     {
-        $this->layout = "//member";
+
         $model = new Application();
         $items = [new ApplicationItem];
 
@@ -78,14 +86,14 @@ class ApplicationController extends Controller
         // }
 
         if ($model->load(Yii::$app->request->post())) {
-                    $model->created_at = new Expression('NOW()');
-                    $model->updated_at = new Expression('NOW()');
-                    $model->aggrement_disclaimer = 1;
-                    $model->category = 'aaa';
-                    $model->medium = 'bcd';
-            
 
-            if($this->processInvoice($model, $items)){
+            $action = Yii::$app->request->post('btn-submit');
+
+            $model->status = $action;
+            $model->created_at = new Expression('NOW()');
+            $model->user_id = Yii::$app->user->identity->id;
+
+            if($this->processApplication($model, $items)){
                 Yii::$app->session->addFlash('success', "Application Submit");
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -97,15 +105,19 @@ class ApplicationController extends Controller
         ]);
     }
 
-    private function processInvoice($model, $items){
+    private function processApplication($model, $items){
         $oldIDs = ArrayHelper::map($items, 'id', 'id');
         $items = Model::createMultiple(ApplicationItem::classname(), $items);
         Model::loadMultiple($items, Yii::$app->request->post());
         $deletedIDs = array_diff($oldIDs, array_filter(ArrayHelper::map($items, 'id', 'id')));
         
+        // echo "<pre>";
+        //  print_r($deletedIDs);
+        // die();
         // validate all models
         $valid = $model->validate();
         $valid = Model::validateMultiple($items) && $valid; 
+       
 
         if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
@@ -134,12 +146,7 @@ class ApplicationController extends Controller
                 } catch (Exception $e) {
                     $transaction->rollBack();
                 }
-            }else{
-                echo "<pre>";
-print_r($model->getErrors());
-die();
-
-            }      
+            }     
 
         return false;
     }
@@ -154,14 +161,35 @@ die();
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $items = $model->applicationItems;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $model->cur_logo = $model->logo_file;
+        $model->user_id = Yii::$app->user->identity->id;
+        if ($model->load(Yii::$app->request->post())) {
+
+            $action = Yii::$app->request->post('btn-submit');
+            $model->status = $action;
+            $model->updated_at = new Expression('NOW()');
+
+            if($this->processApplication($model, $items)){
+                
+                Yii::$app->session->addFlash('success', "Application Updated");
+                return $this->redirect(['view', 'id' => $id]);
+
+            }
+
         }
 
         return $this->render('update', [
             'model' => $model,
+            'items' => (empty($items)) ? [new ApplicationItem] : $items
         ]);
+    }
+
+    public function actionLogoImage($id){
+        $model = $this->findModel($id);
+        
+        UploadFile::downloadLogo($model);
     }
 
     /**

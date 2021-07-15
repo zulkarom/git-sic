@@ -10,39 +10,68 @@ use yii\grid\GridView;
 $this->title = 'Applications';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<style type="text/css">
+
+    .table {
+        width: 100% !important;
+        margin-bottom: 1rem !important;
+        color: #212529 !important;
+    }
+    .table th, .table td {
+        padding: 0.75rem !important;
+        vertical-align: top !important;
+        border-top: 1px solid #dee2e6 !important;
+    }
+</style>
 <div class="application-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create Application', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        // 'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'category',
-            'applicant_name',
-            'nationality',
-            'ic_number',
-            //'gender',
-            //'age',
-            //'phoneNo',
-            //'officeNo',
-            //'faxNo',
-            //'email:email',
-            //'instiBusName',
-            //'type',
-            //'address',
-            //'logo_file',
+            [
 
-            ['class' => 'yii\grid\ActionColumn'],
+                'label' => 'Title',
+                'value' => function($model){
+                    return $model->project_name;
+                }
+            ],
+            [
+
+                'label' => 'Leader',
+                'value' => function($model){
+                    return $model->applicant_name;
+                }
+            ],
+            [
+                'format' => 'html',
+                'label' => 'Status',
+                'value' => function($model){
+                    return $model->statusLabel;
+                }
+            ],
+
+
+            ['class' => 'yii\grid\ActionColumn',
+                        'header'=>"ACTION",
+                        'headerOptions' => ['style' => 'width:15%'],
+                        'template' => '{view} {update}',
+                        //'visible' => false,
+                        'buttons'=>[
+                            'view'=>function ($url, $model) {
+                                return Html::a('<span class="fa fa-search"></span> VIEW',['view', 'id' => $model->id],['class'=>'btn btn-warning btn-sm']);
+                            },
+                            'update'=>function ($url, $model) {
+                                return Html::a('<span class="fa fa-edit"></span>  UPDATE',['update', 'id' => $model->id],['class'=>'btn btn-info btn-sm']);
+                            },
+                        ],
+            
+                    ],
         ],
     ]); ?>
 

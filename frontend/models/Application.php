@@ -1,14 +1,16 @@
 <?php
 
-namespace backend\models;
+namespace frontend\models;
 
 use Yii;
-
+use yii\web\UploadedFile;
+use yii\helpers\FileHelper;
+use common\models\Common;
 /**
  * This is the model class for table "application".
  *
  * @property int $id
- * @property string $category
+ * @property int $category
  * @property string $applicant_name
  * @property string $nationality
  * @property string $id_number
@@ -24,7 +26,9 @@ use Yii;
  * @property string $logo_file
  * @property string $project_name
  * @property string $project_description
- * @property string $medium
+ * @property int $medium_web
+ * @property int $medium_email
+ * @property int $medium_others
  * @property string|null $reference
  * @property int $aggrement_disclaimer
  * @property string $created_at
@@ -47,15 +51,13 @@ class Application extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['applicant_name', 'nationality', 'id_number', 'gender', 'age', 'phoneNo', 'officeNo', 'faxNo', 'email', 'instiBusName', 'type', 'address', 'project_name', 'project_description', 'aggrement_disclaimer', 'created_at'], 'required'],
-
-            [['gender', 'age', 'aggrement_disclaimer'], 'integer'],
+            [['category', 'applicant_name', 'nationality', 'id_number', 'gender', 'age', 'phoneNo', 'officeNo', 'faxNo', 'email', 'instiBusName', 'type', 'address', 'project_name', 'project_description', 'medium_web', 'medium_email', 'medium_others', 'aggrement_disclaimer'], 'required'],
 
             [['logo_file'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,gif,pdf', 'maxSize' => 2000000],
 
+            [['category', 'gender', 'age', 'aggrement_disclaimer', 'status', 'user_id'], 'integer'],
             [['project_description'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
-            [['category', 'medium'], 'string', 'max' => 10],
             [['applicant_name', 'nationality', 'email', 'instiBusName', 'type', 'address', 'logo_file', 'project_name'], 'string', 'max' => 225],
             [['id_number'], 'string', 'max' => 15],
             [['phoneNo', 'officeNo', 'faxNo'], 'string', 'max' => 50],
@@ -70,28 +72,61 @@ class Application extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'category' => 'Category',
+            'category' => 'Choose Your Category',
             'applicant_name' => 'Applicant Name',
             'nationality' => 'Nationality',
-            'id_number' => 'Id Number',
+            'id_number' => 'Identity document/Passport No. ',
             'gender' => 'Gender',
             'age' => 'Age',
-            'phoneNo' => 'Phone No',
+            'phoneNo' => 'Mobile No',
             'officeNo' => 'Office No',
             'faxNo' => 'Fax No',
             'email' => 'Email',
-            'instiBusName' => 'Insti Bus Name',
-            'type' => 'Type',
+            'instiBusName' => 'Institution/Business Name ',
+            'type' => 'Type of Business',
             'address' => 'Address',
             'logo_file' => 'Logo File',
-            'project_name' => 'Project Name',
-            'project_description' => 'Project Description',
-            'medium' => 'Medium',
+            'project_name' => 'Project / Idea Name',
+            'project_description' => 'Project /Idea Description',
+            'medium_web' => 'Medium Web',
+            'medium_email' => 'Medium Email',
+            'medium_others' => 'Medium Others',
             'reference' => 'Reference',
-            'aggrement_disclaimer' => 'Aggrement Disclaimer',
+            'aggrement_disclaimer' => 'Declaration',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    public function getCategoryText(){
+        $arr = Common::category();
+        if(array_key_exists($this->category,$arr)){
+            return $arr[$this->category];
+        }
+        
+    }
+
+    public function getGenderText(){
+        $arr = Common::gender();
+        if(array_key_exists($this->gender,$arr)){
+            return $arr[$this->gender];
+        }
+    }
+
+    public function getCountry(){
+        return $this->hasOne(Countries::className(), ['id' => 'nationality']);
+    }
+
+    public function getApplicationStatus(){
+        return $this->hasOne(ApplicationStatus::className(), ['status' => 'status']);
+    }
+
+    public function getApplicationItems(){
+        return $this->hasMany(ApplicationItem::className(), ['application_id' => 'id']);
+    }
+
+    public function getStatusLabel(){
+        return '<span class="label label-'.$this->applicationStatus->color.' ">'.strtoupper($this->applicationStatus->name).'</span>';
     }
 
     public function upload(){
@@ -102,7 +137,7 @@ class Application extends \yii\db\ActiveRecord
           // Yii::$app->session->addFlash('success', "Dalam upload file");
             $year = date('Y') + 0 ;
             $path = $year.'/'.$this->id .'/';
-            $directory = Yii::getAlias('@upload/application/'.$path);
+            $directory = Yii::getAlias('@uploaded/application/'.$path);
             if (!is_dir($directory)) {
                 FileHelper::createDirectory($directory);
             }
@@ -177,6 +212,5 @@ class Application extends \yii\db\ActiveRecord
                 }
             }
         }
-
     }
 }

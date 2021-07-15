@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2021 at 12:00 AM
+-- Generation Time: Jul 15, 2021 at 05:42 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.3.21
 
@@ -29,7 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `application` (
   `id` int(11) NOT NULL,
-  `category` varchar(10) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `category` tinyint(1) NOT NULL,
   `applicant_name` varchar(225) NOT NULL,
   `nationality` varchar(225) NOT NULL,
   `id_number` varchar(15) NOT NULL,
@@ -45,12 +46,24 @@ CREATE TABLE `application` (
   `logo_file` varchar(225) NOT NULL,
   `project_name` varchar(225) NOT NULL,
   `project_description` text NOT NULL,
-  `medium` varchar(10) NOT NULL,
+  `medium_web` tinyint(1) NOT NULL,
+  `medium_email` tinyint(1) NOT NULL,
+  `medium_others` tinyint(1) NOT NULL,
   `reference` varchar(100) DEFAULT NULL,
   `aggrement_disclaimer` tinyint(1) NOT NULL,
+  `status` tinyint(3) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `application`
+--
+
+INSERT INTO `application` (`id`, `user_id`, `category`, `applicant_name`, `nationality`, `id_number`, `gender`, `age`, `phoneNo`, `officeNo`, `faxNo`, `email`, `instiBusName`, `type`, `address`, `logo_file`, `project_name`, `project_description`, `medium_web`, `medium_email`, `medium_others`, `reference`, `aggrement_disclaimer`, `status`, `created_at`, `updated_at`) VALUES
+(7, 3, 3, 'FAKHRUL IQRAM BIN RAFIEN', '135', '940821036159', 1, 21, '+60176209665', '0765285222', '01255585', 'iqramrafien@gmail.com', 'SkyHint Enterprise', 'IT', 'No 123 Jalan Meranti', '2021/7/file.png', 'sad', 'sdaa', 0, 0, 1, 'asd', 1, 0, '2021-07-15 12:39:25', '2021-07-15 22:39:25'),
+(8, 0, 2, 'FAKHRUL IQRAM BIN RAFIENnnn', '133', '940821036159444', 1, 22, '+6017620966565567', '0765285222567567', '01255585322356756', 'iqramrafien@gmail.comdd', 'SkyHint Enterpriseddd', 'ITdd', 'No 123 Jalan Merantidddd', '2021/8/file.png', 'sad56756756', 'sdaa567567', 1, 1, 1, 'asd', 1, 0, '2021-07-15 12:40:52', '2021-07-15 21:21:36'),
+(9, 0, 2, 'FAKHRUL IQRAM BIN RAFIEN', '135', '940821036159', 1, 21, '+60176209665', '0765285222', '01255585', 'iqramrafien@gmail.com', 'SkyHint Enterprise', 'IT', 'No 123 Jalan Meranti', '2021/9/file.png', 'sad', 'sdaa', 1, 1, 1, 'asd', 1, 0, '2021-07-15 12:41:31', '2021-07-15 12:41:31');
 
 -- --------------------------------------------------------
 
@@ -67,6 +80,46 @@ CREATE TABLE `application_item` (
   `phoneNo` varchar(50) NOT NULL,
   `email` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `application_item`
+--
+
+INSERT INTO `application_item` (`id`, `application_id`, `name`, `idNumber`, `instiBusName`, `phoneNo`, `email`) VALUES
+(1, 7, 'asd', '940821036159', 'asss', 'sss', 'ssss'),
+(2, 8, '234234234', '940821036159', 'asssasdasd23423423423', '234243', 'ssssdas234234234dasd'),
+(4, 9, 'asd', '940821036159', 'asss', 'sss', 'ssss'),
+(5, 9, 'asdasda', 'sdasd', 'asdasdas', 'asdasda', 'das');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `application_status`
+--
+
+CREATE TABLE `application_status` (
+  `id` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `color` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `application_status`
+--
+
+INSERT INTO `application_status` (`id`, `status`, `name`, `color`) VALUES
+(1, 0, 'Draft', 'info'),
+(2, 10, 'Submission', 'inverse'),
+(3, 20, 'Cancel', 'info'),
+(4, 30, 'Unqualified', 'primary'),
+(5, 40, 'Withdraw', 'success'),
+(6, 50, 'Paid', 'warning'),
+(7, 60, 'Review', 'danger'),
+(8, 70, 'First pitch', 'info'),
+(9, 80, 'Second pitch', 'warning'),
+(10, 90, 'Final pitch', 'warning'),
+(11, 100, 'Complete', 'danger');
 
 -- --------------------------------------------------------
 
@@ -439,6 +492,7 @@ CREATE TABLE `user` (
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `fullname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `role` tinyint(1) NOT NULL DEFAULT 1,
   `password_hash` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `auth_key` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `confirmed_at` int(11) DEFAULT NULL,
@@ -457,9 +511,10 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `fullname`, `email`, `password_hash`, `auth_key`, `confirmed_at`, `unconfirmed_email`, `blocked_at`, `registration_ip`, `created_at`, `updated_at`, `flags`, `last_login_at`, `status`, `password_reset_token`) VALUES
-(3, 'iqramrafien21@gmail.com', '', 'iqramrafien21@gmail.com', '$2y$10$Ky2Vd8q4cmJhs15pZhrYDefiioIMJpG4PIaMLy3Pw0LH6.mrvKSze', 'PumdGONlKAzCKqXEY4CbW9YpbpXy_bf4', 1626127406, NULL, NULL, '::1', 1626127374, 1626127374, 0, 1626292234, 10, ''),
-(4, 'iqramrafien@gmail.com', '', 'iqramrafien@gmail.com', '$2y$10$2J2pUPr3ATjr76ywNoojrOZqj4zan12LksIBeuqXQr77W1OPbHZqK', 'gJBv5DJKVds8BgWA13w0wbWmPufkRwNA', NULL, NULL, NULL, '::1', 1626228829, 1626228829, 0, NULL, 10, '');
+INSERT INTO `user` (`id`, `username`, `fullname`, `email`, `role`, `password_hash`, `auth_key`, `confirmed_at`, `unconfirmed_email`, `blocked_at`, `registration_ip`, `created_at`, `updated_at`, `flags`, `last_login_at`, `status`, `password_reset_token`) VALUES
+(1, 'superadmin', 'Super Administrator', '', 0, '$2y$10$Ky2Vd8q4cmJhs15pZhrYDefiioIMJpG4PIaMLy3Pw0LH6.mrvKSze', '', 1624467684, NULL, NULL, NULL, 1624467474, 1624467474, 0, NULL, 10, ''),
+(3, 'iqramrafien21@gmail.com', '', 'iqramrafien21@gmail.com', 1, '$2y$10$Ky2Vd8q4cmJhs15pZhrYDefiioIMJpG4PIaMLy3Pw0LH6.mrvKSze', 'PumdGONlKAzCKqXEY4CbW9YpbpXy_bf4', 1626127406, NULL, NULL, '::1', 1626127374, 1626127374, 0, 1626362009, 10, ''),
+(4, 'iqramrafien@gmail.com', '', 'iqramrafien@gmail.com', 1, '$2y$10$2J2pUPr3ATjr76ywNoojrOZqj4zan12LksIBeuqXQr77W1OPbHZqK', 'gJBv5DJKVds8BgWA13w0wbWmPufkRwNA', NULL, NULL, NULL, '::1', 1626228829, 1626228829, 0, 1626350670, 10, '');
 
 --
 -- Indexes for dumped tables
@@ -475,6 +530,12 @@ ALTER TABLE `application`
 -- Indexes for table `application_item`
 --
 ALTER TABLE `application_item`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `application_status`
+--
+ALTER TABLE `application_status`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -526,13 +587,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `application`
 --
 ALTER TABLE `application`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `application_item`
 --
 ALTER TABLE `application_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `application_status`
+--
+ALTER TABLE `application_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `countries`
@@ -550,7 +617,7 @@ ALTER TABLE `social_account`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
