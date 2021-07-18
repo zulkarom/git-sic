@@ -99,22 +99,41 @@ class UserListController extends Controller
                 $model->setPassword($model->rawPassword);
             }
             
-            
             if($model->save()){
                 Yii::$app->session->addFlash('success', "Data Updated");
                 return $this->redirect(['view', 'id' => $model->id]);
             }else{
-                echo "<pre>";
-print_r($model->getErrors());
-die();
-
-
+                $model->flashError();
             }
             
             
             
         } else {
             return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionAssignRole($id)
+    {
+        $model = $this->findModel($id);
+        $model->scenario = 'assign';
+        $model->updated_at = new Expression('NOW()');
+
+        if ($model->load(Yii::$app->request->post())) {
+            
+            if($model->save()){
+                Yii::$app->session->addFlash('success', "Role Assign");
+                return $this->redirect(['view', 'id' => $model->id]);
+            }else{
+                $model->flashError();
+            }
+            
+            
+            
+        } else {
+            return $this->render('assign-role', [
                 'model' => $model,
             ]);
         }

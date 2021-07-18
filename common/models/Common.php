@@ -118,6 +118,10 @@ class Common {
 			$last => $last,
 		];
     }
+
+    public static function answer(){
+		return [1 => 'Yes', 0 => 'No'];
+	}
 	
 	public static function gender(){
 		return [1 => 'Male', 0 => 'Female'];

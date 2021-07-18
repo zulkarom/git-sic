@@ -41,15 +41,15 @@ $this->params['breadcrumbs'][] = $this->title;
  
 
             ['class' => 'yii\grid\ActionColumn',
-                 'contentOptions' => ['style' => 'width: 20%'],
+                 'contentOptions' => ['style' => 'width: 16%'],
                 'template' => '{update} {assign}',
                 //'visible' => false,
                 'buttons'=>[
                     'update'=>function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-pencil"></span> UPDATE',['user-list/update/', 'id' => $model->id],['class'=>'btn btn-warning btn-sm']);
+                        return Html::a('<span class="fa fa-pencil"></span> UPDATE',['user-list/update/', 'id' => $model->id],['class'=>'btn btn-warning btn-sm']);
                     },
                     'assign'=>function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-pencil"></span> ASSIGN ROLE',['user-list/assign-role/', 'id' => $model->id],['class'=>'btn btn-warning btn-sm']);
+                        return Html::a('<span class="fa fa-pencil"></span> ASSIGN ROLE',['user-list/assign-role/', 'id' => $model->id],['class'=>'btn btn-info btn-sm']);
                     }
                 ],
             
