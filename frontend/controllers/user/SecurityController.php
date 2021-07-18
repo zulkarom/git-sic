@@ -46,9 +46,8 @@ class SecurityController extends BaseSecurityController
                 return $this->redirect(['/application/index']);
 
             }
-            //$this->goHome();
-            
-            //return $this->goBack();
+        }else{
+            return $this->redirect(['/user-form/register']);
         }
 
         return $this->render('login', [
