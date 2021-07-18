@@ -17,7 +17,10 @@ use kartik\widgets\FileInput;
 
 <div class="application-form">
 
+
+
     <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
+    <?= $form->errorSummary($model); ?>
     <div class="row">
         <div class="col-md-12">
             <?= $form->field($model, 'category')->radioList(Common::category(), ['inline'=>true])->label('<b>Choose Your Category</b>') ?>
@@ -78,21 +81,7 @@ use kartik\widgets\FileInput;
             <?= $form->field($model, 'address')->textArea(['rows' => '2']) ?>
         </div>
     </div>
-    <div class="row">
-        <div class="col-6">
-            <?= $form->field($model, 'logo_file')->fileInput() ?>
-            <?php
 
-                if($model->logo_file){
-                    echo '<div class="form-group">Attached File: ' . Html::a($model->logo_file, ['logo-image', 'id' => $model->id], [
-                           'target' => '_blank']);
-                    echo '</div>';
-                }
-            ?>
-        </div>
-
-        
-    </div>
     <br/>
     <div class="row">
         <div class="col-12">
@@ -121,15 +110,14 @@ use kartik\widgets\FileInput;
    <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th width="3.2%"></th>
                 
-                <th width="30%"><center>NAME AND DESIGNATION<br/>(PROJECT LEADER / TEAM MEMBER)</center></th>
-                <th width="12%"><center>IDEN. DOC./ PASSPORT NO.</center></th>
+                <th><center>NAME AND DESIGNATION<br/>(PROJECT LEADER / TEAM MEMBER)</center></th>
+                <th width="18%"><center>IDEN. DOC./ PASSPORT NO.</center></th>
                 <th width="15%"><center>INSTITUTION/BUSINESS NAME</center></th>
                 <th width="15%"><center>
                  MOBILE NO.</center>   
                 </th>
-                <th width="15%"><center>
+                <th width="18%"><center>
                  EMAIL</center>   
                 </th>
                 <th width="2.4%"></th>
@@ -138,9 +126,7 @@ use kartik\widgets\FileInput;
         <tbody class="container-items">
         <?php foreach ($items as $indexItem => $item): ?>
             <tr class="row-item">
-                <td class="sortable-handle text-center vcenter" style="cursor: move;">
-                        <i class="fas fa-arrows-alt"></i>
-                    </td>
+         
             
                 <?php
                         // necessary for update action.
@@ -182,7 +168,7 @@ use kartik\widgets\FileInput;
         
         <tfoot>
             <tr>
-            <td></td>
+    
                 <td colspan="7">
                 <button type="button" class="add-item btn btn-info btn-sm"><span class="fa fa-plus"></span> New Item</button>
                 

@@ -80,9 +80,7 @@ $this->title = 'My Application';
       <div class="col-md-6"><h3><?= Html::encode($this->title) ?></h3></div>
 
       
-        <div class="col-md-6" align="right">
-          <?= Html::a('<i class="fas fa-plus"></i>  Apply New ',['/application/create'],['data-method' => 'post', 'class' => 'btn btn-success btn-sm']) ?>
-        </div>
+     
      
     </div>
 

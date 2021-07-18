@@ -33,9 +33,10 @@ class ApplicationItem extends \yii\db\ActiveRecord
         return [
             [['name', 'idNumber', 'instiBusName', 'phoneNo', 'email'], 'required'],
             [['application_id'], 'integer'],
-            [['name', 'instiBusName', 'email'], 'string', 'max' => 225],
+            [['name', 'instiBusName'], 'string', 'max' => 225],
             [['idNumber'], 'string', 'max' => 15],
             [['phoneNo'], 'string', 'max' => 50],
+            [['email'], 'email'],
         ];
     }
 
