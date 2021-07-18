@@ -4,12 +4,8 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use frontend\assets\SwissAsset;
-use common\widgets\Alert;
 
 AppAsset::register($this);
 SwissAsset::register($this);
@@ -39,96 +35,8 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
 <body id="top">
 <?php $this->beginBody() ?>
 
-
-<header class="header1" style="height:80px">
-		<!-- Header desktop -->
-		<div class="container-menu-header">
-
-
-			<div class="wrap_header">
-			
-			
-
-				<!-- Menu -->
-				<div class="wrap_menu">
-					<nav class="menu">
-						<ul class="main_menu">
-						<li>
-                            <a href="#">
-                                Home</a>
-                        </li><li>
-                            <a href="#type-competition">
-                                Competition Type</a>
-                        </li><li>
-                            <a href="#">
-                                Awards</a>
-                        </li><li>
-                            <a href="#">
-                                Login</a>
-                        </li><li>
-                            <a href="#">
-                                Contact Us</a>
-                        </li>							
-						</ul>
-					</nav>
-				</div>
-
-				<!-- Header Icon -->
-				<div class="header-icons">
-					
-										
-					
-
-				
-				</div>
-			</div>
-		</div>
-
-		<!-- Header Mobile -->
-		<div class="wrap_header_mobile">
-			<a href="index.html" class="logo-mobile">
-				
-			</a>
-
-			<!-- Button show menu -->
-			<div class="btn-show-menu">
-				<!-- Header Icon mobile -->
-				
-				
-				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-					<span class="hamburger-box">
-						<span class="hamburger-inner"></span>
-					</span>
-				</div>
-			</div>
-		</div>
-
-		<!-- Menu Mobile -->
-		<div class="wrap-side-menu">
-			<nav class="side-menu">
-				<ul class="main-menu">
-				
-				<li class="item-menu-mobile">
-                            <a href="#">
-                                HOME</a>
-                        </li><li class="item-menu-mobile">
-                            <a href="#">
-                                COMPETITION TYPE</a>
-                        </li><li class="item-menu-mobile">
-                            <a href="#">
-                                AWARDS</a>
-                        </li><li class="item-menu-mobile">
-                            <a href="#">
-                                LOGIN</a>
-                        </li><li class="item-menu-mobile">
-                            <a href="#">
-                                CONTACT US</a>
-                        </li>
-					
-				</ul>
-			</nav>
-		</div>
-	</header>
+<?=$this->render('menu-top-public');
+?>
 
 <div class="wrapper bgded" style="background-image:url('<?= $dirAssests?>/images/banner.png');">
 <div id="pageintro" class="hoc clear"> 
@@ -206,7 +114,7 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
       
       
       
-        <h6 class="heading">For more information and inquiries</h6>
+        <h6 class="heading" id="contact-us">For more information and inquiries</h6>
         
         <h6 class="heading">Contact </h6>
         

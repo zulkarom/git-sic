@@ -4,6 +4,7 @@ use yii\helpers\Url;
 use common\widgets\Menu;
 
 ?> 
+  <h3>Admin Menu</h3>
   <nav class="sdb_holder">
         <ul>
                         <?=Menu::widget([
