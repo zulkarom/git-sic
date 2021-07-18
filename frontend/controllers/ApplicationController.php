@@ -11,6 +11,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use common\models\Model;
+use yii\db\Exception;
 use yii\db\Expression;
 use frontend\models\UploadFile;
 
@@ -86,16 +87,21 @@ class ApplicationController extends Controller
         // }
 
         if ($model->load(Yii::$app->request->post())) {
+            //print_r(Yii::$app->request->post());die();
 
             $action = Yii::$app->request->post('btn-submit');
 
             $model->status = $action;
             $model->created_at = new Expression('NOW()');
             $model->user_id = Yii::$app->user->identity->id;
-
-            if($this->processApplication($model, $items)){
+            
+            $result = $this->processApplication($model, $items);
+           // print_r($result[0]);die();
+            if($result[0]){
                 Yii::$app->session->addFlash('success', "Application Submit");
                 return $this->redirect(['view', 'id' => $model->id]);
+            }else{
+                $items = $result[1];
             }
         }
 
@@ -117,16 +123,16 @@ class ApplicationController extends Controller
         // validate all models
         $valid = $model->validate();
         $valid = Model::validateMultiple($items) && $valid; 
-       
+      //echo $valid;die();
 
         if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
                 try {
                     if ($flag = $model->save(false)){
+                        
                             if (! empty($deletedIDs)) {
                                 ApplicationItem::deleteAll(['id' => $deletedIDs]);
                             }
-                            if($flag = $model->upload()){
                                 foreach ($items as $item) {
                                     $item->application_id = $model->id;
                                     if (! ($flag = $item->save(false))) {
@@ -134,21 +140,22 @@ class ApplicationController extends Controller
                                         break;
                                     }
                                 }
-                            }
+
                             
                     }else{
                         $model->flashError();
                     }
                     if ($flag) {
                         $transaction->commit();
-                        return $this->redirect(['view', 'id' => $model->id]);
+                        return [true];
+                        
                     }
                 } catch (Exception $e) {
                     $transaction->rollBack();
                 }
             }     
 
-        return false;
+        return [false, $items];
     }
 
     /**

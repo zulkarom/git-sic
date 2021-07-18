@@ -28,30 +28,17 @@ $fieldOptions1 = [
     <!-- main body -->
     <!-- ################################################################################################ -->
 
-    <?php $form = ActiveForm::begin([
-                    'id' => 'login-form',
-                    'enableAjaxValidation' => true,
-                ]) ?>
+    <?php $form = ActiveForm::begin() ?>
     <div class="sidebar one_half first"> 
         <h3>LOGIN</h3>
         
         <div class="row">
         <div class="col-md-10">
         
-            <?= $form->field($modelLogin, 'username', ['template' => '
-               <div class="form-group">
-                    <label for="email">Email <span>*</span></label>
-                  {input}
-               </div>
-               '])->textInput(['class' => 'form-control form-control-lg'])
+            <?= $form->field($modelLogin, 'username')->textInput(['class' => 'form-control form-control-lg'])
             ?>
         
-          <?= $form->field($modelLogin, 'password', ['template' => '
-               <div class="form-group">
-                    <label for="email">Password <span>*</span></label>
-                  {input}
-               </div>
-               '])->passwordInput(['class' => 'form-control form-control-lg'])
+          <?= $form->field($modelLogin, 'password')->passwordInput(['class' => 'form-control form-control-lg'])
             ?>
 
           <div class="form-group">
@@ -74,7 +61,7 @@ $fieldOptions1 = [
 <?php ActiveForm::end(); ?>
 
 
-<?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => true]); ?>
+<?php $form = ActiveForm::begin(); ?>
     <div class="content one_half"> 
 
       <h3>REGISTER</h3>
@@ -83,43 +70,20 @@ $fieldOptions1 = [
       <div class="row">
         <div class="col-md-10">
         
-          <?= $form->field($model, 'username', ['template' => '
-               <div class="form-group">
-                    <label for="email">Email <span>*</span></label>
-                  {input}
-               </div>
-               '])->textInput(['class' => 'form-control form-control-lg'])
+       
+
+            <?= $form->field($model, 'fullname')->textInput(['class' => 'form-control form-control-lg'])
             ?>
 
-            <?= $form->field($model, 'fullname', ['template' => '
-               <div class="form-group">
-                    <label for="email">Name <span>*</span></label>
-                  {input}
-               </div>
-               '])->textInput(['class' => 'form-control form-control-lg'])
-            ?>
-
-            <?= $form->field($model, 'institution', ['template' => '
-               <div class="form-group">
-                    <label for="email">Institution <span>*</span></label>
-                  {input}
-               </div>
-               '])->textInput(['class' => 'form-control form-control-lg'])
+   <?= $form->field($model, 'username')->textInput(['class' => 'form-control form-control-lg'])?>
+            
+            
+            <?= $form->field($model, 'institution')->textInput(['class' => 'form-control form-control-lg'])
             ?>
         
-          <?= $form->field($model, 'password', ['template' => '
-               <div class="form-group">
-                    <label for="email">Password <span>*</span></label>
-                  {input}
-               </div>
-               '])->passwordInput(['class' => 'form-control form-control-lg'])
+          <?= $form->field($model, 'password')->passwordInput(['class' => 'form-control form-control-lg'])
             ?>
-            <?= $form->field($model, 'password_repeat', ['template' => '
-               <div class="form-group">
-                    <label for="email">Repeat Password <span>*</span></label>
-                  {input}
-               </div>
-               '])->passwordInput(['class' => 'form-control form-control-lg'])
+            <?= $form->field($model, 'password_repeat')->passwordInput(['class' => 'form-control form-control-lg'])
             ?>
 
           <div class="form-group">

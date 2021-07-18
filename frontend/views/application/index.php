@@ -10,7 +10,11 @@ use yii\grid\GridView;
 $this->title = 'Applications';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
+   <div class="form-group" align="right">
+          <?= Html::a('<i class="fas fa-plus"></i>  Apply New ',['/application/create'],['data-method' => 'post', 'class' => 'btn btn-success btn-sm']) ?>
+        </div>
+        
+        
 <div class="application-index">
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

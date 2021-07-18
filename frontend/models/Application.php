@@ -58,10 +58,11 @@ class Application extends \yii\db\ActiveRecord
             [['category', 'gender', 'age', 'aggrement_disclaimer', 'status', 'user_id'], 'integer'],
             [['project_description'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
-            [['applicant_name', 'nationality', 'email', 'instiBusName', 'type', 'address', 'logo_file', 'project_name'], 'string', 'max' => 225],
+            [['applicant_name', 'nationality', 'instiBusName', 'type', 'address', 'logo_file', 'project_name'], 'string', 'max' => 225],
             [['id_number'], 'string', 'max' => 15],
             [['phoneNo', 'officeNo', 'faxNo'], 'string', 'max' => 50],
             [['reference'], 'string', 'max' => 100],
+            [['email'], 'email'],
         ];
     }
 
