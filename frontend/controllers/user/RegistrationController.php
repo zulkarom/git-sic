@@ -59,7 +59,7 @@ class RegistrationController extends BaseRegistrationController
                 'module' => $this->module,
             ]);
         }else{
-        	$model->flashError();
+            return $this->redirect(['/user-form/register']);
         }
 	}
 	

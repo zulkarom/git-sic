@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use kartik\widgets\ActiveForm;
 use yii\helpers\Url;
 use common\models\Common;
 
@@ -31,10 +31,6 @@ $fieldOptions1 = [
     <?php $form = ActiveForm::begin([
                     'id' => 'login-form',
                     'enableAjaxValidation' => true,
-                    'enableClientValidation' => false,
-                    'validateOnBlur' => false,
-                    'validateOnType' => false,
-                    'validateOnChange' => false,
                 ]) ?>
     <div class="sidebar one_half first"> 
         <h3>LOGIN</h3>
@@ -61,6 +57,12 @@ $fieldOptions1 = [
           <div class="form-group">
             <?= Html::submitButton('<i class="fas fa-sign-in-alt"></i> Log in', ['value' => '1', 'class' => 'btn btn-danger', 'name' => 'submit']) ?>
           </div>
+
+          <p class="text-center">
+                <?= Html::a('Forget Password?',
+                           ['/user/recovery/request'],['class' => 'field-label text-muted mb10', 'tabindex' => '5']
+                                ) ?>
+            </p>
         
         
         </div>
@@ -72,14 +74,7 @@ $fieldOptions1 = [
 <?php ActiveForm::end(); ?>
 
 
-<?php $form = ActiveForm::begin([
-                    'id' => 'login-form',
-                    'enableAjaxValidation' => true,
-                    'enableClientValidation' => false,
-                    'validateOnBlur' => false,
-                    'validateOnType' => false,
-                    'validateOnChange' => false,
-                ]) ?>
+<?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => true]); ?>
     <div class="content one_half"> 
 
       <h3>REGISTER</h3>
@@ -91,6 +86,22 @@ $fieldOptions1 = [
           <?= $form->field($model, 'username', ['template' => '
                <div class="form-group">
                     <label for="email">Email <span>*</span></label>
+                  {input}
+               </div>
+               '])->textInput(['class' => 'form-control form-control-lg'])
+            ?>
+
+            <?= $form->field($model, 'fullname', ['template' => '
+               <div class="form-group">
+                    <label for="email">Name <span>*</span></label>
+                  {input}
+               </div>
+               '])->textInput(['class' => 'form-control form-control-lg'])
+            ?>
+
+            <?= $form->field($model, 'institution', ['template' => '
+               <div class="form-group">
+                    <label for="email">Institution <span>*</span></label>
                   {input}
                </div>
                '])->textInput(['class' => 'form-control form-control-lg'])

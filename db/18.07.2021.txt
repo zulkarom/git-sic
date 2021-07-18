@@ -1,0 +1,3 @@
+ALTER TABLE `user` ADD `is_admin` TINYINT(1) NOT NULL AFTER `role`, ADD `is_reviewer` TINYINT(1) NOT NULL AFTER `is_admin`, ADD `is_judge` TINYINT(1) NOT NULL AFTER `is_reviewer`;
+
+ALTER TABLE `user` ADD `institution` VARCHAR(255) NOT NULL AFTER `fullname`;

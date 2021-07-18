@@ -11,9 +11,12 @@ $this->title = 'Applications';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="application-index">
+<div class="col-md-6" align="right">
+    <?= Html::a('<i class="fas fa-plus"></i>  New Application ',['/user-list/create'],['data-method' => 'post', 'class' => 'btn btn-success btn-sm']) ?>
+</div>
+</div>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+<div class="application-index">
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

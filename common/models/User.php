@@ -6,8 +6,6 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
-use backend\models\Usahawan;
-use backend\models\Supplier;
 /**
  * User model
  *
@@ -28,6 +26,8 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
+
+    public $rawPassword;
 
 
     /**
@@ -56,6 +56,12 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+
+            [['username', 'fullname', 'email', 'institution'], 'required', 'on' => 'update'],
+
+            [['is_admin', 'is_reviewer', 'is_judge'], 'integer'],
+            [['fullname', 'institution'], 'string', 'max' => 255],
+            [['rawPassword'], 'string', 'min' => 6],
         ];
     }
     

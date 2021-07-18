@@ -35,7 +35,7 @@ class UserFormController extends \yii\web\Controller
         }
         
         $model = new NewUserForm();
-        $model->scenario = 'register';
+        // $model->scenario = 'register';
 
         if ($model->load(Yii::$app->request->post())){
         	// echo "<pre>";
@@ -51,13 +51,15 @@ class UserFormController extends \yii\web\Controller
         		if($checkUser){
         			Yii::$app->session->addFlash('danger', "Akaun anda telah berdaftar dengan sistem ini.");
         		}else{
-        			return $this->redirect(array('/user/register', 'param1'=> $model->username, 'param2'=> $model->password, 'param3'=> $model->password_repeat));
+        				if($model->validate()){
+        					return $this->redirect(array('/user/register', 'param1'=> $model->username, 'param2'=> $model->password, 'param3'=> $model->password_repeat));
+        				}       			
         		}
         	}
         }
 
         $modelLogin = new SignInForm();
-        $modelLogin->scenario = 'login';
+        // $modelLogin->scenario = 'login';
 
         if ($modelLogin->load(Yii::$app->request->post())){
         	// echo "<pre>";
@@ -72,8 +74,10 @@ class UserFormController extends \yii\web\Controller
         		if($checkUser){
         			
         			// return $this->redirect(array('/user/login', 'param1'=> $modelLogin->username2, 'param2'=> $modelLogin->password2));
-
-        			return $this->redirect(array('/user/login', 'param1'=> $modelLogin->username, 'param2'=> $modelLogin->password, 'param3'=> $checkUser->role));
+        			if($modelLogin->validate()){
+        				return $this->redirect(array('/user/login', 'param1'=> $modelLogin->username, 'param2'=> $modelLogin->password, 'param3'=> $checkUser->role));
+        			}
+        			
         		}else{
         			Yii::$app->session->addFlash('danger', "Akaun anda belum berdaftar dengan sistem ini.");
         		}

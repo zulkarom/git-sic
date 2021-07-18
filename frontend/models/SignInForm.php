@@ -18,11 +18,11 @@ class SignInForm extends Model
     public function rules()
     {
 
-        $rules = parent::rules();
+        // $rules = parent::rules();
         
         $rules['usernameLength']  = ['username', 'email'];
-        $rules['usernameRequired'] = ['username', 'required', 'on' => 'login'];
-        $rules['passwordRequired'] = ['password', 'required', 'on' => 'login'];
+        $rules['usernameRequired'] = ['username', 'required'];
+        $rules['passwordRequired'] = ['password', 'required'];
 
 
         return $rules;

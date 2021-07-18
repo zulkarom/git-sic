@@ -7,7 +7,6 @@ use kartik\widgets\ActiveForm;
 
 SwissAsset::register($this);
 $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAsset');
-$this->title = 'Applications';
 ?>
 <?php $this->beginPage() ?>
 
@@ -76,15 +75,11 @@ $this->title = 'Applications';
     <!-- ################################################################################################ -->
     <div class="content three_quarter"> 
       <!-- ################################################################################################ -->
-      
     <div class="row form-group">
-      <div class="col-md-6"><h3><?= Html::encode($this->title) ?></h3></div>
-     
-    </div>
+        <div class="col-md-6"><h3><?= Html::encode($this->title) ?></h3></div>
 
-    
-    <?= Alert::widget() ?>
-    <?= $content ?>
+        <?= Alert::widget() ?>
+        <?= $content ?>
 
     </div>
     <!-- ################################################################################################ -->
