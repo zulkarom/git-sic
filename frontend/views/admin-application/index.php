@@ -50,12 +50,15 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn',
                         'header'=>"ACTION",
                         'headerOptions' => ['style' => 'width:15%'],
-                        'template' => '{view}',
+                        'template' => '{view} {manage}',
                         //'visible' => false,
                         'buttons'=>[
                             'view'=>function ($url, $model) {
                                 return Html::a('<span class="fa fa-search"></span> VIEW',['view', 'id' => $model->id],['class'=>'btn btn-warning btn-sm']);
                             },
+                            'manage'=>function ($url, $model) {
+                                return Html::a('<span class="fa fa-eye"></span> MANAGE',['manage', 'id' => $model->id],['class'=>'btn btn-info btn-sm']);
+                            }
                         ],
             
                     ],

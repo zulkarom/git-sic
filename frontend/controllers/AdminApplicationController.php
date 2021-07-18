@@ -6,6 +6,8 @@ use Yii;
 use frontend\models\Application;
 use frontend\models\ApplicationItem;
 use frontend\models\AdminApplicationSearch;
+use frontend\models\ApplicationReviewer;
+use frontend\models\ApplicationJudge;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -60,6 +62,19 @@ class AdminApplicationController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
             'items' => $items,
+        ]);
+    }
+
+    public function actionManage($id)
+    {
+        $model = $this->findModel($id);
+        $reviewer = new ApplicationReviewer();
+        $judge = new ApplicationJudge();
+
+        return $this->render('manage', [
+            'model' => $model,
+            'reviewer' => $reviewer,
+            'judge' => $judge,
         ]);
     }
 
