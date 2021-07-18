@@ -26,6 +26,9 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
 
 <?php $this->beginBody() ?>
 
+<?=$this->render('menu-top-public');
+?>
+
 <div class="wrapper bgded" style="background-image:url('<?= $dirAssests?>/images/banner.png');">
 
   <div id="pageintro" class="hoc clear" style="padding:20px"> 

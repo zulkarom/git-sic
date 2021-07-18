@@ -25,6 +25,11 @@ $this->title = 'My Application';
 
 <?php $this->beginBody() ?>
 
+<?=$this->render('menu-top-member', [    
+    'dirAssests' => $dirAssests,
+]);
+?>
+
 <div class="wrapper bgded" style="background-image:url('<?= $dirAssests?>/images/banner.png');">
 
   <div id="pageintro" class="hoc clear" style="padding:20px"> 
@@ -55,17 +60,11 @@ $this->title = 'My Application';
     <!-- ################################################################################################ -->
     <div class="sidebar one_quarter first"> 
        <div class="sdb_holder">
-        <h3>My Profile</h3>
-        <address>
-        Full Name<br>
-        <?=Yii::$app->user->identity->email?> <br>
-    <p><?= Html::a('<i class="fas fa-sign-out-alt"></i>  Log Out ',['/site/logout'],['data-method' => 'post', 'class' => 'btn btn-danger btn-sm']) ?>
-    </p>
-        
-        </address>
+       
+   
       </div>
     
-      <h3>Participant Menu</h3>
+
     
       <?=$this->render('menu')?>
      
