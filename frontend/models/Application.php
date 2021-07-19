@@ -114,6 +114,14 @@ class Application extends \yii\db\ActiveRecord
         }
     }
 
+    public function getApplicationJudge(){
+        return $this->hasMany(ApplicationJudge::className(), ['application_id' => 'id']);
+    }
+
+    public function getApplicationReviewer(){
+        return $this->hasMany(ApplicationReviewer::className(), ['application_id' => 'id']);
+    }
+
     public function getCountry(){
         return $this->hasOne(Countries::className(), ['id' => 'nationality']);
     }

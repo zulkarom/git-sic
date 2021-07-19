@@ -69,12 +69,120 @@ class AdminApplicationController extends Controller
     {
         $model = $this->findModel($id);
         $reviewer = new ApplicationReviewer();
-        $judge = new ApplicationJudge();
+
+
+
+
+        if ($model->load(Yii::$app->request->post())){
+
+            if($model->save()){
+                $flag = true;
+
+                $reviewer_arr = Yii::$app->request->post('sel_reviewer');
+
+                if($reviewer_arr){
+                    //echo 'hai';die();
+                    $kira_post = count($reviewer_arr);
+                    $kira_lama = count($model->applicationReviewer);
+                    if($kira_post > $kira_lama){
+                        
+                        $bil = $kira_post - $kira_lama;
+                        for($i=1;$i<=$bil;$i++){
+                            //print_r($reviewer_arr);die();
+                            $insert = new ApplicationReviewer;
+                            $insert->application_id = $model->id;
+                            if(!$insert->save()){
+                                $flag = false;
+                            }
+                        }
+                    }else if($kira_post < $kira_lama){
+
+                        $bil = $kira_lama - $kira_post;
+                        $deleted = ApplicationReviewer::find()
+                          ->where(['application_id'=>$model->id])
+                          ->limit($bil)
+                          ->all();
+                        if($deleted){
+                            foreach($deleted as $del){
+                                $del->delete();
+                            }
+                        }
+                    }
+                    
+                    $update_reviewer = ApplicationReviewer::find()
+                    ->where(['application_id' => $model->id])
+                    ->all();
+                    //echo count($reviewer_arr);
+                    //echo count($update_access);die();
+
+                    if($update_reviewer){
+                        $i=0;
+                        foreach($update_reviewer as $ut){
+                            $ut->reviewer_id = $reviewer_arr[$i];
+                            $ut->save();
+                            $i++;
+                        }
+                    }
+                }
+
+                $judge_arr = Yii::$app->request->post('sel_judge');
+
+                if($judge_arr){
+                    //echo 'hai';die();
+                    $kira_post = count($judge_arr);
+                    $kira_lama = count($model->applicationJudge);
+                    if($kira_post > $kira_lama){
+                        
+                        $bil = $kira_post - $kira_lama;
+                        for($i=1;$i<=$bil;$i++){
+                            //print_r($reviewer_arr);die();
+                            $insert = new ApplicationJudge;
+                            $insert->application_id = $model->id;
+                            if(!$insert->save()){
+                                $insert->flashError();
+                            }
+                        }
+                    }else if($kira_post < $kira_lama){
+
+                        $bil = $kira_lama - $kira_post;
+                        $deleted = ApplicationJudge::find()
+                          ->where(['application_id'=>$model->id])
+                          ->limit($bil)
+                          ->all();
+                        if($deleted){
+                            foreach($deleted as $del){
+                                $del->delete();
+                            }
+                        }
+                    }
+                    
+                    $update_judge = ApplicationJudge::find()
+                    ->where(['application_id' => $model->id])
+                    ->all();
+                    //echo count($reviewer_arr);
+                    //echo count($update_access);die();
+
+                    if($update_judge){
+                        $i=0;
+                        foreach($update_judge as $ut){
+                            $ut->judge_id = $judge_arr[$i];
+                            $ut->save();
+                            $i++;
+                        }
+                    }
+                }
+
+            Yii::$app->session->addFlash('success', "Data Updated");
+            }else{
+                $model->flashError();
+            }
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
 
         return $this->render('manage', [
             'model' => $model,
             'reviewer' => $reviewer,
-            'judge' => $judge,
+            'judge' => (empty($judge)) ? [new ApplicationJudge] : $judge
         ]);
     }
 

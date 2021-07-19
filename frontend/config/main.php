@@ -31,11 +31,9 @@ return [
             'enableUnconfirmedLogin' => true,
             'enableFlashMessages' => false,
         ],
-        'usahawan' => [
-            'class' => 'frontend\modules\usahawan\Module',
-        ],
-        'supplier' => [
-            'class' => 'frontend\modules\supplier\Module',
+        'gridview' => [
+            'class' => 'kartik\grid\Module',
+            // other module settings
         ],
     ],
     'components' => [

@@ -12,8 +12,8 @@ use frontend\models\Supplier;
  */
 class RegistrationForm extends BaseRegistrationForm
 {
-	// public $fullname;
-	// public $role;
+	public $fullname;
+	public $institution;
 	public $password_repeat;
 	
 	public function rules()
@@ -21,6 +21,10 @@ class RegistrationForm extends BaseRegistrationForm
         $rules = parent::rules();
 		
 		$rules['usernameLength']  = ['username', 'email'];
+
+		$rules['fullnameRequired'] = ['fullname', 'required'];
+
+        $rules['institutionRequired'] = ['institution', 'required'];
 
 		$rules['password_repeatRequired'] = ['password_repeat', 'required'];
 		

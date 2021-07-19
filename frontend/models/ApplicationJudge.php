@@ -3,7 +3,7 @@
 namespace frontend\models;
 
 use Yii;
-
+use common\models\User;
 /**
  * This is the model class for table "app_judge".
  *
@@ -27,7 +27,7 @@ class ApplicationJudge extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['application_id', 'judge_id'], 'required'],
+            [['application_id'], 'required'],
             [['application_id', 'judge_id'], 'integer'],
         ];
     }
@@ -42,5 +42,21 @@ class ApplicationJudge extends \yii\db\ActiveRecord
             'application_id' => 'Application ID',
             'judge_id' => 'Judge',
         ];
+    }
+
+    public function getUser(){
+        return $this->hasOne(User::className(), ['id' => 'judge_id']);
+    }
+
+    public function flashError(){
+        if($this->getErrors()){
+            foreach($this->getErrors() as $error){
+                if($error){
+                    foreach($error as $e){
+                        Yii::$app->session->addFlash('error', $e);
+                    }
+                }
+            }
+        }
     }
 }

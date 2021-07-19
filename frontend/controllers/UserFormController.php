@@ -52,7 +52,7 @@ class UserFormController extends \yii\web\Controller
         			Yii::$app->session->addFlash('danger', "Akaun anda telah berdaftar dengan sistem ini.");
         		}else{
         				if($model->validate()){
-        					return $this->redirect(array('/user/register', 'param1'=> $model->username, 'param2'=> $model->password, 'param3'=> $model->password_repeat));
+        					return $this->redirect(array('/user/register', 'param1'=> $model->username, 'param2'=> $model->password, 'param3'=> $model->password_repeat, 'param4'=> $model->fullname, 'param5'=> $model->institution));
         				}       			
         		}
         	}

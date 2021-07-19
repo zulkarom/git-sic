@@ -2,17 +2,73 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use kartik\export\ExportMenu;
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\ApplicationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Applications';
 $this->params['breadcrumbs'][] = $this->title;
+
+$columns = [
+                ['class' => 'yii\grid\SerialColumn'],
+                'id',
+                [
+                    'label' => 'Category',
+                    'value' => function($model){
+                        return $model->categoryText;
+                    }
+                ],
+                'applicant_name',
+                [
+                    'label' => 'Nationality',
+                    'value' => function($model){
+                        return $model->country->country_enName;
+                    }
+                ],
+                'id_number',
+                [
+                    'label' => 'Gender',
+                    'value' => function($model){
+                        return $model->genderText;
+                    }
+                ],
+                'age',
+                'phoneNo',
+                'officeNo',
+                'faxNo',
+                'email:email',
+                'instiBusName',
+                'type',
+                'address',
+                [
+                    'format' => 'html',
+                    'label' => 'Status',
+                    'value' => function($model){
+                        return $model->statusLabel;
+                    }
+                ],
+            ];
 ?>
 
+
+
 <div class="col-md-6" align="right">
-    <?= Html::a('<i class="fas fa-plus"></i>  New Application ',['/user-list/create'],['data-method' => 'post', 'class' => 'btn btn-success btn-sm']) ?>
+
+    <?=ExportMenu::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => $columns,
+        'filename' => 'APPLICATION_' . date('Y-m-d'),
+        'onRenderSheet'=>function($sheet, $grid){
+            $sheet->getStyle('A2:'.$sheet->getHighestColumn().$sheet->getHighestRow())
+            ->getAlignment()->setWrapText(true);
+        },
+        'exportConfig' => [
+            ExportMenu::FORMAT_PDF => false,
+            ExportMenu::FORMAT_EXCEL_X => false,
+        ],
+    ]);?>   
+
 </div>
 </div>
 

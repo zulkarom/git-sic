@@ -3,6 +3,7 @@
 namespace frontend\models;
 
 use Yii;
+use common\models\User;
 
 /**
  * This is the model class for table "app_reviewer".
@@ -27,7 +28,7 @@ class ApplicationReviewer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['application_id', 'reviewer_id'], 'required'],
+            [['application_id'], 'required'],
             [['application_id', 'reviewer_id'], 'integer'],
         ];
     }
@@ -42,5 +43,21 @@ class ApplicationReviewer extends \yii\db\ActiveRecord
             'application_id' => 'Application ID',
             'reviewer_id' => 'Reviewer',
         ];
+    }
+
+    public function getUser(){
+        return $this->hasOne(User::className(), ['id' => 'reviewer_id']);
+    }
+
+    public function flashError(){
+        if($this->getErrors()){
+            foreach($this->getErrors() as $error){
+                if($error){
+                    foreach($error as $e){
+                        Yii::$app->session->addFlash('error', $e);
+                    }
+                }
+            }
+        }
     }
 }

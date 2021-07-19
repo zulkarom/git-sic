@@ -13,11 +13,11 @@ class User extends \dektrium\user\models\User
     {
         $scenarios = parent::scenarios();
         // add field to scenarios
-  //       $scenarios['create'][]   = 'fullname';
-  //       $scenarios['update'][]   = 'fullname';
-  //       $scenarios['register'][] = 'fullname';
-		// $scenarios['connect'][] = 'fullname';
-		// $scenarios['settings'][] = 'fullname';
+        $scenarios['create'][]   = 'fullname';
+        $scenarios['update'][]   = 'fullname';
+        $scenarios['register'][] = 'fullname';
+		$scenarios['connect'][] = 'fullname';
+		$scenarios['settings'][] = 'fullname';
         return $scenarios;
     }
 
@@ -25,11 +25,11 @@ class User extends \dektrium\user\models\User
     {
         $rules = parent::rules();
         
-        // $rules['fullnameRequired'] = ['fullname', 'required', 'on' => ['register', 'create', 'connect', 'update']];
+        $rules['fullnameRequired'] = ['fullname', 'required', 'on' => ['register', 'create', 'connect', 'update']];
 		
-		// $rules['roleRequired'] = ['role', 'required', 'on' => ['register']];
+		$rules['institutionRequired'] = ['institution', 'required', 'on' => ['register']];
 		
-		// $rules['fullnameLength']   = ['fullname', 'string', 'min' => 3, 'max' => 255];
+		$rules['fullnameLength']   = ['fullname', 'string', 'min' => 3, 'max' => 255];
 		
         
         return $rules;
@@ -45,30 +45,6 @@ class User extends \dektrium\user\models\User
 		$this->status = self::STATUS_ACTIVE;
 		return parent::register();
 	}
-
-	// public static function checkRoleExistByUsername($username, $role_id){
-	//     $role_table = self::getRoleTable($role_id);
-	//     $check = self::find()->alias('u')
-	//     ->innerJoin($role_table. ' r', 'u.id = r.user_id')
-	//     ->where('u.username = \'' . $username . '\'')
-	//     ->one();
-	//     if($check){
-	//         return true;
-	//     }
-	    
-	//     return false;
-	// }
-	
-	// private static function getRoleTable($role_id){
-	//     switch($role_id){
-	//         case 1:
-	//             return 'usahawan';
-	//             break;
-	//         case 2:
-	//             return 'supplier';
-	//     }
-	//     return false;
-	// }
 }
 
 ?>

@@ -25,6 +25,8 @@ class RegistrationController extends BaseRegistrationController
 		$username = $request->get('param1');
 		$password = $request->get('param2');
 		$password_repeat = $request->get('param3');
+		$fullname = $request->get('param4');
+		$institution = $request->get('param5');
 
 		//echo "<pre>";
   		//print_r($request->get('param2'));
@@ -42,6 +44,8 @@ class RegistrationController extends BaseRegistrationController
 		$model->password = $password;
 		$model->password_repeat = $password_repeat;
 		$model->email = $username;
+		$model->fullname = $fullname;
+		$model->institution = $institution;
 
 		// echo "<pre>";
 		// print_r($model);
