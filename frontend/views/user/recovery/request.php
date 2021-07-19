@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
              <?= $form->field($model, 'email')->textInput(['autofocus' => true, 'class' => 'form-control form-control-lg']) ?>
       
 
-           <?= Html::submitButton(Yii::t('user', 'Continue'), ['class' => 'btn btn-danger']) ?><br>
+           <?= Html::submitButton(Yii::t('user', 'Continue'), ['class' => 'btn btn-outline-danger']) ?><br>
     <?php ActiveForm::end(); ?>
         
         

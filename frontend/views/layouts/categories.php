@@ -1,3 +1,9 @@
+<?php 
+use yii\helpers\Url;
+
+?>
+
+
 <div class="wrapper row2">
   <section class="hoc container clear"> 
     <!-- ################################################################################################ -->
@@ -10,12 +16,14 @@
     
     <?php 
     
-    $open = [
+
+
+$open = [
         
         'AGE' => 'No Limit',
         'BUSINESS OPERATION'	=> 'Less Than 2 years',
         //'TEAM MEMBER'	=> '2-5 Person per Project',
-        'SCOPE'	=> 'Creative & New Venture/ New Innovation',
+        'SCOPE'	=> 'Creative & New Venture/ <br />New Innovation',
         //'FORMAT'=> 'Description of the Innovation and Business Model',
         'PROTOTYPE'=> 	'New Innovative Product',
         //'PRESENTATION'	=> '3 Minutes Oral Q&A Session',
@@ -54,7 +62,41 @@
     ?>
     
     
+    <div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+	
+	
+	
+	
+  
+      
+      
+      
       <article class="one_third first">
+      
+       
+              <div class="excerpt">
+              
+              <img src="<?= $dirAssests?>/images/startup.png" />
+       
+       
+         <h4 class="heading-category">SIC STARTUP</h4>
+         
+          <?php 
+          
+          foreach($startup as $k => $o){
+              echo '<p><strong>'. $k .'</strong><br />'  . $o . '</p>';
+          }
+          
+          
+          ?>
+          
+
+         
+        </div>
+      </article>
+          <article class="one_third">
       
 
      
@@ -70,32 +112,6 @@
           <?php 
           
           foreach($open as $k => $o){
-              echo '<p><strong>'. $k .'</strong><br />'  . $o . '</p>';
-          }
-          
-          
-          ?>
-          
-
-         
-        </div>
-      </article>
-      
-      
-      
-      <article class="one_third">
-      
-       
-              <div class="excerpt">
-              
-              <img src="<?= $dirAssests?>/images/startup.png" />
-       
-       
-         <h4 class="heading-category">SIC STARTUP</h4>
-         
-          <?php 
-          
-          foreach($startup as $k => $o){
               echo '<p><strong>'. $k .'</strong><br />'  . $o . '</p>';
           }
           
@@ -130,7 +146,26 @@
          
         </div>
       </article>
+	
+	
+	
+	
+	</div>
+</div>
+    
+    
+      
+  
+
+      
+      
     </div>
+    
+          <div class="form-group" align="center">
+
+      <a href="<?php echo Url::to(['page/requirements'])?>" class="btn btn-outline-primary btn-lg">Read more on Requirements and Competition Format</a>
+
+</div>
 
     <!-- ################################################################################################ -->
   </section>

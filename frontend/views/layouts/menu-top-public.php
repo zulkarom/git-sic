@@ -6,6 +6,21 @@ use yii\helpers\Url;
 ?>
 
 
+<?php 
+
+$menus = [
+    
+    'Home' => ['site/index'],
+    'Competition Type' => ['site/index', '#' => 'type-competition'],
+    'Awards' => ['site/index', '#' => 'awards'],
+    'Important Dates' => ['site/index', '#' => 'important-dates'],
+    'Login' => ['/user-form/register'],
+    'Contact Us' => ['site/index', '#' => 'contact-us'],
+];
+
+?>
+
+
 <header class="header1" style="height:80px">
 		<!-- Header desktop -->
 		<div class="container-menu-header">
@@ -19,22 +34,19 @@ use yii\helpers\Url;
 				<div class="wrap_menu">
 					<nav class="menu">
 						<ul class="main_menu">
-						<li>
-                            <a href="<?php echo Url::to(['site/index'])?>">
-                                Home</a>
-                        </li><li>
-                            <a href="#type-competition">
-                                Competition Type</a>
-                        </li><li>
-                            <a href="#">
-                                Awards</a>
-                        </li><li>
-                            <a href="<?php echo Url::to(['/user/login'])?>">
-                                Login</a>
-                        </li><li>
-                            <a href="#contact-us">
-                                Contact Us</a>
-                        </li>							
+						
+						<?php 
+						foreach($menus as $t => $m){
+						    echo '<li>
+                            <a href="'. Url::to($m). '">
+                                '. $t .'</a>
+                        </li>';
+						}
+						
+						?>
+						
+						
+							
 						</ul>
 					</nav>
 				</div>
@@ -74,22 +86,18 @@ use yii\helpers\Url;
 			<nav class="side-menu">
 				<ul class="main-menu">
 				
-				<li class="item-menu-mobile">
-                            <a href="#">
-                                HOME</a>
-                        </li><li class="item-menu-mobile">
-                            <a href="#">
-                                COMPETITION TYPE</a>
-                        </li><li class="item-menu-mobile">
-                            <a href="#">
-                                AWARDS</a>
-                        </li><li class="item-menu-mobile">
-                            <a href="#">
-                                LOGIN</a>
-                        </li><li class="item-menu-mobile">
-                            <a href="#">
-                                CONTACT US</a>
-                        </li>
+				
+				<?php 
+						foreach($menus as $t => $m){
+						    echo '<li class="item-menu-mobile">
+                            <a href="'. Url::to($m). '">
+                                '. $t .'</a>
+                        </li>';
+						}
+						
+						?>
+				
+		
 					
 				</ul>
 			</nav>

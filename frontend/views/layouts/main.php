@@ -29,8 +29,291 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
     <?php $this->registerCsrfMetaTags() ?>
 
     <?php $this->head() ?>
+    <style>
+.timeline {
+    list-style: none;
+    padding: 20px 0 20px;
+    position: relative;
+}
+
+    .timeline:before {
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        content: " ";
+        width: 3px;
+        background-color: #eeeeee;
+        left: 50%;
+        margin-left: -1.5px;
+    }
+
+    .timeline > li {
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+        .timeline > li:before,
+        .timeline > li:after {
+            content: " ";
+            display: table;
+        }
+
+        .timeline > li:after {
+            clear: both;
+        }
+
+        .timeline > li:before,
+        .timeline > li:after {
+            content: " ";
+            display: table;
+        }
+
+        .timeline > li:after {
+            clear: both;
+        }
+
+        .timeline > li > .timeline-panel {
+            width: 46%;
+            float: left;
+            border: 1px solid #d4d4d4;
+            border-radius: 2px;
+            padding: 20px;
+            position: relative;
+            -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+        }
+
+            .timeline > li > .timeline-panel:before {
+                position: absolute;
+                top: 26px;
+                right: -15px;
+                display: inline-block;
+                border-top: 15px solid transparent;
+                border-left: 15px solid #ccc;
+                border-right: 0 solid #ccc;
+                border-bottom: 15px solid transparent;
+                content: " ";
+            }
+
+            .timeline > li > .timeline-panel:after {
+                position: absolute;
+                top: 27px;
+                right: -14px;
+                display: inline-block;
+                border-top: 14px solid transparent;
+                border-left: 14px solid #fff;
+                border-right: 0 solid #fff;
+                border-bottom: 14px solid transparent;
+                content: " ";
+            }
+
+        .timeline > li > .timeline-badge {
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 1.4em;
+            text-align: center;
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            margin-left: -25px;
+            background-color: #999999;
+            z-index: 100;
+            border-top-right-radius: 50%;
+            border-top-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+            border-bottom-left-radius: 50%;
+        }
+
+        .timeline > li.timeline-inverted > .timeline-panel {
+            float: right;
+        }
+
+            .timeline > li.timeline-inverted > .timeline-panel:before {
+                border-left-width: 0;
+                border-right-width: 15px;
+                left: -15px;
+                right: auto;
+            }
+
+            .timeline > li.timeline-inverted > .timeline-panel:after {
+                border-left-width: 0;
+                border-right-width: 14px;
+                left: -14px;
+                right: auto;
+            }
+
+.timeline-badge.primary {
+    background-color: #2e6da4 !important;
+}
+
+.timeline-badge.success {
+    background-color: #3f903f !important;
+}
+
+.timeline-badge.warning {
+    background-color: #f0ad4e !important;
+}
+
+.timeline-badge.danger {
+    background-color: #d9534f !important;
+}
+
+.timeline-badge.info {
+    background-color: #5bc0de !important;
+}
+
+.timeline-title {
+    margin-top: 0;
+    color: inherit;
+}
+
+.timeline-body > p,
+.timeline-body > ul {
+    margin-bottom: 0;
+}
+
+    .timeline-body > p + p {
+        margin-top: 5px;
+    }
+
+@media (max-width: 767px) {
+    ul.timeline:before {
+        left: 40px;
+    }
+
+    ul.timeline > li > .timeline-panel {
+        width: calc(100% - 90px);
+        width: -moz-calc(100% - 90px);
+        width: -webkit-calc(100% - 90px);
+    }
+
+    ul.timeline > li > .timeline-badge {
+        left: 15px;
+        margin-left: 0;
+        top: 16px;
+    }
+
+    ul.timeline > li > .timeline-panel {
+        float: right;
+    }
+
+        ul.timeline > li > .timeline-panel:before {
+            border-left-width: 0;
+            border-right-width: 15px;
+            left: -15px;
+            right: auto;
+        }
+
+        ul.timeline > li > .timeline-panel:after {
+            border-left-width: 0;
+            border-right-width: 14px;
+            left: -14px;
+            right: auto;
+        }
+}
+
+
+.pricingTable{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    padding: 0 0 17px;
+    position: relative;
+    z-index: 1;
+}
+.pricingTable:before{
+    content: '';
+    background-color: #fff;
+    height: 100%;
+    width: 80%;
+    margin: auto;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+.pricingTable .pricingTable-header{ padding: 20px 20px 18px; }
+.pricingTable .title{
+    color: rgb(21,73,97);
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin: 0;
+}
+.pricingTable .pricing-content{
+    color: #fff;
+    background-color: rgba(21,73,97,0.9);
+    padding: 40px 20px 35px;
+    margin: 0 0 15px;
+}
+.pricingTable .pricing-content ul{
+    text-align: left;
+    padding: 0;
+    margin: 0 0 30px;
+    list-style: none;
+    display: inline-block;
+}
+.pricingTable .pricing-content ul li{
+    font-size: 16px;
+    line-height: 25px;
+    padding: 0 0 0 35px;
+    margin: 0 0 25px;
+    position: relative;
+}
+.pricingTable .pricing-content ul li:last-child{ margin-bottom: 0; }
+.pricingTable .pricing-content ul li:before{
+    color: #3E8F00;
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-size: 18px;
+    font-weight: 900;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.pricingTable .pricing-content ul li.disable:before{
+    color: #FF4239;
+    content: "\f00d";
+}
+.pricingTable .price-value .amount{
+    font-size: 38px;
+    font-weight: 300;
+    line-height: 50px;
+    display: block;
+}
+.pricingTable .price-value .duration{
+    font-size: 19px;
+    font-weight: 300;
+    display: block;
+}
+.pricingTable .pricingTable-signup a{
+    color: rgb(21,73,97);
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+}
+.pricingTable .pricingTable-signup a:hover{ text-shadow: 0 0 3px rgba(0, 0, 0, 0.3); }
+.pricingTable.red .title,
+.pricingTable.red .pricingTable-signup a{
+    color: rgb(172,26,49);
+}
+.pricingTable.red .pricing-content{ background-color: rgba(172,26,49,0.9); }
+.pricingTable.black .title,
+.pricingTable.black .pricingTable-signup a{
+    color: rgb(50,50,50);
+}
+.pricingTable.black .pricing-content{ background-color: rgba(50, 50, 50, 0.9); }
+@media only screen and (max-width: 990px){
+    .pricingTable{ margin: 0 0 40px; }
+}
     
-    
+    </style>
 </head>
 <body id="top">
 <?php $this->beginBody() ?>
@@ -44,7 +327,7 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
  
       <h3 class="heading">SWISS INNOVATION CHALLENGE 2021</h3>
       <p>Competition for creativity, innovation, and new ventures</p>
-      <footer><?= Html::a('Join us now ! <i class="fas fa-angle-right"></i>', ['/user-form/register'], ['class' => 'btn btn-danger btn-lg']) ?></footer>
+      <footer><?= Html::a('Join us now ! <i class="fas fa-angle-right"></i>', ['/user-form/register'], ['class' => 'btn btn-outline-danger btn-lg']) ?></footer>
     </article>
 
   </div>
@@ -98,6 +381,18 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
 ]);
 ?>
 
+<?=$this->render('timeline', [    
+    'dirAssests' => $dirAssests,
+]);
+?>
+
+<?=$this->render('awards', [    
+    'dirAssests' => $dirAssests,
+]);
+?>
+
+
+
 <div class="wrapper row3">
   <main class="hoc container clear"> 
 
@@ -118,15 +413,14 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
         
         <h6 class="heading">Contact </h6>
         
-        
-        <p style="text-align:center">Dr. Norzalizah Binti Bahari
+
+        <p style="text-align:center;font-size:18px;">Dr. Norzalizah Binti Bahari
         <br />+6017-607 8767 <br /> norzalizah.b@umk.edu.my
 </p>
 
-<p style="text-align:center">Dr. Zaminor Binti Zamzamir @ Zamzamin
+<p style="text-align:center;font-size:18px;">Dr. Zaminor Binti Zamzamir @ Zamzamin
         <br />+6017-607 8767 <br /> zaminor@umk.edu.my
 </p>
-
 
 
 

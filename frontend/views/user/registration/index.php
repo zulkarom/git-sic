@@ -31,7 +31,7 @@ $fieldOptions1 = [
     <?php $form = ActiveForm::begin() ?>
     <div class="sidebar one_half first"> 
         <h3>LOGIN</h3>
-        
+        <br />
         <div class="row">
         <div class="col-md-10">
         
@@ -42,7 +42,7 @@ $fieldOptions1 = [
             ?>
 
           <div class="form-group">
-            <?= Html::submitButton('<i class="fas fa-sign-in-alt"></i> Log in', ['value' => '1', 'class' => 'btn btn-danger', 'name' => 'submit']) ?>
+            <?= Html::submitButton('<i class="fas fa-sign-in-alt"></i> Log in', ['value' => '1', 'class' => 'btn btn-outline-danger', 'name' => 'submit']) ?>
           </div>
 
           <p class="text-center">
@@ -65,7 +65,7 @@ $fieldOptions1 = [
     <div class="content one_half"> 
 
       <h3>REGISTER</h3>
-      
+       <br />
       
       <div class="row">
         <div class="col-md-10">
@@ -87,7 +87,7 @@ $fieldOptions1 = [
             ?>
 
           <div class="form-group">
-            <?= Html::submitButton('<i class="fas fa-sign-in-alt"></i> Register', ['value' => '2', 'class' => 'btn btn-danger', 'name' => 'submit']) ?>
+            <?= Html::submitButton('<i class="fas fa-sign-in-alt"></i> Register', ['value' => '2', 'class' => 'btn btn-outline-danger', 'name' => 'submit']) ?>
           </div>
         
         
