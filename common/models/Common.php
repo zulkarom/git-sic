@@ -152,7 +152,7 @@ class Common {
 	}
 
 	public static function category(){
-		return [1 => 'SICOpen', 2 => 'SICStartup', 3 => 'SICYouth'];
+		return [1 => 'SIC Open', 2 => 'SIC Startup', 3 => 'SIC Youth'];
 	}
 
 	public static function medium(){

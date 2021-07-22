@@ -32,6 +32,11 @@ class UserFormController extends \yii\web\Controller
         if (!\Yii::$app->user->isGuest) {
             //$this->goHome();
             $this->redirect(['/application/index']);
+            //if admin
+            
+            //if reviw
+            
+            //
         }
         
         $model = new NewUserForm();

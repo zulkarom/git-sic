@@ -137,7 +137,7 @@ use kartik\widgets\FileInput;
 
                 
                 <td class="vcenter">
-                    <?= $form->field($item, "[{$indexItem}]name")->textarea(['rows' => '1'])->label(false) ?>
+                    <?= $form->field($item, "[{$indexItem}]name")->label(false) ?>
                 </td>
 
             
@@ -147,7 +147,7 @@ use kartik\widgets\FileInput;
                 </td>
                 
                 <td class="vcenter">
-                    <?= $form->field($item, "[{$indexItem}]instiBusName")->textarea(['rows' => '1'])->label(false) ?>
+                    <?= $form->field($item, "[{$indexItem}]instiBusName")->label(false) ?>
                 </td>
                 
                 <td class="vcenter">
@@ -155,7 +155,7 @@ use kartik\widgets\FileInput;
                 </td>
 
                  <td class="vcenter">
-                    <?= $form->field($item, "[{$indexItem}]email")->textarea(['rows' => '1'])->label(false) ?>
+                    <?= $form->field($item, "[{$indexItem}]email")->label(false) ?>
                 </td>
     
 
@@ -238,7 +238,10 @@ use kartik\widgets\FileInput;
 
     <div class="form-group">
         <?= Html::submitButton('<i class="fa fa-save"></i> Save as Draft', ['class' => 'btn btn-info', 'name' => 'btn-submit', 'value' => 0]) ?> 
-         <?= Html::submitButton('<i class="fa fa-submit"></i> Submit Application', ['class' => 'btn btn-success', 'name' => 'btn-submit', 'value' => 10]) ?>
+         <?= Html::submitButton('<i class="fa fa-submit"></i> Submit Application', ['class' => 'btn btn-success', 'name' => 'btn-submit', 'value' => 10, 'data' => [
+                        'confirm' => 'Are you sure you want to submit this application?',
+                        'method' => 'post',
+                    ]]) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

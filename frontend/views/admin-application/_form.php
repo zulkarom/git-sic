@@ -78,21 +78,7 @@ use kartik\widgets\FileInput;
             <?= $form->field($model, 'address')->textArea(['rows' => '2']) ?>
         </div>
     </div>
-    <div class="row">
-        <div class="col-6">
-            <?= $form->field($model, 'logo_file')->fileInput() ?>
-            <?php
 
-                if($model->logo_file){
-                    echo '<div class="form-group">Attached File: ' . Html::a($model->logo_file, ['logo-image', 'id' => $model->id], [
-                           'target' => '_blank']);
-                    echo '</div>';
-                }
-            ?>
-        </div>
-
-        
-    </div>
     <br/>
     <div class="row">
         <div class="col-12">
@@ -121,7 +107,7 @@ use kartik\widgets\FileInput;
    <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th width="3.2%"></th>
+
                 
                 <th width="30%"><center>NAME AND DESIGNATION<br/>(PROJECT LEADER / TEAM MEMBER)</center></th>
                 <th width="12%"><center>IDEN. DOC./ PASSPORT NO.</center></th>
@@ -138,9 +124,7 @@ use kartik\widgets\FileInput;
         <tbody class="container-items">
         <?php foreach ($items as $indexItem => $item): ?>
             <tr class="row-item">
-                <td class="sortable-handle text-center vcenter" style="cursor: move;">
-                        <i class="fas fa-arrows-alt"></i>
-                    </td>
+    
             
                 <?php
                         // necessary for update action.
@@ -151,7 +135,7 @@ use kartik\widgets\FileInput;
 
                 
                 <td class="vcenter">
-                    <?= $form->field($item, "[{$indexItem}]name")->textarea(['rows' => '1'])->label(false) ?>
+                    <?= $form->field($item, "[{$indexItem}]name")->textInput()->label(false) ?>
                 </td>
 
             
@@ -161,7 +145,7 @@ use kartik\widgets\FileInput;
                 </td>
                 
                 <td class="vcenter">
-                    <?= $form->field($item, "[{$indexItem}]instiBusName")->textarea(['rows' => '1'])->label(false) ?>
+                    <?= $form->field($item, "[{$indexItem}]instiBusName")->textInput()->label(false) ?>
                 </td>
                 
                 <td class="vcenter">
@@ -169,7 +153,7 @@ use kartik\widgets\FileInput;
                 </td>
 
                  <td class="vcenter">
-                    <?= $form->field($item, "[{$indexItem}]email")->textarea(['rows' => '1'])->label(false) ?>
+                    <?= $form->field($item, "[{$indexItem}]email")->textInput()->label(false) ?>
                 </td>
     
 
@@ -182,7 +166,7 @@ use kartik\widgets\FileInput;
         
         <tfoot>
             <tr>
-            <td></td>
+     
                 <td colspan="7">
                 <button type="button" class="add-item btn btn-info btn-sm"><span class="fa fa-plus"></span> New Item</button>
                 
@@ -207,52 +191,26 @@ use kartik\widgets\FileInput;
     </div>
     <div class="row">
         <div class="col-12">
-            <?= $form->field($model, 'project_name')->textarea(['rows' => 6])?>
+            <?= $form->field($model, 'project_name')->textarea(['rows' => 3])?>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
             <?= $form->field($model, 'project_description', ['template' => '{label}{input}<i>(Description should be not more than 300 words and must include specify which development phase is the involves innovation (i.e ideation/prototype/Commercialization /market testing)</i>{error}
-            '])->textarea(['rows' => 12])?>
+            '])->textarea(['rows' => 15])?>
         </div>
     </div>
 
     <div class="row">
         <div class="col-12">
-            <b>INFORMATION ABOUT SWISS INNOVATION CHALLENGE:</b>
+        
         </div>
     </div>
 
-    <b>How did you hear about this SIC 2021 (you may tick more than one):</b>
-    <div class="row">
-        <div class="col-md-6">
-            <?= $form->field($model, 'medium_web')->checkbox(['value' => '1', 'label'=> 'Website']); ?>
-            <?= $form->field($model, 'medium_email')->checkbox(['value' => '1', 'label'=> 'Email']); ?>
-            <?= $form->field($model, 'medium_others')->checkbox(['value' => '1', 'label'=> 'Others (please state):</b>']); ?>
-            <?= $form->field($model, 'reference')->textInput()->label(false)?>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-             <b>DECLARATION</b>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-             I/We have read and agree to the Swiss Innovation Challenge Malaysia (SIC) 2021 Format, Rules and Regulations (link to the rules). I/We understand that SIC has the right to refuse my/our application if any non-conformance to the Rules and Regulations is found.
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-md-12">                    
-            
-        <?= $form->field($model, 'aggrement_disclaimer')->checkbox(['value' => '1', 'label'=> '<b>Agree</b>']); ?>
-        </div>
-    </div>
 
     <div class="form-group">
-        <?= Html::submitButton('<i class="fa fa-save"></i> Save as Draft', ['class' => 'btn btn-info', 'name' => 'btn-submit', 'value' => 0]) ?> 
-         <?= Html::submitButton('<i class="fa fa-submit"></i> Submit Application', ['class' => 'btn btn-success', 'name' => 'btn-submit', 'value' => 10]) ?>
+        <?= Html::submitButton('<i class="fa fa-save"></i> Update', ['class' => 'btn btn-info', 'name' => 'btn-submit', 'value' => 0]) ?> 
     </div>
 
     <?php ActiveForm::end(); ?>

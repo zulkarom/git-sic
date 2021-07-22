@@ -8,15 +8,28 @@ use yii\helpers\Url;
 
 <?php 
 
-$menus = [
-    
-    'Home' => ['site/index'],
-    'Competition Type' => ['site/index', '#' => 'type-competition'],
-    'Awards' => ['site/index', '#' => 'awards'],
-    'Important Dates' => ['site/index', '#' => 'important-dates'],
-    'Login' => ['/user-form/register'],
-    'Contact Us' => ['site/index', '#' => 'contact-us'],
-];
+if (\Yii::$app->user->isGuest) {
+    $menus = [
+        
+        'Home' => ['site/index'],
+        'Competition Type' => ['/site/index', '#' => 'type-competition'],
+        'Awards' => ['/site/index', '#' => 'awards'],
+        'Important Dates' => ['/site/index', '#' => 'important-dates'],
+        'Login' => ['/user-form/register'],
+        'Contact Us' => ['/site/index', '#' => 'contact-us'],
+    ];
+}else{
+    $menus = [
+        
+        'Home' => ['/site/index'],
+        'My Application' => ['/application/index'],
+        'My Review' => ['/application/review'],
+        'My Judge' => ['/application/judge'],
+        'Manage' => ['/application/admin-application'],
+        '<i class="fas fa-sign-out-alt"></i> Log Out' => ['/site/logout'],
+    ];
+}
+
 
 ?>
 
@@ -54,7 +67,22 @@ $menus = [
 				<!-- Header Icon -->
 				<div class="header-icons">
 					
-										
+						<?php if (!\Yii::$app->user->isGuest) {
+						?>
+						
+						
+						<div class="header-wrapicon2">
+						<a href="#" class="header-icon1 js-show-header-dropdown">
+						<img src="<?= $dirAssests?>/images/user.png" alt="ICON">
+						<?=Yii::$app->user->identity->fullname?> </a>
+
+						<!-- Header cart noti -->
+				
+					</div>
+						
+						
+						
+						<?php }?>				
 					
 
 				

@@ -45,11 +45,48 @@ class ApplicationController extends Controller
      */
     public function actionIndex()
     {
+        $app = Application::find()
+        ->where(['user_id' => Yii::$app->user->identity->id])->all();
+        if($app){
+            if( count($app) == 1){
+                $a = $app[0];
+                return $this->redirect(['view', 'id' => $a-> id]);
+            }
+            
+        }else{
+            return $this->redirect(['create']);
+        }
 
         $searchModel = new ApplicationSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+    
+    public function actionPayment()
+    {
+       /*  $app = Application::find()
+        ->where(['user_id' => Yii::$app->user->identity->id])->all();
+        if($app){
+            if( count($app) == 1){
+                $a = $app[0];
+                if($a->payment_at){
+                    return $this->redirect(['payment-view', 'id' => $a-> id]);
+                }else{
+                    return $this->redirect(['payment-create', 'id' => $a-> id]);
+                }
+                
+            }
+            
+        } */
+        
+        $searchModel = new ApplicationSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+        return $this->render('payment', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -68,6 +105,22 @@ class ApplicationController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
             'items' => $items,
+        ]);
+    }
+    
+    public function actionPaymentView($id)
+    {
+        return $this->render('payment-view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+    
+    public function actionPaymentCreate($id)
+    {
+        $model = $this->findModel($id);
+        $model->scenario = 'payment';
+        return $this->render('payment-create', [
+            'model' => $model,
         ]);
     }
 
@@ -98,7 +151,12 @@ class ApplicationController extends Controller
             $result = $this->processApplication($model, $items);
            // print_r($result[0]);die();
             if($result[0]){
-                Yii::$app->session->addFlash('success', "Application Submit");
+                if($model->status == 10){
+                    Yii::$app->session->addFlash('success', "Thank you, your application has been successfully submitted");
+                }else{
+                    Yii::$app->session->addFlash('success', "Application saved");
+                }
+                
                 return $this->redirect(['view', 'id' => $model->id]);
             }else{
                 $items = $result[1];
@@ -178,11 +236,18 @@ class ApplicationController extends Controller
             $model->status = $action;
             $model->updated_at = new Expression('NOW()');
 
-            if($this->processApplication($model, $items)){
+            $result = $this->processApplication($model, $items);
+            // print_r($result[0]);die();
+            if($result[0]){
+                if($model->status == 10){
+                    Yii::$app->session->addFlash('success', "Thank you, your application has been successfully submitted");
+                }else{
+                    Yii::$app->session->addFlash('success', "Application saved");
+                }
                 
-                Yii::$app->session->addFlash('success', "Application Updated");
-                return $this->redirect(['view', 'id' => $id]);
-
+                return $this->redirect(['view', 'id' => $model->id]);
+            }else{
+                $items = $result[1];
             }
 
         }

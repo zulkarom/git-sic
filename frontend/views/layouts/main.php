@@ -318,7 +318,11 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
 <body id="top">
 <?php $this->beginBody() ?>
 
-<?=$this->render('menu-top-public');
+
+
+<?=$this->render('menu_top', [    
+    'dirAssests' => $dirAssests,
+]);
 ?>
 
 <div class="wrapper bgded" style="background-image:url('<?= $dirAssests?>/images/banner.png');">

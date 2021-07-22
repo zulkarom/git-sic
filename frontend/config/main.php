@@ -28,7 +28,7 @@ return [
                 'LoginForm' => 'frontend\models\user\LoginForm',
             ],
             'enableConfirmation' => true,
-            'enableUnconfirmedLogin' => true,
+            'enableUnconfirmedLogin' => false,
             'enableFlashMessages' => false,
         ],
         'gridview' => [

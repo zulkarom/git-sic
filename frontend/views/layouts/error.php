@@ -43,17 +43,7 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
 
 </div>
 
-<div class="wrapper row3">
-  <section class="hoc clear"> 
 
-<div class="group">
-      <div class="one_half first"><img src="<?= $dirAssests?>/images/logo1.png" /></div>
-        <div class="one_half"><img src="<?= $dirAssests?>/images/logo2.png" /></div>
-
-      </div>
-
-  </section>
-</div>
     
     <?= Alert::widget() ?>
     <?= $content ?>

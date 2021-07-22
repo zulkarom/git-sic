@@ -37,6 +37,7 @@ use common\models\Common;
 class Application extends \yii\db\ActiveRecord
 {
     public $cur_logo;
+    public $paymentFile;
     /**
      * {@inheritdoc}
      */
@@ -51,9 +52,13 @@ class Application extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category', 'applicant_name', 'nationality', 'id_number', 'gender', 'age', 'phoneNo', 'officeNo', 'faxNo', 'email', 'instiBusName', 'type', 'address', 'project_name', 'project_description', 'medium_web', 'medium_email', 'medium_others', 'aggrement_disclaimer'], 'required'],
+            [['category', 'applicant_name', 'nationality', 'id_number', 'gender', 'age', 'phoneNo', 'email', 'instiBusName', 'type', 'address', 'project_name', 'project_description', 'medium_web', 'medium_email', 'medium_others', 'aggrement_disclaimer'], 'required'],
+            
+            [['payment_at', 'payment_note', 'payment_file'], 'required', 'on' => 'payment'],
 
             [['logo_file'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,gif,pdf', 'maxSize' => 2000000],
+            
+            [['payment_file'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,gif,pdf', 'maxSize' => 2000000],
 
             [['category', 'gender', 'age', 'aggrement_disclaimer', 'status', 'user_id'], 'integer'],
             [['project_description'], 'string'],

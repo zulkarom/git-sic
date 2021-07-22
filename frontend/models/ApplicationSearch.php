@@ -58,34 +58,9 @@ class ApplicationSearch extends Application
             return $dataProvider;
         }
 
-        // grid filtering conditions
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'category' => $this->category,
-            'gender' => $this->gender,
-            'age' => $this->age,
-            'medium_web' => $this->medium_web,
-            'medium_email' => $this->medium_email,
-            'medium_others' => $this->medium_others,
-            'aggrement_disclaimer' => $this->aggrement_disclaimer,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-        ]);
 
-        $query->andFilterWhere(['like', 'applicant_name', $this->applicant_name])
-            ->andFilterWhere(['like', 'nationality', $this->nationality])
-            ->andFilterWhere(['like', 'id_number', $this->id_number])
-            ->andFilterWhere(['like', 'phoneNo', $this->phoneNo])
-            ->andFilterWhere(['like', 'officeNo', $this->officeNo])
-            ->andFilterWhere(['like', 'faxNo', $this->faxNo])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'instiBusName', $this->instiBusName])
-            ->andFilterWhere(['like', 'type', $this->type])
-            ->andFilterWhere(['like', 'address', $this->address])
-            ->andFilterWhere(['like', 'logo_file', $this->logo_file])
-            ->andFilterWhere(['like', 'project_name', $this->project_name])
-            ->andFilterWhere(['like', 'project_description', $this->project_description])
-            ->andFilterWhere(['like', 'reference', $this->reference]);
+
+
 
         return $dataProvider;
     }

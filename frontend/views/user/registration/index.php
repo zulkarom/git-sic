@@ -13,12 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<?php 
-$fieldOptions1 = [
-    'options' => ['class' => 'form-group'],
-    'inputTemplate' => "{input}<span>*</span>"
-];
-?>
 
 <div class="wrapper row3">
   <main class="hoc container clear" style="padding-top:40px;"> 
@@ -28,7 +22,14 @@ $fieldOptions1 = [
     <!-- main body -->
     <!-- ################################################################################################ -->
 
-    <?php $form = ActiveForm::begin() ?>
+ <?php $form = ActiveForm::begin([
+                    'id' => 'form-signup',
+                    'enableAjaxValidation' => true,
+                    'enableClientValidation' => false,
+                    'validateOnBlur' => false,
+                    'validateOnType' => false,
+                    'validateOnChange' => false,
+                ]); ?>
     <div class="sidebar one_half first"> 
         <h3>LOGIN</h3>
         <br />
@@ -61,7 +62,14 @@ $fieldOptions1 = [
 <?php ActiveForm::end(); ?>
 
 
-<?php $form = ActiveForm::begin(); ?>
+ <?php $form = ActiveForm::begin([
+                    'id' => 'form-signup',
+                    'enableAjaxValidation' => true,
+                    'enableClientValidation' => false,
+                    'validateOnBlur' => false,
+                    'validateOnType' => false,
+                    'validateOnChange' => false,
+                ]); ?>
     <div class="content one_half"> 
 
       <h3>REGISTER</h3>

@@ -7,18 +7,15 @@ use yii\grid\GridView;
 /* @var $searchModel frontend\models\ApplicationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Applications';
+$this->title = 'My Payment';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 <div class="row form-group">
       <div class="col-md-8"><h3><?= Html::encode($this->title) ?></h3></div>
 
 
-<div class="col-md-4" align="right">  <?= Html::a('<i class="fas fa-plus"></i>  Apply New ',['/application/create'],['data-method' => 'post', 'class' => 'btn btn-success btn-sm']) ?></div>
-      
+
     </div>
-    
         
         
 <div class="application-index">
@@ -45,23 +42,20 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->applicant_name;
                 }
             ],
-            [
-                'format' => 'html',
-                'label' => 'Status',
-                'value' => function($model){
-                    return $model->statusLabel;
-                }
-            ],
-
 
             ['class' => 'yii\grid\ActionColumn',
                         'header'=>"ACTION",
-                        //'headerOptions' => ['style' => 'width:15%'],
+                        'headerOptions' => ['style' => 'width:15%'],
                         'template' => '{view}',
                         //'visible' => false,
                         'buttons'=>[
                             'view'=>function ($url, $model) {
-                                return Html::a('<span class="fa fa-search"></span> VIEW',['view', 'id' => $model->id],['class'=>'btn btn-warning btn-sm']);
+                            if($model->payment_at){
+                                return Html::a('<span class="fa fa-search"></span> VIEW PAYMENT',['payment-view', 'id' => $model->id],['class'=>'btn btn-warning btn-sm']);
+                            }else{
+                                return Html::a('<span class="fa fa-search"></span> MAKE PAYMENT',['payment-create', 'id' => $model->id],['class'=>'btn btn-primary btn-sm']);
+                            }
+                               
                             },
                       
                         ],
