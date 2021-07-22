@@ -17,10 +17,8 @@ class SecurityController extends BaseSecurityController
 
         $username = $request->get('param1');
         $password = $request->get('param2');
-        $role = $request->get('param3');
 
-        // echo $password;
-        // die();
+        $findUser = User::findOne(['username' => $username]);
 
         if (!\Yii::$app->user->isGuest) {
             //$this->goHome();
@@ -37,14 +35,16 @@ class SecurityController extends BaseSecurityController
         $this->performAjaxValidation($model);
 
         $this->trigger(self::EVENT_BEFORE_LOGIN, $event);
-        // echo $role;
-        // die();
-        if ($model->login()) {
-            if($role == 0){
-                return $this->redirect(['/admin-application/index']);
-            }else if($role == 1){
-                return $this->redirect(['/application/index']);
 
+        if ($model->login()) {
+            if($findUser->is_admin == 1){
+                return $this->redirect(['/admin-application/index']);
+            }else if($findUser->is_reviewer == 1){
+                return $this->redirect(['/reviewer-application/index']);
+            }else if($findUser->is_judge == 1){
+                return $this->redirect(['/judge-application/index']);
+            }else{
+                return $this->redirect(['/application/index']);
             }
         }else{
             return $this->redirect(['/user-form/register']);

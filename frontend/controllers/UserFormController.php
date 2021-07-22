@@ -80,7 +80,7 @@ class UserFormController extends \yii\web\Controller
         			
         			// return $this->redirect(array('/user/login', 'param1'=> $modelLogin->username2, 'param2'=> $modelLogin->password2));
         			if($modelLogin->validate()){
-        				return $this->redirect(array('/user/login', 'param1'=> $modelLogin->username, 'param2'=> $modelLogin->password, 'param3'=> $checkUser->role));
+        				return $this->redirect(array('/user/login', 'param1'=> $modelLogin->username, 'param2'=> $modelLogin->password));
         			}
         			
         		}else{
