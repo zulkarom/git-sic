@@ -96,11 +96,5 @@ class UserFormController extends \yii\web\Controller
         ]);
     }
 	
-	public function actionRegister2(){
-		$this->layout = "//main-login";
-        return $this->render('/user/registration/register2', [
-        ]);
-    }
-	
 
 }

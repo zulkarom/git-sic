@@ -174,6 +174,34 @@ class Application extends \yii\db\ActiveRecord
         return false;
     }
 
+    public function uploadPaymentFile(){
+        $uploadFile = UploadedFile::getInstance($this, 'payment_file');
+        //Yii::$app->session->addFlash('success', "Dalam sedia ada");
+        if($uploadFile){
+           //die('dalam upload file');
+          // Yii::$app->session->addFlash('success', "Dalam upload file");
+            $year = date('Y') + 0 ;
+            $path = $year.'/'.$this->id .'/';
+            $directory = Yii::getAlias('@uploaded/application/'.$path);
+            if (!is_dir($directory)) {
+                FileHelper::createDirectory($directory);
+            }
+            $ext = $uploadFile->extension;
+            $filename = 'filePayment.'.$ext;
+            $this->payment_file = $path. $filename; 
+            
+            if($uploadFile->saveAs($directory.'/'. $filename)){
+                $this->save();
+                return true;
+            }
+        }else if($this->paymentFile){
+            $this->payment_file = $this->paymentFile;
+            $this->save();
+            return true;
+        }
+        return false;
+    }
+
     public static function sendFile($file, $filename, $ext){
         header("Cache-Control: public");
         header("Content-Description: File Transfer");

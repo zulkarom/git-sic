@@ -24,11 +24,27 @@ $col1 = 4;
    <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?> 
  <div class="card">
         <div class="card-body">
-<div class="row">
-        <div class="col-8">
-            <?= $form->field($model, 'payment_note')->textarea(['rows' => 4])?>
+        <div class="row">
+            <div class="col-8">
+                <?= $form->field($model, 'payment_file')->fileInput() ?>
+                <?php
+                    if($model->payment_file){
+                        echo '<div class="form-group">Attached File: ' . Html::a($model->logo_file, ['logo-image', 'id' => $model->id], [
+                               'target' => '_blank']);
+                        echo '</div>';
+                    }
+                ?>
+            </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-8">
+                <?= $form->field($model, 'payment_note')->textarea(['rows' => 4])?>
+            </div>
+        </div>
+
+        <div class="form-group">
+        <?= Html::submitButton('<i class="fa fa-save"></i> Save Payment', ['class' => 'btn btn-info', 'name' => 'btn-submit']) ?>
+        </div>
             
             
     </div>

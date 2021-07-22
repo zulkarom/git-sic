@@ -242,6 +242,26 @@ class UploadFile
         }
 		
 	}
+	public static function downloadPayment($model){
+		
+		$file = Yii::getAlias('@uploaded/application/' . $model->payment_file);
+        if($model->payment_file){
+            if (file_exists($file)) {
+            $ext = pathinfo($model->payment_file, PATHINFO_EXTENSION);
+
+            $filename =  'application.' . $ext ;
+            
+            self::sendFile($file, $filename, $ext);
+            
+            
+            }else{
+                echo 'file not exist!';
+            }
+        }else{
+            echo 'file not exist!';
+        }
+		
+	}
 	
 	public static function sendFile($file, $filename, $ext){
 		header("Cache-Control: public");

@@ -29,6 +29,8 @@ class ApplicationJudge extends \yii\db\ActiveRecord
         return [
             [['application_id'], 'required'],
             [['application_id', 'judge_id'], 'integer'],
+            [['judge_note'], 'string'],
+            [['created_at', 'judge_at'], 'safe'],
         ];
     }
 
@@ -41,6 +43,9 @@ class ApplicationJudge extends \yii\db\ActiveRecord
             'id' => 'ID',
             'application_id' => 'Application ID',
             'judge_id' => 'Judge',
+            'judge_note' => 'Judge Note',
+            'created_at' => 'Created At',
+            'judge_at' => 'Judge At',
         ];
     }
 

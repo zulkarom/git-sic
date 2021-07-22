@@ -119,6 +119,21 @@ class ApplicationController extends Controller
     {
         $model = $this->findModel($id);
         $model->scenario = 'payment';
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->payment_at = new Expression('NOW()');
+            $model->status = 50;
+
+            if($model->uploadPaymentFile()){
+                Yii::$app->session->addFlash('success', "Thank you, your payment information has been successfully submitted");
+                return $this->redirect(['view', 'id' => $model->id]);
+            }else{
+                $model->flashError();
+            }
+
+        }
+
+
         return $this->render('payment-create', [
             'model' => $model,
         ]);
@@ -262,6 +277,12 @@ class ApplicationController extends Controller
         $model = $this->findModel($id);
         
         UploadFile::downloadLogo($model);
+    }
+
+    public function actionPaymentFile($id){
+        $model = $this->findModel($id);
+        
+        UploadFile::downloadPayment($model);
     }
 
     /**
