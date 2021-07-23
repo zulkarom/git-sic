@@ -230,12 +230,13 @@ class ApplicationController extends Controller
                                         $transaction->rollBack();
                                         break;
                                     }else{
-                                        echo 'cannot save item?' . $model->id ;die();
+                                        
                                     }
                                 }
 
                             
                     }else{
+                        echo 'cannot save model?' ;die();
                         $model->flashError();
                     }
                     if ($flag) {
