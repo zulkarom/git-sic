@@ -171,7 +171,7 @@ class ApplicationController extends Controller
         // }
 
         if ($model->load(Yii::$app->request->post())) {
-            print_r(Yii::$app->request->post());die();
+            //print_r(Yii::$app->request->post());die();
 
             $action = Yii::$app->request->post('btn-submit');
 
@@ -180,7 +180,7 @@ class ApplicationController extends Controller
             $model->user_id = Yii::$app->user->identity->id;
             
             $result = $this->processApplication($model, $items);
-           // print_r($result[0]);die();
+            print_r($result[0]);die();
             if($result[0]){
                 if($model->status == 10){
                     Yii::$app->session->addFlash('success', "Thank you, your application has been successfully submitted");
