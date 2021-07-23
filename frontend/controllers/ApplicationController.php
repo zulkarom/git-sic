@@ -171,7 +171,7 @@ class ApplicationController extends Controller
         // }
 
         if ($model->load(Yii::$app->request->post())) {
-            //print_r(Yii::$app->request->post());die();
+            print_r(Yii::$app->request->post());die();
 
             $action = Yii::$app->request->post('btn-submit');
 
