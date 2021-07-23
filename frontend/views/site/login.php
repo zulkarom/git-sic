@@ -20,7 +20,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <!-- main body -->
     <!-- ################################################################################################ -->
 
- <?php $form = ActiveForm::begin(); ?>
+ <?php $form = ActiveForm::begin([
+    'validateOnChange' => false
+]); ?>
     <div class="sidebar one_half first"> 
         <h3>LOGIN</h3>
         <br />
@@ -53,7 +55,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php ActiveForm::end(); ?>
 
 
- <?php $form = ActiveForm::begin(); ?>
+ <?php $form = ActiveForm::begin([
+    'validateOnChange' => false
+]); ?>
     <div class="content one_half"> 
 
       <h3>REGISTER</h3>

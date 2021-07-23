@@ -36,7 +36,7 @@ if (\Yii::$app->user->isGuest) {
     }
     
     if(Yii::$app->user->identity->is_admin == 1){
-        $items['Manage'] =  ['/application/admin-application'];
+        $items['Manage'] =  ['/admin-application/index'];
     }
     $items['<i class="fas fa-sign-out-alt"></i> Log Out'] =  ['/site/logout'];
     
