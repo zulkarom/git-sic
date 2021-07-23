@@ -1,0 +1,9 @@
+ALTER TABLE `app_judge` ADD `judge_note` TEXT NOT NULL AFTER `judge_id`, ADD `judge_file` VARCHAR(225) NOT NULL AFTER `judge_note`, ADD `created_at` DATETIME NOT NULL AFTER `judge_file`, ADD `judge_at` DATETIME NOT NULL AFTER `created_at`;
+
+ALTER TABLE `app_reviewer` ADD `review_file` VARCHAR(225) NOT NULL AFTER `reviewer_id`, ADD `review_note` TEXT NOT NULL AFTER `review_file`, ADD `created_at` DATETIME NULL AFTER `review_note`, ADD `review_at` DATETIME NULL AFTER `created_at`;
+
+ALTER TABLE `application` ADD `payment_at` DATETIME NULL DEFAULT NULL AFTER `updated_at`;
+
+ALTER TABLE `application` ADD `payment_note` TEXT NOT NULL AFTER `status`;
+
+ALTER TABLE `application` ADD `payment_file` VARCHAR(225) NOT NULL AFTER `payment_note`;

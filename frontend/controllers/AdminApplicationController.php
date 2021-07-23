@@ -10,7 +10,7 @@ use frontend\models\ApplicationReviewer;
 use frontend\models\ApplicationJudge;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * AdminApplicationController implements the CRUD actions for Application model.
@@ -25,10 +25,13 @@ class AdminApplicationController extends Controller
     public function behaviors()
     {
         return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
                 ],
             ],
         ];
@@ -91,6 +94,7 @@ class AdminApplicationController extends Controller
                             //print_r($reviewer_arr);die();
                             $insert = new ApplicationReviewer;
                             $insert->application_id = $model->id;
+                            $insert->created_at = new Expression('NOW()');
                             if(!$insert->save()){
                                 $flag = false;
                             }
@@ -138,6 +142,7 @@ class AdminApplicationController extends Controller
                             //print_r($reviewer_arr);die();
                             $insert = new ApplicationJudge;
                             $insert->application_id = $model->id;
+                            $insert->created_at = new Expression('NOW()');
                             if(!$insert->save()){
                                 $insert->flashError();
                             }

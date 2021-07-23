@@ -22,7 +22,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <!-- main body -->
     <!-- ################################################################################################ -->
 
- <?php $form = ActiveForm::begin(); ?>
+ <?php $form = ActiveForm::begin([
+                    'id' => 'form-signup',
+                    'enableAjaxValidation' => true,
+                    'enableClientValidation' => false,
+                    'validateOnBlur' => false,
+                    'validateOnType' => false,
+                    'validateOnChange' => false,
+                ]); ?>
     <div class="sidebar one_half first"> 
         <h3>LOGIN</h3>
         <br />

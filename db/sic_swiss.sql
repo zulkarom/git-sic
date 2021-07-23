@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2021 at 02:38 PM
+-- Generation Time: Jul 23, 2021 at 09:12 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.3.21
 
@@ -52,16 +52,20 @@ CREATE TABLE `application` (
   `reference` varchar(100) DEFAULT NULL,
   `aggrement_disclaimer` tinyint(1) NOT NULL,
   `status` tinyint(3) NOT NULL,
+  `payment_note` text NOT NULL,
+  `payment_file` varchar(225) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `updated_at` datetime NOT NULL,
+  `payment_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `application`
 --
 
-INSERT INTO `application` (`id`, `user_id`, `category`, `applicant_name`, `nationality`, `id_number`, `gender`, `age`, `phoneNo`, `officeNo`, `faxNo`, `email`, `instiBusName`, `type`, `address`, `logo_file`, `project_name`, `project_description`, `medium_web`, `medium_email`, `medium_others`, `reference`, `aggrement_disclaimer`, `status`, `created_at`, `updated_at`) VALUES
-(10, 13, 1, 'Mohd Ali Bin Abu', '135', '940821036141', 1, 28, '+60176209556', '+607123456789', '+607123456789', 'mohdali@gmail.com', 'UiTM Kampus Kota Bharu', 'Universiti', 'Bandar Kota Bharu, 15050 Kota Bharu, Kelantan', '', 'Contoh Idea Project', 'Contoh description project', 1, 0, 0, '', 1, 10, '2021-07-19 20:35:00', '0000-00-00 00:00:00');
+INSERT INTO `application` (`id`, `user_id`, `category`, `applicant_name`, `nationality`, `id_number`, `gender`, `age`, `phoneNo`, `officeNo`, `faxNo`, `email`, `instiBusName`, `type`, `address`, `logo_file`, `project_name`, `project_description`, `medium_web`, `medium_email`, `medium_others`, `reference`, `aggrement_disclaimer`, `status`, `payment_note`, `payment_file`, `created_at`, `updated_at`, `payment_at`) VALUES
+(10, 13, 1, 'Mohd Ali Bin Abu', '135', '940821036141', 1, 28, '+60176209556', '+607123456789', '+607123456789', 'mohdali@gmail.com', 'UiTM Kampus Kota Bharu', 'Universiti', 'Bandar Kota Bharu, 15050 Kota Bharu, Kelantan', '', 'Contoh Idea Project', 'Contoh description project', 1, 0, 0, '', 1, 50, 'test payment', '2021/10/filePayment.jpg', '2021-07-19 20:35:00', '0000-00-00 00:00:00', '2021-07-23 05:45:17'),
+(11, 13, 1, 'Mohd Ali Bin Abu', '135', '940821036141', 1, 28, '+60176209556', '+607123456789', '+607123456789', 'mohdali@gmail.com', 'UiTM Kampus Kota Bharu', 'Universiti', 'Bandar Kota Bharu, 15050 Kota Bharu, Kelantan', '', 'Contoh Idea Project', 'Contoh description project', 1, 0, 0, '', 1, 50, 'test payment', '2021/10/filePayment.jpg', '2021-07-19 20:35:00', '0000-00-00 00:00:00', '2021-07-23 05:45:17');
 
 -- --------------------------------------------------------
 
@@ -126,15 +130,19 @@ INSERT INTO `application_status` (`id`, `status`, `name`, `color`) VALUES
 CREATE TABLE `app_judge` (
   `id` int(11) NOT NULL,
   `application_id` int(11) NOT NULL,
-  `judge_id` int(11) NOT NULL
+  `judge_id` int(11) NOT NULL,
+  `judge_note` text NOT NULL,
+  `judge_file` varchar(225) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `judge_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `app_judge`
 --
 
-INSERT INTO `app_judge` (`id`, `application_id`, `judge_id`) VALUES
-(10, 10, 17);
+INSERT INTO `app_judge` (`id`, `application_id`, `judge_id`, `judge_note`, `judge_file`, `created_at`, `judge_at`) VALUES
+(11, 10, 17, 'test judge note', '2021/10/fileJudge.png', '0000-00-00 00:00:00', '2021-07-23 11:29:25');
 
 -- --------------------------------------------------------
 
@@ -145,16 +153,20 @@ INSERT INTO `app_judge` (`id`, `application_id`, `judge_id`) VALUES
 CREATE TABLE `app_reviewer` (
   `id` int(11) NOT NULL,
   `application_id` int(11) NOT NULL,
-  `reviewer_id` int(11) NOT NULL
+  `reviewer_id` int(11) NOT NULL,
+  `review_file` varchar(225) NOT NULL,
+  `review_note` text NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `review_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `app_reviewer`
 --
 
-INSERT INTO `app_reviewer` (`id`, `application_id`, `reviewer_id`) VALUES
-(5, 10, 15),
-(6, 10, 16);
+INSERT INTO `app_reviewer` (`id`, `application_id`, `reviewer_id`, `review_file`, `review_note`, `created_at`, `review_at`) VALUES
+(5, 10, 15, '2021/10/fileReview.png', 'test review note', NULL, '2021-07-23 14:16:13'),
+(6, 10, 16, '', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -479,7 +491,9 @@ INSERT INTO `profile` (`user_id`, `name`, `public_email`, `gravatar_email`, `gra
 (14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(17, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(18, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -521,7 +535,8 @@ INSERT INTO `token` (`user_id`, `code`, `created_at`, `type`) VALUES
 (14, 'Zhl5twSWcux3S6JBZd7DzSuy_lPHbySH', 1626697458, 0),
 (15, 'kyvotov7ivaHUfAKGiloy3lHmggkzF2p', 1626697499, 0),
 (16, 'VEaTzpxWu5zC10GooNhgdeiRQORg0Gfd', 1626697535, 0),
-(17, 'iEncLUmunzjQVnWCvtEJKht2SghderBp', 1626697571, 0);
+(17, 'iEncLUmunzjQVnWCvtEJKht2SghderBp', 1626697571, 0),
+(18, 'QQ1fy7KocR4rIYj91WAYqtN-oYhHR75h', 1626698683, 0);
 
 -- --------------------------------------------------------
 
@@ -558,11 +573,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `fullname`, `institution`, `email`, `role`, `is_admin`, `is_reviewer`, `is_judge`, `password_hash`, `auth_key`, `confirmed_at`, `unconfirmed_email`, `blocked_at`, `registration_ip`, `created_at`, `updated_at`, `flags`, `last_login_at`, `status`, `password_reset_token`) VALUES
-(13, 'mohdali@gmail.com', 'Mohd Ali Bin Abu', 'UiTM Kampus Kota Bharu', 'mohdali@gmail.com', 1, 0, 0, 0, '$2y$10$VAG.Gxgk/xrjQj1cR2aWVeZvM5FqUWH1VVaY8FZMtJ0PtEsdyhwOe', 'V2HaOMbNIf3bjnzWmhrHWivTwQSk7rzF', NULL, NULL, NULL, '::1', 1626697357, 1626697662, 0, 1626698164, 10, ''),
-(14, 'superadmin@swiss.com', 'Super Administrator', 'Admin', 'superadmin@swiss.com', 0, 0, 0, 0, '$2y$10$9TTAgzcDfo4EnrWgdWEd7.09yKZ1xZZltYxYTfl9O5TdQaWJS95Va', 't3GA2qBdPfE8Rjg3O-uUwWrcO4NSNHmS', NULL, NULL, NULL, '::1', 1626697458, 1626697692, 0, 1626698188, 10, ''),
-(15, 'hakimi@gmail.com', 'Hakimi Bin Ab Rahim', 'UMK Kampus Pengkalan Chepa', 'hakimi@gmail.com', 1, 0, 1, 0, '$2y$10$8OmWyuT.oKFVwv4Kn.kBW.1TtX0HM.Efw.ARhd74/TObn89AMfPxy', 'ZcYCsjp69Q6GmYb_3nYnddULF7cG85pc', NULL, NULL, NULL, '::1', 1626697499, 1626697753, 0, NULL, 10, ''),
-(16, 'ahmad@gmail.com', 'Ahmad Bin Ariffin', 'UMK Kampus Pengkalan Chepa', 'ahmad@gmail.com', 1, 0, 1, 0, '$2y$10$AmMYJ0bfwOOL7TM3XQxc8OXgUkRTQ.nTT9nIX7B2U5/gkr3kgrA0q', 'gC1pXp_5tUOLGzacJePqc3lRvq9L0aFk', NULL, NULL, NULL, '::1', 1626697535, 1626697759, 0, NULL, 10, ''),
-(17, 'syafiq@gmail.com', 'Syafiq Bin Mohamad', 'UMK Kampus Pengkalan Chepa', 'syafiq@gmail.com', 1, 0, 0, 1, '$2y$10$OqFFK4YVHkW.kc0zMQK.0e.C21Sl6VTqd13JuoEj2Fl0Kifkb1F7e', 'C38-dHmqq7YNLfvR7qssk_vq1lgin1bG', NULL, NULL, NULL, '::1', 1626697571, 1626697764, 0, NULL, 10, '');
+(13, 'mohdali@gmail.com', 'Mohd Ali Bin Abu', 'UiTM Kampus Kota Bharu', 'mohdali@gmail.com', 1, 0, 0, 0, '$2y$10$VAG.Gxgk/xrjQj1cR2aWVeZvM5FqUWH1VVaY8FZMtJ0PtEsdyhwOe', 'V2HaOMbNIf3bjnzWmhrHWivTwQSk7rzF', 1626981509, NULL, NULL, '::1', 1626697357, 1626697662, 0, 1627024296, 10, ''),
+(14, 'superadmin@swiss.com', 'Super Administrator', 'Admin', 'superadmin@swiss.com', 0, 1, 0, 0, '$2y$10$9TTAgzcDfo4EnrWgdWEd7.09yKZ1xZZltYxYTfl9O5TdQaWJS95Va', 't3GA2qBdPfE8Rjg3O-uUwWrcO4NSNHmS', 1626981509, NULL, NULL, '::1', 1626697458, 1626697692, 0, 1627024281, 10, ''),
+(15, 'hakimi@gmail.com', 'Hakimi Bin Ab Rahim', 'UMK Kampus Pengkalan Chepa', 'hakimi@gmail.com', 1, 0, 1, 0, '$2y$10$8OmWyuT.oKFVwv4Kn.kBW.1TtX0HM.Efw.ARhd74/TObn89AMfPxy', 'ZcYCsjp69Q6GmYb_3nYnddULF7cG85pc', 1626981509, NULL, NULL, '::1', 1626697499, 1626697753, 0, 1627019067, 10, ''),
+(16, 'ahmad@gmail.com', 'Ahmad Bin Ariffin', 'UMK Kampus Pengkalan Chepa', 'ahmad@gmail.com', 1, 0, 1, 0, '$2y$10$AmMYJ0bfwOOL7TM3XQxc8OXgUkRTQ.nTT9nIX7B2U5/gkr3kgrA0q', 'gC1pXp_5tUOLGzacJePqc3lRvq9L0aFk', 1626981509, NULL, NULL, '::1', 1626697535, 1626697759, 0, NULL, 10, ''),
+(17, 'syafiq@gmail.com', 'Syafiq Bin Mohamad', 'UMK Kampus Pengkalan Chepa', 'syafiq@gmail.com', 1, 0, 0, 1, '$2y$10$OqFFK4YVHkW.kc0zMQK.0e.C21Sl6VTqd13JuoEj2Fl0Kifkb1F7e', 'C38-dHmqq7YNLfvR7qssk_vq1lgin1bG', 1626981509, NULL, NULL, '::1', 1626697571, 1626697764, 0, 1627024359, 10, ''),
+(18, 'test@gmail.com', 'test', 'UiTM Kota Bharu', 'test@gmail.com', 1, 0, 0, 0, '$2y$10$pfQ2ZZ9dZ01bIjViLL90uOhjlXBw1.HG08b0/ui58TB2SGrDCAvZK', '_tRh1LkR2noioTDNZR5z9wy0sHOfsQ_9', 1626981509, NULL, NULL, '::1', 1626698683, 1626698683, 0, NULL, 10, ''),
+(19, 'iqramrafien@gmail.com', 'Iqram Rafien', 'UiTM Jasin', 'iqramrafien@gmail.com', 1, 0, 0, 0, '$2y$10$dp7HafwmzUsG/AM0ayXCgOwp8Xml0QuiFbyvsICCCKtWt4f5x64sa', 'p-Ocnp9dXvHHglC87jUtN0n-RQpbs7YD', 1626981509, NULL, NULL, '::1', 1626965501, 1626965501, 0, 1626981618, 10, '');
 
 --
 -- Indexes for dumped tables
@@ -647,7 +664,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `application`
 --
 ALTER TABLE `application`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `application_item`
@@ -665,7 +682,7 @@ ALTER TABLE `application_status`
 -- AUTO_INCREMENT for table `app_judge`
 --
 ALTER TABLE `app_judge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `app_reviewer`
@@ -689,7 +706,7 @@ ALTER TABLE `social_account`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables

@@ -27,13 +27,6 @@ $col1 = 4;
         <div class="row">
             <div class="col-8">
                 <?= $form->field($model, 'payment_file')->fileInput() ?>
-                <?php
-                    if($model->payment_file){
-                        echo '<div class="form-group">Attached File: ' . Html::a($model->logo_file, ['logo-image', 'id' => $model->id], [
-                               'target' => '_blank']);
-                        echo '</div>';
-                    }
-                ?>
             </div>
         </div>
         <div class="row">

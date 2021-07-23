@@ -31,12 +31,16 @@ class UserFormController extends \yii\web\Controller
 
         if (!\Yii::$app->user->isGuest) {
             //$this->goHome();
-            $this->redirect(['/application/index']);
-            //if admin
             
-            //if reviw
-            
-            //
+            if(Yii::$app->user->identity->is_admin == 1){
+            	$this->redirect(['/admin-application/index']);
+            }else if(Yii::$app->user->identity->is_reviewer == 1){
+            	$this->redirect(['/reviewer-application/index']);
+            }else if(Yii::$app->user->identity->is_judge == 1){
+            	$this->redirect(['/judge-application/index']);
+            }else{
+            	$this->redirect(['/application/index']);
+            }
         }
         
         $model = new NewUserForm();

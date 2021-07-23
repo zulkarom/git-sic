@@ -24,7 +24,7 @@ if (\Yii::$app->user->isGuest) {
         'Home' => ['/site/index'],
         'My Application' => ['/application/index'],
         'My Review' => ['/application/review'],
-        'My Judge' => ['/application/judge'],
+        'My Judge' => ['/judge-application/index'],
         'Manage' => ['/application/admin-application'],
         '<i class="fas fa-sign-out-alt"></i> Log Out' => ['/site/logout'],
     ];

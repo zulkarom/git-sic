@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2021 at 05:42 PM
+-- Generation Time: Jul 19, 2021 at 02:38 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.3.21
 
@@ -61,9 +61,7 @@ CREATE TABLE `application` (
 --
 
 INSERT INTO `application` (`id`, `user_id`, `category`, `applicant_name`, `nationality`, `id_number`, `gender`, `age`, `phoneNo`, `officeNo`, `faxNo`, `email`, `instiBusName`, `type`, `address`, `logo_file`, `project_name`, `project_description`, `medium_web`, `medium_email`, `medium_others`, `reference`, `aggrement_disclaimer`, `status`, `created_at`, `updated_at`) VALUES
-(7, 3, 3, 'FAKHRUL IQRAM BIN RAFIEN', '135', '940821036159', 1, 21, '+60176209665', '0765285222', '01255585', 'iqramrafien@gmail.com', 'SkyHint Enterprise', 'IT', 'No 123 Jalan Meranti', '2021/7/file.png', 'sad', 'sdaa', 0, 0, 1, 'asd', 1, 0, '2021-07-15 12:39:25', '2021-07-15 22:39:25'),
-(8, 0, 2, 'FAKHRUL IQRAM BIN RAFIENnnn', '133', '940821036159444', 1, 22, '+6017620966565567', '0765285222567567', '01255585322356756', 'iqramrafien@gmail.comdd', 'SkyHint Enterpriseddd', 'ITdd', 'No 123 Jalan Merantidddd', '2021/8/file.png', 'sad56756756', 'sdaa567567', 1, 1, 1, 'asd', 1, 0, '2021-07-15 12:40:52', '2021-07-15 21:21:36'),
-(9, 0, 2, 'FAKHRUL IQRAM BIN RAFIEN', '135', '940821036159', 1, 21, '+60176209665', '0765285222', '01255585', 'iqramrafien@gmail.com', 'SkyHint Enterprise', 'IT', 'No 123 Jalan Meranti', '2021/9/file.png', 'sad', 'sdaa', 1, 1, 1, 'asd', 1, 0, '2021-07-15 12:41:31', '2021-07-15 12:41:31');
+(10, 13, 1, 'Mohd Ali Bin Abu', '135', '940821036141', 1, 28, '+60176209556', '+607123456789', '+607123456789', 'mohdali@gmail.com', 'UiTM Kampus Kota Bharu', 'Universiti', 'Bandar Kota Bharu, 15050 Kota Bharu, Kelantan', '', 'Contoh Idea Project', 'Contoh description project', 1, 0, 0, '', 1, 10, '2021-07-19 20:35:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -86,10 +84,8 @@ CREATE TABLE `application_item` (
 --
 
 INSERT INTO `application_item` (`id`, `application_id`, `name`, `idNumber`, `instiBusName`, `phoneNo`, `email`) VALUES
-(1, 7, 'asd', '940821036159', 'asss', 'sss', 'ssss'),
-(2, 8, '234234234', '940821036159', 'asssasdasd23423423423', '234243', 'ssssdas234234234dasd'),
-(4, 9, 'asd', '940821036159', 'asss', 'sss', 'ssss'),
-(5, 9, 'asdasda', 'sdasd', 'asdasdas', 'asdasda', 'das');
+(6, 10, 'Mohd Ali Bin Abu', '940821036141', 'UiTM Kampus Kota Bharu', '+60176209556', 'mohdali@gmail.com'),
+(7, 10, 'Haikal Bin Mohamad', '940221036157', 'UiTM Kampus Kota Bharu', '+60176209557', 'haikal@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -120,6 +116,45 @@ INSERT INTO `application_status` (`id`, `status`, `name`, `color`) VALUES
 (9, 80, 'Second pitch', 'warning'),
 (10, 90, 'Final pitch', 'warning'),
 (11, 100, 'Complete', 'danger');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `app_judge`
+--
+
+CREATE TABLE `app_judge` (
+  `id` int(11) NOT NULL,
+  `application_id` int(11) NOT NULL,
+  `judge_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `app_judge`
+--
+
+INSERT INTO `app_judge` (`id`, `application_id`, `judge_id`) VALUES
+(10, 10, 17);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `app_reviewer`
+--
+
+CREATE TABLE `app_reviewer` (
+  `id` int(11) NOT NULL,
+  `application_id` int(11) NOT NULL,
+  `reviewer_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `app_reviewer`
+--
+
+INSERT INTO `app_reviewer` (`id`, `application_id`, `reviewer_id`) VALUES
+(5, 10, 15),
+(6, 10, 16);
 
 -- --------------------------------------------------------
 
@@ -440,8 +475,11 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`user_id`, `name`, `public_email`, `gravatar_email`, `gravatar_id`, `location`, `website`, `bio`, `timezone`) VALUES
-(3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -479,7 +517,11 @@ CREATE TABLE `token` (
 --
 
 INSERT INTO `token` (`user_id`, `code`, `created_at`, `type`) VALUES
-(4, 'yOwLbldyfspFNS4JP1C6ntpcGTZT5BTA', 1626228829, 0);
+(13, '0phagSS3ANBnY5Yjv19X1ouEcH_aPGkN', 1626697357, 0),
+(14, 'Zhl5twSWcux3S6JBZd7DzSuy_lPHbySH', 1626697458, 0),
+(15, 'kyvotov7ivaHUfAKGiloy3lHmggkzF2p', 1626697499, 0),
+(16, 'VEaTzpxWu5zC10GooNhgdeiRQORg0Gfd', 1626697535, 0),
+(17, 'iEncLUmunzjQVnWCvtEJKht2SghderBp', 1626697571, 0);
 
 -- --------------------------------------------------------
 
@@ -491,8 +533,12 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `fullname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `institution` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `role` tinyint(1) NOT NULL DEFAULT 1,
+  `is_admin` tinyint(1) NOT NULL,
+  `is_reviewer` tinyint(1) NOT NULL,
+  `is_judge` tinyint(1) NOT NULL,
   `password_hash` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `auth_key` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `confirmed_at` int(11) DEFAULT NULL,
@@ -511,10 +557,12 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `fullname`, `email`, `role`, `password_hash`, `auth_key`, `confirmed_at`, `unconfirmed_email`, `blocked_at`, `registration_ip`, `created_at`, `updated_at`, `flags`, `last_login_at`, `status`, `password_reset_token`) VALUES
-(1, 'superadmin', 'Super Administrator', '', 0, '$2y$10$Ky2Vd8q4cmJhs15pZhrYDefiioIMJpG4PIaMLy3Pw0LH6.mrvKSze', '', 1624467684, NULL, NULL, NULL, 1624467474, 1624467474, 0, NULL, 10, ''),
-(3, 'iqramrafien21@gmail.com', '', 'iqramrafien21@gmail.com', 1, '$2y$10$Ky2Vd8q4cmJhs15pZhrYDefiioIMJpG4PIaMLy3Pw0LH6.mrvKSze', 'PumdGONlKAzCKqXEY4CbW9YpbpXy_bf4', 1626127406, NULL, NULL, '::1', 1626127374, 1626127374, 0, 1626362009, 10, ''),
-(4, 'iqramrafien@gmail.com', '', 'iqramrafien@gmail.com', 1, '$2y$10$2J2pUPr3ATjr76ywNoojrOZqj4zan12LksIBeuqXQr77W1OPbHZqK', 'gJBv5DJKVds8BgWA13w0wbWmPufkRwNA', NULL, NULL, NULL, '::1', 1626228829, 1626228829, 0, 1626350670, 10, '');
+INSERT INTO `user` (`id`, `username`, `fullname`, `institution`, `email`, `role`, `is_admin`, `is_reviewer`, `is_judge`, `password_hash`, `auth_key`, `confirmed_at`, `unconfirmed_email`, `blocked_at`, `registration_ip`, `created_at`, `updated_at`, `flags`, `last_login_at`, `status`, `password_reset_token`) VALUES
+(13, 'mohdali@gmail.com', 'Mohd Ali Bin Abu', 'UiTM Kampus Kota Bharu', 'mohdali@gmail.com', 1, 0, 0, 0, '$2y$10$VAG.Gxgk/xrjQj1cR2aWVeZvM5FqUWH1VVaY8FZMtJ0PtEsdyhwOe', 'V2HaOMbNIf3bjnzWmhrHWivTwQSk7rzF', NULL, NULL, NULL, '::1', 1626697357, 1626697662, 0, 1626698164, 10, ''),
+(14, 'superadmin@swiss.com', 'Super Administrator', 'Admin', 'superadmin@swiss.com', 0, 0, 0, 0, '$2y$10$9TTAgzcDfo4EnrWgdWEd7.09yKZ1xZZltYxYTfl9O5TdQaWJS95Va', 't3GA2qBdPfE8Rjg3O-uUwWrcO4NSNHmS', NULL, NULL, NULL, '::1', 1626697458, 1626697692, 0, 1626698188, 10, ''),
+(15, 'hakimi@gmail.com', 'Hakimi Bin Ab Rahim', 'UMK Kampus Pengkalan Chepa', 'hakimi@gmail.com', 1, 0, 1, 0, '$2y$10$8OmWyuT.oKFVwv4Kn.kBW.1TtX0HM.Efw.ARhd74/TObn89AMfPxy', 'ZcYCsjp69Q6GmYb_3nYnddULF7cG85pc', NULL, NULL, NULL, '::1', 1626697499, 1626697753, 0, NULL, 10, ''),
+(16, 'ahmad@gmail.com', 'Ahmad Bin Ariffin', 'UMK Kampus Pengkalan Chepa', 'ahmad@gmail.com', 1, 0, 1, 0, '$2y$10$AmMYJ0bfwOOL7TM3XQxc8OXgUkRTQ.nTT9nIX7B2U5/gkr3kgrA0q', 'gC1pXp_5tUOLGzacJePqc3lRvq9L0aFk', NULL, NULL, NULL, '::1', 1626697535, 1626697759, 0, NULL, 10, ''),
+(17, 'syafiq@gmail.com', 'Syafiq Bin Mohamad', 'UMK Kampus Pengkalan Chepa', 'syafiq@gmail.com', 1, 0, 0, 1, '$2y$10$OqFFK4YVHkW.kc0zMQK.0e.C21Sl6VTqd13JuoEj2Fl0Kifkb1F7e', 'C38-dHmqq7YNLfvR7qssk_vq1lgin1bG', NULL, NULL, NULL, '::1', 1626697571, 1626697764, 0, NULL, 10, '');
 
 --
 -- Indexes for dumped tables
@@ -536,6 +584,18 @@ ALTER TABLE `application_item`
 -- Indexes for table `application_status`
 --
 ALTER TABLE `application_status`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `app_judge`
+--
+ALTER TABLE `app_judge`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `app_reviewer`
+--
+ALTER TABLE `app_reviewer`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -587,19 +647,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `application`
 --
 ALTER TABLE `application`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `application_item`
 --
 ALTER TABLE `application_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `application_status`
 --
 ALTER TABLE `application_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `app_judge`
+--
+ALTER TABLE `app_judge`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `app_reviewer`
+--
+ALTER TABLE `app_reviewer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `countries`
@@ -617,7 +689,7 @@ ALTER TABLE `social_account`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables

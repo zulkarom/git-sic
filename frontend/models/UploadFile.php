@@ -249,7 +249,49 @@ class UploadFile
             if (file_exists($file)) {
             $ext = pathinfo($model->payment_file, PATHINFO_EXTENSION);
 
-            $filename =  'application.' . $ext ;
+            $filename =  'payment.' . $ext ;
+            
+            self::sendFile($file, $filename, $ext);
+            
+            
+            }else{
+                echo 'file not exist!';
+            }
+        }else{
+            echo 'file not exist!';
+        }
+		
+	}
+
+	public static function downloadJudgeFile($model){
+		
+		$file = Yii::getAlias('@uploaded/application/' . $model->judge_file);
+        if($model->judge_file){
+            if (file_exists($file)) {
+            $ext = pathinfo($model->judge_file, PATHINFO_EXTENSION);
+
+            $filename =  'fileJudge.' . $ext ;
+            
+            self::sendFile($file, $filename, $ext);
+            
+            
+            }else{
+                echo 'file not exist!';
+            }
+        }else{
+            echo 'file not exist!';
+        }
+		
+	}
+
+	public static function downloadReviewFile($model){
+		
+		$file = Yii::getAlias('@uploaded/application/' . $model->review_file);
+        if($model->review_file){
+            if (file_exists($file)) {
+            $ext = pathinfo($model->review_file, PATHINFO_EXTENSION);
+
+            $filename =  'fileReview.' . $ext ;
             
             self::sendFile($file, $filename, $ext);
             
