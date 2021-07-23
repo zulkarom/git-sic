@@ -180,7 +180,7 @@ class ApplicationController extends Controller
             $model->user_id = Yii::$app->user->identity->id;
             
             $result = $this->processApplication($model, $items);
-            print_r($result[0]);die();
+           // print_r($result[0]);die();
             if($result[0]){
                 if($model->status == 10){
                     Yii::$app->session->addFlash('success', "Thank you, your application has been successfully submitted");
@@ -215,6 +215,7 @@ class ApplicationController extends Controller
       //echo $valid;die();
 
         if ($valid) {
+            echo 'valid?';die();
                 $transaction = \Yii::$app->db->beginTransaction();
                 try {
                     if ($flag = $model->save(false)){
