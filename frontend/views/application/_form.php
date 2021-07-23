@@ -14,7 +14,11 @@ use kartik\widgets\FileInput;
 /* @var $model backend\models\Application */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<div class="row form-group">
+      <div class="col-md-8"><h3><?= Html::encode($this->title) ?></h3></div>
 
+      
+    </div>
 <div class="application-form">
 
 
@@ -232,7 +236,7 @@ use kartik\widgets\FileInput;
     <div class="row">
         <div class="col-md-12">                    
             
-        <?= $form->field($model, 'aggrement_disclaimer')->checkbox(['value' => '1', 'label'=> '<b>Agree</b>']); ?>
+        <?= $form->field($model, 'aggrement_disclaimer')->checkbox(['value' => '1', 'label'=> '<b>I Agree</b>']); ?>
         </div>
     </div>
 

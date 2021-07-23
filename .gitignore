@@ -42,3 +42,5 @@ website/web/
 frontend/web/
 backend/config/
 website/config/
+
+/uploaded

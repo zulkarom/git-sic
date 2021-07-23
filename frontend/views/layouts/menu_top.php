@@ -15,19 +15,37 @@ if (\Yii::$app->user->isGuest) {
         'Competition Type' => ['/site/index', '#' => 'type-competition'],
         'Awards' => ['/site/index', '#' => 'awards'],
         'Important Dates' => ['/site/index', '#' => 'important-dates'],
-        'Login' => ['/user-form/register'],
+        'Login' => ['/site/login'],
         'Contact Us' => ['/site/index', '#' => 'contact-us'],
     ];
 }else{
-    $menus = [
-        
-        'Home' => ['/site/index'],
-        'My Application' => ['/application/index'],
-        'My Review' => ['/application/review'],
-        'My Judge' => ['/judge-application/index'],
-        'Manage' => ['/application/admin-application'],
-        '<i class="fas fa-sign-out-alt"></i> Log Out' => ['/site/logout'],
-    ];
+    
+    
+    
+    
+    $items['Home'] =  ['/site/index'];
+    $items['My Application'] =  ['/application/index'];
+    
+    if(Yii::$app->user->identity->is_reviewer == 1){
+        $items['My Review'] =  ['/reviewer-application/index'];
+    }
+    
+    
+    if(Yii::$app->user->identity->is_judge == 1){
+        $items['My Judge'] =  ['/judge-application/index'];
+    }
+    
+    if(Yii::$app->user->identity->is_admin == 1){
+        $items['Manage'] =  ['/application/admin-application'];
+    }
+    $items['<i class="fas fa-sign-out-alt"></i> Log Out'] =  ['/site/logout'];
+    
+    
+    
+    
+    $menus = $items;
+    
+    
 }
 
 

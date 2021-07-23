@@ -166,6 +166,21 @@ $col1 = 4;
      
            
             </div> 
+            
+            
+              <?php if($model->payment_at): ?>
+                <div class="row form-group">
+                    <div class="col-10" style="text-align: justify">
+                       <strong><b>Payment File: </b></strong> <?= Html::a($model->payment_file, ['payment-file', 'id' => $model->id], [
+                               'target' => '_blank'])?>
+                    </div>     
+                </div> 
+                <div class="row form-group">
+                    <div class="col-10" style="text-align: justify">
+                       <strong><b>Payment Note: </b></strong> <?= nl2br(Html::encode($model->payment_note))?>
+                    </div>     
+                </div> 
+            <?php endif; ?>
     
     
      <br />

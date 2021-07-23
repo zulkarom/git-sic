@@ -76,7 +76,7 @@ $col1 = 4;
 
         <div class="row form-group">
             <div class="col-10" style="text-align: justify">
-               <strong><b>Project /Idea Descriptione: </b></strong> <?= nl2br(Html::encode($model->application->project_description))?>
+               <strong><b>Project /Idea Description: </b></strong> <?= nl2br(Html::encode($model->application->project_description))?>
             </div>
         </div> 
         <?php if($model->judge_at): ?>

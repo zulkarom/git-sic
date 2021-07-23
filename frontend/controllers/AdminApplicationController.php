@@ -11,6 +11,7 @@ use frontend\models\ApplicationJudge;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
+use yii\db\Expression;
 
 /**
  * AdminApplicationController implements the CRUD actions for Application model.

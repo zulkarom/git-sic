@@ -25,79 +25,48 @@ class UserFormController extends \yii\web\Controller
 	// 	];
 	// }
 	
-	public function actionRegister(){
+	public function actionJoinUs(){
 
         $this->layout = "//main-login";
 
         if (!\Yii::$app->user->isGuest) {
             //$this->goHome();
-            
-            if(Yii::$app->user->identity->is_admin == 1){
-            	$this->redirect(['/admin-application/index']);
-            }else if(Yii::$app->user->identity->is_reviewer == 1){
-            	$this->redirect(['/reviewer-application/index']);
-            }else if(Yii::$app->user->identity->is_judge == 1){
-            	$this->redirect(['/judge-application/index']);
-            }else{
-            	$this->redirect(['/application/index']);
-            }
+            return $this->user_redirect();
         }
         
         $model = new NewUserForm();
         // $model->scenario = 'register';
-
-        if ($model->load(Yii::$app->request->post())){
-        	// echo "<pre>";
-        	// print_r(Yii::$app->request->post());
-        	// die();
-
-        	$action = Yii::$app->request->post('submit');
-
-        	$checkUser = User::findOne(['username' => $model->username]);
-
-        	if($action == 2){
-        		
-        		if($checkUser){
-        			Yii::$app->session->addFlash('danger', "Akaun anda telah berdaftar dengan sistem ini.");
-        		}else{
-        				if($model->validate()){
-        					return $this->redirect(array('/user/register', 'param1'=> $model->username, 'param2'=> $model->password, 'param3'=> $model->password_repeat, 'param4'=> $model->fullname, 'param5'=> $model->institution));
-        				}       			
-        		}
-        	}
+        
+        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+            return $this->refresh();
         }
+
 
         $modelLogin = new SignInForm();
         // $modelLogin->scenario = 'login';
 
-        if ($modelLogin->load(Yii::$app->request->post())){
-        	// echo "<pre>";
-        	// print_r(Yii::$app->request->post());
-        	// die();
-
-        	$action = Yii::$app->request->post('submit');
-
-        	$checkUser = User::findOne(['username' => $modelLogin->username]);
-
-        	if($action == 1){
-        		if($checkUser){
-        			
-        			// return $this->redirect(array('/user/login', 'param1'=> $modelLogin->username2, 'param2'=> $modelLogin->password2));
-        			if($modelLogin->validate()){
-        				return $this->redirect(array('/user/login', 'param1'=> $modelLogin->username, 'param2'=> $modelLogin->password));
-        			}
-        			
-        		}else{
-        			Yii::$app->session->addFlash('danger', "Akaun anda belum berdaftar dengan sistem ini.");
-        		}
-
-        	}
+        if ($modelLogin->load(Yii::$app->request->post()) && $modelLogin->login()){
+            return $this->user_redirect();
         }
         
-        return $this->render('/user/registration/index', [
+        
+        return $this->render('join-us', [
             'model' => $model,
             'modelLogin' => $modelLogin,
         ]);
+    }
+    
+    private function user_redirect(){
+        if(Yii::$app->user->identity->is_admin == 1){
+            return $this->redirect(['/admin-application/index']);
+        }else if(Yii::$app->user->identity->is_judge == 1){
+            return $this->redirect(['/reviewer-application/index']);
+        }else if(Yii::$app->user->identity->is_reviewer == 1){
+            return $this->redirect(['/judge-application/index']);
+        }else{
+            return $this->redirect(['/application/index']);
+        }
     }
 	
 

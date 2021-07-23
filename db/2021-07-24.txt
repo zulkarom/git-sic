@@ -1,0 +1,4 @@
+
+ALTER TABLE `user` ADD `verification_token` VARCHAR(255) NULL DEFAULT NULL AFTER `password_reset_token`;
+UPDATE `application_status` SET `name` = 'Payment' WHERE `application_status`.`id` = 6;
+ALTER TABLE `app_judge` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT, CHANGE `judge_note` `judge_note` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL, CHANGE `judge_file` `judge_file` VARCHAR(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL, CHANGE `created_at` `created_at` DATETIME NULL DEFAULT NULL, CHANGE `judge_at` `judge_at` DATETIME NULL DEFAULT NULL;

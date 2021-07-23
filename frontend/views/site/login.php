@@ -1,131 +1,102 @@
 <?php
+
 use yii\helpers\Html;
-// use yii\bootstrap\ActiveForm;
-use kartik\widgets\ActiveForm;
+use yii\widgets\ActiveForm;
 
-$this->title = 'Sign In';
 
-$dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/adminpress');
-$fieldOptions1 = [
-    'options' => ['class' => 'input-group mb-3'],
-    'inputTemplate' => "{input}
-            <div class='input-group-text'>
-              <span class='fa fa-user'></span>
-            </div>
-          </div>"
-];
+$dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAsset');
 
-$fieldOptions2 = [
-    'options' => ['class' => 'input-group mb-3'],
-    'inputTemplate' => "{input}<div class='input-group-append'>
-            <div class='input-group-text'>
-              <span class='fa fa-lock'></span>
-            </div>
-          </div>"
-];
+$this->title = 'Sign Up/Sign In';
+$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 
-<div class="login-box">
-    <div class="login-logo">
-      <br/><br/>
-    <img src="<?= $dirAssests?>/images/logo-invoice.png" alt="AlMukhlisin">
-        
-  </div>
-    <!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body">
-        <p class="login-box-msg">frontend LOGIN</p>
 
-        <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
-		
-        <?= $form
-            ->field($model, 'username', ['addon' => ['append' => ['content'=>'<i class="fa fa-user"></i>']]])
-            ->label(false)
-            ->textInput(['placeholder' => $model->getAttributeLabel('username')]) ?>
-
-        <?= $form
-            ->field($model, 'password', ['addon' => ['append' => ['content'=>'<i class="fa fa-lock"></i>']]])
-            ->label(false)
-            ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
-
-        <div class="row">
-            <div class="col-8">
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
-            </div>
-            <!-- /.col -->
-            <div class="col-4">
-                <?= Html::submitButton('Sign in', ['class' => 'btn btn-info btn-block', 'name' => 'login-button']) ?>
-            </div>
-            <!-- /.col -->
-        </div>
-
-
-        <?php ActiveForm::end(); ?>
-        <!-- /.social-auth-links -->
-        <?= Html::a('I forgot my password',['/user/recovery/request'],['class' => 'field-label text-muted mb10', 'tabindex' => '5']) ?>
-        <a href="#">I forgot my password</a><br>
-
-
-    </div></div>
-    <!-- /.login-box-body -->
-</div><!-- /.login-box -->
-
-
-
-
-<!--  <div class="login-box">
-  <div class="login-logo">
-    <img src="<?=$dirAssests?>/dist/img/logo-login.png" alt="AlMukhlisin">
-  </div>
-
-  <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
-
-      <form action="../../index3.html" method="post">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Username">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fa fa-user"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fa fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
-          </div>
+<div class="wrapper row3">
+  <main class="hoc container clear" style="padding-top:40px;"> 
   
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+  <h4 style="padding-bottom:40px;text-align:center">LOGIN OR REGISTER TO SUBMIT OR VIEW YOUR APPLICATION.</h4>
+  
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+
+ <?php $form = ActiveForm::begin(); ?>
+    <div class="sidebar one_half first"> 
+        <h3>LOGIN</h3>
+        <br />
+        <div class="row">
+        <div class="col-md-10">
+        
+            <?= $form->field($modelLogin, 'username')->textInput(['class' => 'form-control form-control-lg'])
+            ?>
+        
+          <?= $form->field($modelLogin, 'password')->passwordInput(['class' => 'form-control form-control-lg'])
+            ?>
+
+          <div class="form-group">
+            <?= Html::submitButton('<i class="fas fa-sign-in-alt"></i> Log in', ['value' => '1', 'class' => 'btn btn-outline-danger']) ?>
           </div>
-   
+
+          <p>
+                <?= Html::a('Forget Password?',
+                           ['/site/request-password-reset'],['class' => 'field-label text-muted mb10',]
+                                ) ?>
+            </p>
+        
+        
         </div>
-      </form>
-
-
-
-
-      <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
-      </p>
-      <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
-      </p>
+        <div></div>
+        </div>
+        
     </div>
 
-  </div>
-</div> -->
+<?php ActiveForm::end(); ?>
+
+
+ <?php $form = ActiveForm::begin(); ?>
+    <div class="content one_half"> 
+
+      <h3>REGISTER</h3>
+       <br />
+      
+      <div class="row">
+        <div class="col-md-10">
+        
+       
+
+            <?= $form->field($model, 'fullname')->textInput(['class' => 'form-control form-control-lg'])
+            ?>
+
+   <?= $form->field($model, 'email')->textInput(['class' => 'form-control form-control-lg'])?>
+            
+            
+            <?= $form->field($model, 'institution')->textInput(['class' => 'form-control form-control-lg'])
+            ?>
+        
+          <?= $form->field($model, 'password')->passwordInput(['class' => 'form-control form-control-lg'])
+            ?>
+            <?= $form->field($model, 'password_repeat')->passwordInput(['class' => 'form-control form-control-lg'])
+            ?>
+
+          <div class="form-group">
+            <?= Html::submitButton('<i class="fas fa-sign-in-alt"></i> Register', ['value' => '2', 'class' => 'btn btn-outline-danger']) ?>
+          </div>
+        
+        
+        </div>
+        <div></div>
+        </div>
+        
+      
+      
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <!-- ################################################################################################ -->
+    </div>
+    <?php ActiveForm::end(); ?>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+
+

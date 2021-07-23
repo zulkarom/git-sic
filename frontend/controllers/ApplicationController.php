@@ -68,20 +68,21 @@ class ApplicationController extends Controller
     
     public function actionPayment()
     {
-       /*  $app = Application::find()
+        $app = Application::find()
         ->where(['user_id' => Yii::$app->user->identity->id])->all();
         if($app){
             if( count($app) == 1){
                 $a = $app[0];
-                if($a->payment_at){
-                    return $this->redirect(['payment-view', 'id' => $a-> id]);
-                }else{
-                    return $this->redirect(['payment-create', 'id' => $a-> id]);
-                }
                 
+                    if($a->payment_at){
+                        return $this->redirect(['payment-view', 'id' => $a-> id]);
+                    }else{
+                        return $this->redirect(['payment-create', 'id' => $a-> id]);
+                    }
+
             }
             
-        } */
+        }
         
         $searchModel = new ApplicationSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -115,9 +116,23 @@ class ApplicationController extends Controller
         ]);
     }
     
+    public function actionPaymentFree($id)
+    {
+        return $this->render('payment-free', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+    
     public function actionPaymentCreate($id)
     {
         $model = $this->findModel($id);
+        
+        if($model->category != 1){
+            return $this->redirect(['payment-free', 'id' => $model-> id]);
+        }
+
+        
+        
         $model->scenario = 'payment';
 
         if ($model->load(Yii::$app->request->post())) {
@@ -148,6 +163,7 @@ class ApplicationController extends Controller
     {
 
         $model = new Application();
+        $model->scenario = 'apply';
         $items = [new ApplicationItem];
 
         // if ($model->load(Yii::$app->request->post()) && $model->save()) {

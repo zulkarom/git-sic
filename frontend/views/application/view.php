@@ -173,19 +173,7 @@ $col1 = 4;
            
             </div> 
 
-            <?php if($model->payment_file): ?>
-                <div class="row form-group">
-                    <div class="col-10" style="text-align: justify">
-                       <strong><b>Payment File: </b></strong> <?= Html::a($model->payment_file, ['payment-file', 'id' => $model->id], [
-                               'target' => '_blank'])?>
-                    </div>     
-                </div> 
-                <div class="row form-group">
-                    <div class="col-10" style="text-align: justify">
-                       <strong><b>Payment Note: </b></strong> <?= nl2br(Html::encode($model->payment_note))?>
-                    </div>     
-                </div> 
-            <?php endif; ?>
+
 
     
     
@@ -214,7 +202,7 @@ $col1 = 4;
                 ]) ?>
                 
                 
-       <?php } else if ($model->status == 10 && $model->category == 1){
+       <?php } else if (is_null($model->payment_at) && $model->category == 1){
            echo Html::a('Make Payment', ['payment', 'id' => $model->id], ['class' => 'btn btn-primary']);
        }
        

@@ -23,6 +23,12 @@ $col1 = 4;
     
  <div class="card">
         <div class="card-body">
+        
+        <div class="row form-group">
+            <div class="col-10" style="text-align: justify">
+               <strong><b>Project / Idea Name: </b></strong> <?= $model->project_name?>
+            </div>
+        </div> 
 
             <div class="row">
                 <div class="col-<?php echo $col1?>">
@@ -45,7 +51,7 @@ $col1 = 4;
             <?php if($model->payment_file): ?>
                 <div class="row">
                     <div class="col-10" style="text-align: justify">
-                       <strong><b>Payment File: </b></strong> <?= Html::a($model->payment_file, ['payment-file', 'id' => $model->id], [
+                       <strong><b>Payment File: </b></strong> <?= Html::a(basename($model->payment_file), ['payment-file', 'id' => $model->id], [
                                'target' => '_blank'])?>
                     </div>     
                 </div> 

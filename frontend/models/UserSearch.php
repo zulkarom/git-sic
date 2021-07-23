@@ -17,7 +17,7 @@ class UserSearch extends User
     public function rules()
     {
         return [
-            [['id', 'role', 'is_admin', 'is_reviewer', 'is_judge', 'confirmed_at', 'blocked_at', 'created_at', 'updated_at', 'flags', 'last_login_at', 'status'], 'integer'],
+            [['id',  'is_admin', 'is_reviewer', 'is_judge', 'confirmed_at', 'blocked_at', 'created_at', 'updated_at', 'flags', 'last_login_at', 'status'], 'integer'],
             [['username', 'fullname', 'institution', 'email', 'password_hash', 'auth_key', 'unconfirmed_email', 'registration_ip', 'password_reset_token'], 'safe'],
         ];
     }
@@ -59,7 +59,6 @@ class UserSearch extends User
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'role' => $this->role,
             'is_admin' => $this->is_admin,
             'is_reviewer' => $this->is_reviewer,
             'is_judge' => $this->is_judge,

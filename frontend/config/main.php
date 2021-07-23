@@ -15,22 +15,6 @@ return [
     'sourceLanguage' => 'en-US',
     'controllerNamespace' => 'frontend\controllers',
     'modules' => [
-        'user' => [
-            'class' => 'dektrium\user\Module',
-            'controllerMap' => [
-                'registration' => 'frontend\controllers\user\RegistrationController',
-                'security' => 'frontend\controllers\user\SecurityController',
-                'recovery' => 'frontend\controllers\user\RecoveryController'
-            ],
-            'modelMap' => [
-                'RegistrationForm' => 'frontend\models\user\RegistrationForm',
-                'User' => 'frontend\models\user\User',
-                'LoginForm' => 'frontend\models\user\LoginForm',
-            ],
-            'enableConfirmation' => true,
-            'enableUnconfirmedLogin' => false,
-            'enableFlashMessages' => false,
-        ],
         'gridview' => [
             'class' => 'kartik\grid\Module',
             // other module settings
@@ -53,19 +37,12 @@ return [
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
-		
-		'view' => [
-			'theme' => [
-				'pathMap' => [
-					'@dektrium/user/views' => '@frontend/views/user'
-				],
-			],
-		],
-        // 'user' => [
-        //     'identityClass' => 'common\models\User',
-        //     'enableAutoLogin' => true,
-        //     'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
-        // ], 
+
+         'user' => [
+             'identityClass' => 'common\models\User',
+             'enableAutoLogin' => true,
+             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
+         ], 
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend',

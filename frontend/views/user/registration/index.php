@@ -1,9 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use kartik\widgets\ActiveForm;
-use yii\helpers\Url;
-use common\models\Common;
+use yii\widgets\ActiveForm;
 
 
 $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAsset');
@@ -22,14 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <!-- main body -->
     <!-- ################################################################################################ -->
 
- <?php $form = ActiveForm::begin([
-                    'id' => 'form-signup',
-                    'enableAjaxValidation' => true,
-                    'enableClientValidation' => false,
-                    'validateOnBlur' => false,
-                    'validateOnType' => false,
-                    'validateOnChange' => false,
-                ]); ?>
+ <?php $form = ActiveForm::begin(); ?>
     <div class="sidebar one_half first"> 
         <h3>LOGIN</h3>
         <br />
@@ -43,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
 
           <div class="form-group">
-            <?= Html::submitButton('<i class="fas fa-sign-in-alt"></i> Log in', ['value' => '1', 'class' => 'btn btn-outline-danger', 'name' => 'submit']) ?>
+            <?= Html::submitButton('<i class="fas fa-sign-in-alt"></i> Log in', ['value' => '1', 'class' => 'btn btn-outline-danger']) ?>
           </div>
 
           <p class="text-center">
@@ -62,14 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php ActiveForm::end(); ?>
 
 
- <?php $form = ActiveForm::begin([
-                    'id' => 'form-signup',
-                    'enableAjaxValidation' => true,
-                    'enableClientValidation' => false,
-                    'validateOnBlur' => false,
-                    'validateOnType' => false,
-                    'validateOnChange' => false,
-                ]); ?>
+ <?php $form = ActiveForm::begin(); ?>
     <div class="content one_half"> 
 
       <h3>REGISTER</h3>
@@ -95,7 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
 
           <div class="form-group">
-            <?= Html::submitButton('<i class="fas fa-sign-in-alt"></i> Register', ['value' => '2', 'class' => 'btn btn-outline-danger', 'name' => 'submit']) ?>
+            <?= Html::submitButton('<i class="fas fa-sign-in-alt"></i> Register', ['value' => '2', 'class' => 'btn btn-outline-danger']) ?>
           </div>
         
         

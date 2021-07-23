@@ -24,6 +24,13 @@ $col1 = 4;
    <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?> 
  <div class="card">
         <div class="card-body">
+        <div class="row form-group">
+            <div class="col-10" style="text-align: justify">
+               <strong><b>Project / Idea Name: </b></strong> <?= $model->project_name?>
+            </div>
+        </div> 
+        
+        
         <div class="row">
             <div class="col-8">
                 <?= $form->field($model, 'payment_file')->fileInput() ?>

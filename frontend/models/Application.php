@@ -52,9 +52,11 @@ class Application extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category', 'applicant_name', 'nationality', 'id_number', 'gender', 'age', 'phoneNo', 'email', 'instiBusName', 'type', 'address', 'project_name', 'project_description', 'medium_web', 'medium_email', 'medium_others', 'aggrement_disclaimer'], 'required'],
+            [['category', 'applicant_name', 'nationality', 'id_number', 'gender', 'age', 'phoneNo', 'email', 'instiBusName', 'type', 'address', 'project_name', 'project_description', 'medium_web', 'medium_email', 'medium_others', 'aggrement_disclaimer'], 'required', 'on' => 'apply'],
             
             [['payment_at', 'payment_note', 'payment_file'], 'required', 'on' => 'payment'],
+            
+            ['aggrement_disclaimer', 'validateAgreement', 'on' => 'apply'],
 
             [['logo_file'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,gif,pdf', 'maxSize' => 2000000],
             
@@ -103,6 +105,14 @@ class Application extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
         ];
     }
+    
+    public function validateAgreement($attribute, $params, $validator)
+    {
+        if ($this->$attribute != 1) {
+            $this->addError($attribute, 'You need to agree with this terms');
+        }
+    }
+    
 
     public function getCategoryText(){
         $arr = Common::category();
