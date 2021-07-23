@@ -215,11 +215,11 @@ class ApplicationController extends Controller
       //echo $valid;die();
 
         if ($valid) {
-           
+            echo 'in valid' ;die();
                 $transaction = \Yii::$app->db->beginTransaction();
                 try {
                     if ($flag = $model->save(false)){
-                        echo 'save model' ;die();
+                        
                             if (! empty($deletedIDs)) {
                                 ApplicationItem::deleteAll(['id' => $deletedIDs]);
                             }
