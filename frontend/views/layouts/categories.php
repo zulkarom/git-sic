@@ -70,33 +70,7 @@ $open = [
 	
 	
   
-      
-      
-      
-      <article class="one_third first">
-      
-       
-              <div class="excerpt">
-              
-              <img src="<?= $dirAssests?>/images/startup.png" />
-       
-       
-         <h4 class="heading-category">SIC STARTUP</h4>
-         
-          <?php 
-          
-          foreach($startup as $k => $o){
-              echo '<p><strong>'. $k .'</strong><br />'  . $o . '</p>';
-          }
-          
-          
-          ?>
-          
-
-         
-        </div>
-      </article>
-          <article class="one_third">
+           <article class="one_third first">
       
 
      
@@ -122,6 +96,32 @@ $open = [
          
         </div>
       </article>
+      
+      
+      <article class="one_third">
+      
+       
+              <div class="excerpt">
+              
+              <img src="<?= $dirAssests?>/images/startup.png" />
+       
+       
+         <h4 class="heading-category">SIC STARTUP</h4>
+         
+          <?php 
+          
+          foreach($startup as $k => $o){
+              echo '<p><strong>'. $k .'</strong><br />'  . $o . '</p>';
+          }
+          
+          
+          ?>
+          
+
+         
+        </div>
+      </article>
+     
       <article class="one_third">
       
        

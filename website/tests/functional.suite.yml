@@ -1,6 +1,0 @@
-suite_namespace: website\tests\functional
-actor: FunctionalTester
-modules:
-    enabled:
-        - Filesystem
-        - Yii2
