@@ -226,9 +226,11 @@ class ApplicationController extends Controller
                                 foreach ($items as $item) {
                                     $item->application_id = $model->id;
                                     if (! ($flag = $item->save(false))) {
-                                        echo 'cannot save item?';die();
+                                        
                                         $transaction->rollBack();
                                         break;
+                                    }else{
+                                        echo 'cannot save item?' . $model->id ;die();
                                     }
                                 }
 
