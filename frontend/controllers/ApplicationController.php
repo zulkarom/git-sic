@@ -219,7 +219,7 @@ class ApplicationController extends Controller
                 $transaction = \Yii::$app->db->beginTransaction();
                 try {
                     if ($flag = $model->save(false)){
-                        
+                        echo 'save model' ;die();
                             if (! empty($deletedIDs)) {
                                 ApplicationItem::deleteAll(['id' => $deletedIDs]);
                             }
@@ -236,7 +236,7 @@ class ApplicationController extends Controller
 
                             
                     }else{
-                        echo 'cannot save model?' ;die();
+                        
                         $model->flashError();
                     }
                     if ($flag) {
