@@ -215,7 +215,7 @@ class ApplicationController extends Controller
       //echo $valid;die();
 
         if ($valid) {
-            echo 'valid?';die();
+           
                 $transaction = \Yii::$app->db->beginTransaction();
                 try {
                     if ($flag = $model->save(false)){
@@ -226,6 +226,7 @@ class ApplicationController extends Controller
                                 foreach ($items as $item) {
                                     $item->application_id = $model->id;
                                     if (! ($flag = $item->save(false))) {
+                                        echo 'cannot save item?';die();
                                         $transaction->rollBack();
                                         break;
                                     }
