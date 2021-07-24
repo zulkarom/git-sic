@@ -40,7 +40,7 @@ class AdminApplicationSearch extends Application
      */
     public function search($params)
     {
-        $query = Application::find();
+        $query = Application::find()->where(['>', 'status', 0]);
 
         // add conditions that should always apply here
 

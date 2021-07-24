@@ -13,7 +13,13 @@ use kartik\widgets\FileInput;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Application */
 /* @var $form yii\widgets\ActiveForm */
+
+$this->title = 'Update Application';
 ?>
+
+ <div class="row form-group">
+        <div class="col-md-6"><h3><?= Html::encode($this->title) ?></h3></div>
+        </div>
 
 <div class="application-form">
 

@@ -364,26 +364,32 @@ input:focus, textarea:focus, *:required:focus{border-color:#95103B;}
   
 .label-primary {
     background-color: #007bff;
+        color: #ffffff;
 }
 .label-success {
     background-color: #28a745;
+        color: #ffffff;
 }
 .label-info {
     background-color: #17a2b8;
+        color: #ffffff;
 }
 .label-warning {
     background-color: #ffc107;
+    color:#212529;
 }
 .label-secondary {
     background-color: #6c757d;
+        color: #ffffff;
+    
 }
 .label-danger {
     background-color: #dc3545;
+        color: #ffffff;
 }
 .label {
     padding: 3px 10px;
     line-height: 13px;
-    color: #ffffff;
     font-weight: 400;
     border-radius: 4px;
     font-size: 75%;

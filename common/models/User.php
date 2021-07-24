@@ -74,6 +74,26 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
     }
+    
+    public function getAdminLabel(){
+        return $this->showLabelYesNo($this->is_admin);
+    }
+    
+    public function getReviewerLabel(){
+        return $this->showLabelYesNo($this->is_reviewer);
+    }
+    
+    public function getJudgeLabel(){
+        return $this->showLabelYesNo($this->is_judge);
+    }
+    
+    public function showLabelYesNo($value){
+        if($value == 1){
+            return '<span class="label label-success">YES</span>';
+        }else{
+            return '<span class="label label-danger">NO</span>';
+        }
+    }
 
     /**
      * {@inheritdoc}

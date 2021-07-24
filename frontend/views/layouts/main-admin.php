@@ -75,8 +75,7 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
     <!-- ################################################################################################ -->
     <div class="content three_quarter"> 
       <!-- ################################################################################################ -->
-    <div class="row form-group">
-        <div class="col-md-6"><h3><?= Html::encode($this->title) ?></h3></div>
+
 
         <?= Alert::widget() ?>
         <?= $content ?>

@@ -3,14 +3,18 @@
 namespace frontend\controllers;
 
 use Yii;
+use common\models\Model;
 use frontend\models\Application;
 use frontend\models\ApplicationItem;
 use frontend\models\AdminApplicationSearch;
 use frontend\models\ApplicationReviewer;
 use frontend\models\ApplicationJudge;
+use frontend\models\UploadFile;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
+use yii\db\Exception;
 use yii\db\Expression;
 
 /**
@@ -67,6 +71,36 @@ class AdminApplicationController extends Controller
             'model' => $this->findModel($id),
             'items' => $items,
         ]);
+    }
+    
+    public function actionViewReview($id)
+    {
+        $review = $this->findReview($id);
+        
+        return $this->render('view-review', [
+            'model' => $review,
+        ]);
+    }
+    
+    public function actionViewJudge($id)
+    {
+        $review = $this->findJudge($id);
+        
+        return $this->render('view-judge', [
+            'model' => $review,
+        ]);
+    }
+    
+    public function actionJudgeFile($id){
+        $model = $this->findJudge($id);
+        
+        UploadFile::downloadJudgeFile($model);
+    }
+    
+    public function actionReviewFile($id){
+        $model = $this->findReview($id);
+        
+        UploadFile::downloadReviewFile($model);
     }
 
     public function actionManage($id)
@@ -221,11 +255,80 @@ class AdminApplicationController extends Controller
     {
         $model = $this->findModel($id);
         $items = $model->applicationItems;
+        
+        if ($model->load(Yii::$app->request->post())) {
+           
+            $model->updated_at = new Expression('NOW()');
+            
+            $result = $this->processApplication($model, $items);
+            // print_r($result[0]);die();
+            if($result[0]){
+                Yii::$app->session->addFlash('success', "The application has been successfully updated");
+                
+                return $this->redirect(['view', 'id' => $model->id]);
+            }else{
+                $items = $result[1];
+            }
+            
+        }
 
         return $this->render('update', [
             'model' => $model,
             'items' => (empty($items)) ? [new ApplicationItem] : $items
         ]);
+    }
+    
+    private function processApplication($model, $items){
+        $oldIDs = ArrayHelper::map($items, 'id', 'id');
+        $items = Model::createMultiple(ApplicationItem::classname(), $items);
+        Model::loadMultiple($items, Yii::$app->request->post());
+        $deletedIDs = array_diff($oldIDs, array_filter(ArrayHelper::map($items, 'id', 'id')));
+        
+        // echo "<pre>";
+        //  print_r($deletedIDs);
+        // die();
+        // validate all models
+        $valid = $model->validate();
+        $valid = Model::validateMultiple($items) && $valid;
+        //echo $valid;die();
+        
+        if ($valid) {
+            // echo 'in valid' ;
+            $transaction = \Yii::$app->db->beginTransaction();
+            try {
+                if ($flag = $model->save(false)){
+                    //echo 'save model ok' ; die();
+                    if (! empty($deletedIDs)) {
+                        ApplicationItem::deleteAll(['id' => $deletedIDs]);
+                    }
+                    foreach ($items as $item) {
+                        $item->application_id = $model->id;
+                        if (! ($flag = $item->save(false))) {
+                            
+                            $transaction->rollBack();
+                            break;
+                        }else{
+                            
+                        }
+                    }
+                    
+                    
+                }else{
+                    //echo 'save model ko' ; die();
+                    $model->flashError();
+                }
+                if ($flag) {
+                    $transaction->commit();
+                    return [true];
+                    
+                }
+            } catch (Exception $e) {
+                echo $e->getMessage();
+                $transaction->rollBack();
+            }
+        }
+        
+        return [false, $items];
     }
 
     /**
@@ -255,6 +358,24 @@ class AdminApplicationController extends Controller
             return $model;
         }
 
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    
+    protected function findReview($id)
+    {
+        if (($model = ApplicationReviewer::findOne($id)) !== null) {
+            return $model;
+        }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    
+    protected function findJudge($id)
+    {
+        if (($model = ApplicationJudge::findOne($id)) !== null) {
+            return $model;
+        }
+        
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

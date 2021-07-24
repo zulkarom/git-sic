@@ -7,10 +7,12 @@ use yii\grid\GridView;
 /* @var $searchModel frontend\models\JudgeApplicationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Applications';
+$this->title = 'Judge Applications';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
+ <div class="row form-group">
+        <div class="col-md-6"><h3><?= Html::encode($this->title) ?></h3></div>
 </div>
 <div class="application-index">
 

@@ -16,6 +16,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Applications', 'url' => ['index']]
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
+ <div class="row form-group">
+        <div class="col-md-6"><h3><?= Html::encode($this->title) ?></h3></div>
 </div>
 <h4><?=$model->categoryText?></h4><br/>
 

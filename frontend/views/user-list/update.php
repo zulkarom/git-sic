@@ -12,6 +12,8 @@ $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' 
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 
+ <div class="row form-group">
+        <div class="col-md-6"><h3><?= Html::encode($this->title) ?></h3></div>
 </div>
 <div class="box">
 <div class="box-header"></div>
@@ -23,7 +25,6 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true])->label('Username') ?>
     
     <?= $form->field($model, 'fullname')->textInput(['maxlength' => true]) ?>
 

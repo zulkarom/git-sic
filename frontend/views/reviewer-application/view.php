@@ -7,12 +7,14 @@ use kartik\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Application */
 
-$this->title = 'Application';
+$this->title = 'Review Page';
 $this->params['breadcrumbs'][] = ['label' => 'Applications', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 $col1 = 4;
 ?>
+ <div class="row form-group">
+        <div class="col-md-6"><h3><?= Html::encode($this->title) ?></h3></div>
 </div>
 <div class="application-view">
 
@@ -40,33 +42,7 @@ $col1 = 4;
             <br/>
 
 
-    
-    
-    
-    <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th><center>Project Leader / Team Member</center></th>
-              <th><center>Iden.Doc./Passport No.</center></th>
-              <th><center>Institution/Business Name</center></th>
-              <th><center>Mobile No.</center></th>
-              <th><center>Email</center></th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($items as $item) : ?>
-            <tr>
-                <td><center><?= $item->name?></center></td>
-                <td><center><?= $item->idNumber?></center></td>
-                <td><center><?= $item->instiBusName?></center></td>
-                <td><center><?= $item->phoneNo?></center></td>
-                <td><center><?= $item->email?></center></td>
-            </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
-    </div>
+   
     
         <div class="row form-group">
             <div class="col-10" style="text-align: justify">
@@ -79,7 +55,15 @@ $col1 = 4;
                <strong><b>Project /Idea Descriptione: </b></strong> <?= nl2br(Html::encode($model->application->project_description))?>
             </div>
         </div> 
+        
+        
+        </div></div>
+       
+        
         <?php if($model->review_at): ?>
+         <br />
+            <div class="card">
+        <div class="card-body">
 
             <div class="row form-group">
                 <div class="col-10" style="text-align: justify">
@@ -93,31 +77,13 @@ $col1 = 4;
                 </div>     
             </div> 
         
-        <?php else: ?>
-            <?php $form = ActiveForm::begin(); ?> 
-            <div class="row">
-                <div class="col-12">
-                    <?= $form->field($model, 'review_note')->textArea(['rows' => '6'])->label('<strong><b>Review Note</b></strong>') ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-8">
-                    <?= $form->field($model, 'review_file')->fileInput()->label('<strong><b>Review File</b></strong>') ?>
-                </div>
-            </div>
-
-            <div class="form-group">
-            <?= Html::submitButton('<i class="fa fa-save"></i> Submit', ['class' => 'btn btn-info', 'name' => 'btn-submit']) ?>
-            </div>
-
-            <?php ActiveForm::end(); ?> 
-
+     <?=Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-sm btn-info'])?>
+    </div>
+    </div>
         <?php endif; ?>
   
-        
-    </div>
-    </div>
+   
     </div>
 
 
-</div>
+

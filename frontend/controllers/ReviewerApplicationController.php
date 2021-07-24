@@ -59,7 +59,6 @@ class ReviewerApplicationController extends Controller
     public function actionView($id)
     {
         $model = $this->findModel($id);
-        $items = ApplicationItem::find()->where(['application_id' => $model->application_id])->all();
 
         $model->scenario = 'comment';
         
@@ -76,7 +75,6 @@ class ReviewerApplicationController extends Controller
 
         return $this->render('view', [
             'model' => $model,
-            'items' => $items,
         ]);
     }
 
@@ -115,8 +113,17 @@ class ReviewerApplicationController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $model->scenario = 'comment';
+        
+        if ($model->load(Yii::$app->request->post())) {
+            $model->review_at = new Expression('NOW()');
+            
+            if($model->upload()){
+                Yii::$app->session->addFlash('success', "Your information has been successfully submitted");
+                return $this->redirect(['view', 'id' => $model->id]);
+            }else{
+                $model->flashError();
+            }
         }
 
         return $this->render('update', [

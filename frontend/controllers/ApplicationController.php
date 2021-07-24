@@ -265,8 +265,6 @@ class ApplicationController extends Controller
         $model = $this->findModel($id);
         $items = $model->applicationItems;
 
-        $model->cur_logo = $model->logo_file;
-        $model->user_id = Yii::$app->user->identity->id;
         if ($model->load(Yii::$app->request->post())) {
 
             $action = Yii::$app->request->post('btn-submit');

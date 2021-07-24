@@ -59,7 +59,10 @@ class JudgeApplicationController extends Controller
     public function actionView($id)
     {
         $model = $this->findModel($id);
-        $items = ApplicationItem::find()->where(['application_id' => $model->application_id])->all();
+        
+        if(is_null($model->judge_at)){
+            return $this->redirect(['update', 'id' => $id]);
+        }
 
         $model->scenario = 'comment';
         
@@ -76,9 +79,33 @@ class JudgeApplicationController extends Controller
 
         return $this->render('view', [
             'model' => $model,
-            'items' => $items,
         ]);
     }
+    
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+        
+        
+        $model->scenario = 'comment';
+        
+        if ($model->load(Yii::$app->request->post())) {
+            $model->judge_at = new Expression('NOW()');
+            
+            if($model->upload()){
+                Yii::$app->session->addFlash('success', "Your information has been successfully submitted");
+                return $this->redirect(['view', 'id' => $model->id]);
+            }else{
+                $model->flashError();
+            }
+        }
+        
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+    
+    
 
     public function actionJudgeFile($id){
         $model = $this->findModel($id);

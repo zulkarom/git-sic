@@ -7,7 +7,7 @@ use kartik\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Application */
 
-$this->title = 'Judge Page';
+$this->title = 'Review Page';
 $this->params['breadcrumbs'][] = ['label' => 'Applications', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -42,7 +42,7 @@ $col1 = 4;
             <br/>
 
 
-
+   
     
         <div class="row form-group">
             <div class="col-10" style="text-align: justify">
@@ -52,30 +52,35 @@ $col1 = 4;
 
         <div class="row form-group">
             <div class="col-10" style="text-align: justify">
-               <strong><b>Project /Idea Description: </b></strong> <?= nl2br(Html::encode($model->application->project_description))?>
+               <strong><b>Project /Idea Descriptione: </b></strong> <?= nl2br(Html::encode($model->application->project_description))?>
             </div>
         </div> 
-        <?php if($model->judge_at): ?>
-           <br />
+        
+        
+        </div></div>
+        <br />
             <div class="card">
         <div class="card-body">
-
-            <div class="row form-group">
-                <div class="col-10" style="text-align: justify">
-                   <strong><b>Judge File: </b></strong> <?= Html::a($model->judge_file, ['judge-file', 'id' => $model->id], [
-                           'target' => '_blank'])?>
-                </div>     
-            </div> 
-            <div class="row form-group">
-                <div class="col-10" style="text-align: justify">
-                   <strong><b>Judge Note: </b></strong> <?= nl2br(Html::encode($model->judge_note))?>
-                </div>     
-            </div> 
-            
-            <?=Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-sm btn-info'])?>
         
-</div></div>
-        <?php endif; ?>
+
+            <?php $form = ActiveForm::begin(); ?> 
+            <div class="row">
+                <div class="col-12">
+                    <?= $form->field($model, 'review_note')->textArea(['rows' => '6'])->label('<strong><b>Review Note</b></strong>') ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <?= $form->field($model, 'review_file')->fileInput()->label('<strong><b>Review File</b></strong>') ?>
+                </div>
+            </div>
+
+            <div class="form-group">
+            <?= Html::submitButton('<i class="fa fa-save"></i> Submit', ['class' => 'btn btn-info', 'name' => 'btn-submit']) ?>
+            </div>
+
+            <?php ActiveForm::end(); ?> 
+
   
         
     </div>
@@ -83,4 +88,4 @@ $col1 = 4;
     </div>
 
 
-</div>
+

@@ -98,10 +98,11 @@ class UserListController extends Controller
             if($model->rawPassword){
                 $model->setPassword($model->rawPassword);
             }
-            
+            $model->username = $model->email;
             if($model->save()){
+                
                 Yii::$app->session->addFlash('success', "Data Updated");
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);
             }else{
                 $model->flashError();
             }
@@ -125,7 +126,7 @@ class UserListController extends Controller
             
             if($model->save()){
                 Yii::$app->session->addFlash('success', "Role Assign");
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);
             }else{
                 $model->flashError();
             }

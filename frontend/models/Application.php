@@ -152,6 +152,10 @@ class Application extends \yii\db\ActiveRecord
     public function getStatusLabel(){
         return '<span class="label label-'.$this->applicationStatus->color.' ">'.strtoupper($this->applicationStatus->name).'</span>';
     }
+    
+    public function getStatusText(){
+        return strtoupper($this->applicationStatus->name);
+    }
 
     public function upload(){
         $uploadFile = UploadedFile::getInstance($this, 'logo_file');

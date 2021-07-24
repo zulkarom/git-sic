@@ -6,12 +6,15 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Application */
 
-$this->title = 'Application';
+$this->title = 'View Application';
 $this->params['breadcrumbs'][] = ['label' => 'Applications', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 $col1 = 4;
 ?>
+
+ <div class="row form-group">
+        <div class="col-md-6"><h3><?= Html::encode($this->title) ?></h3></div>
 </div>
 <div class="application-view">
 
@@ -168,19 +171,7 @@ $col1 = 4;
             </div> 
             
             
-              <?php if($model->payment_at): ?>
-                <div class="row form-group">
-                    <div class="col-10" style="text-align: justify">
-                       <strong><b>Payment File: </b></strong> <?= Html::a($model->payment_file, ['payment-file', 'id' => $model->id], [
-                               'target' => '_blank'])?>
-                    </div>     
-                </div> 
-                <div class="row form-group">
-                    <div class="col-10" style="text-align: justify">
-                       <strong><b>Payment Note: </b></strong> <?= nl2br(Html::encode($model->payment_note))?>
-                    </div>     
-                </div> 
-            <?php endif; ?>
+
     
     
      <br />
@@ -202,6 +193,24 @@ $col1 = 4;
     </div>
     </div>
     <br/>
+    
+                  <?php if($model->payment_at): ?>
+                  <div class="card">
+        <div class="card-body">
+                <div class="row form-group">
+                    <div class="col-10" style="text-align: justify">
+                       <strong><b>Payment File: </b></strong> <?= Html::a($model->payment_file, ['payment-file', 'id' => $model->id], [
+                               'target' => '_blank'])?>
+                    </div>     
+                </div> 
+                <div class="row form-group">
+                    <div class="col-10" style="text-align: justify">
+                       <strong><b>Payment Note: </b></strong> <?= nl2br(Html::encode($model->payment_note))?>
+                    </div>     
+                </div> 
+                </div></div><br />
+            <?php endif; ?>
+            
 
     <div class="row">
     <div class="col-6">
@@ -210,8 +219,17 @@ $col1 = 4;
         <div class="card-body">
             <?php foreach ($model->applicationReviewer as $reviewer) : ?>
             <div class="row">
-                <div class="col-6">
+                <div class="col-9">
                    <strong><?=$reviewer->user->fullname?></b></strong>
+                </div>
+                <div class="col-3">
+                   <?php if($reviewer->review_at){
+                       echo Html::a('View', ['view-review', 'id' => $reviewer->id], ['class' => 'btn btn-info btn-sm']);
+                   }else{
+                       echo '<i>pending</i>';
+                   }
+                   
+                   ?>
                 </div>
             </div>    
             <?php endforeach; ?>
@@ -224,9 +242,21 @@ $col1 = 4;
         <div class="card-body">
             <?php foreach ($model->applicationJudge as $judge) : ?>
             <div class="row">
-                <div class="col-6">
-                   <strong><?=$judge->user->fullname?></b></strong>
+                <div class="col-9">
+                   <strong><?=$judge->user->fullname?></strong>
                 </div>
+                
+                 <div class="col-3">
+                   <?php if($judge->judge_at){
+                   echo Html::a('View', ['view-judge', 'id' => $judge->id], ['class' => 'btn btn-info btn-sm']);
+                   }else{
+                       echo '<i>pending</i>';
+                   }
+                   
+                   ?>
+                </div>
+                
+                
             </div>    
             <?php endforeach; ?>
         </div>

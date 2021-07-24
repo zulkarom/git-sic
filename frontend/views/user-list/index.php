@@ -11,23 +11,20 @@ $this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="col-md-6" align="right">
-    <?= Html::a('<i class="fas fa-plus"></i>  New Userss ',['/user-list/create'],['data-method' => 'post', 'class' => 'btn btn-success btn-sm']) ?>
-</div>
+ <div class="row form-group">
+        <div class="col-md-6"><h3><?= Html::encode($this->title) ?></h3></div>
 </div>
 
 <div class="user-index">
+<div class="table-responsive">
+
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            [
-                'attribute' =>'username',
-                'label' => 'Username'
-            ]
-            ,
+            
             //'authKey',
             // 'accessToken',
             [
@@ -37,7 +34,42 @@ $this->params['breadcrumbs'][] = $this->title;
                     return strtoupper($model->fullname);
                 }
             ],
+            [
+                'attribute' =>'username',
+                'label' => 'Email'
+            ]
+            ,
             'institution',
+            [
+                'attribute' =>'is_admin',
+                'format' => 'html',
+                'filter' => Html::activeDropDownList($searchModel, 'is_admin', [1 => 'YES', 0 => 'NO'],['class'=> 'form-control','prompt' => 'Choose']),
+                'label' => 'Admin',
+                'value' => function($model){
+                          return $model->adminLabel;
+                    }
+            ],
+            
+            [
+                'attribute' =>'is_reviewer',
+                'format' => 'html',
+                'filter' => Html::activeDropDownList($searchModel, 'is_reviewer', [1 => 'YES', 0 => 'NO'],['class'=> 'form-control','prompt' => 'Choose']),
+                'label' => 'Reviewer',
+                'value' => function($model){
+                return $model->reviewerLabel;
+                }
+            ],
+            
+            [
+                'attribute' =>'is_judge',
+                'format' => 'html',
+                'filter' => Html::activeDropDownList($searchModel, 'is_judge', [1 => 'YES', 0 => 'NO'],['class'=> 'form-control','prompt' => 'Choose']),
+                'label' => 'Judge',
+                'value' => function($model){
+                return $model->judgeLabel;
+                }
+            ],
+                
  
 
             ['class' => 'yii\grid\ActionColumn',
@@ -56,6 +88,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
 
         ],
-    ]); ?>
+    ]); ?></div>
 
 </div>
