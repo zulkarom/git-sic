@@ -58,6 +58,13 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
     <?= Alert::widget() ?>
     <?= $content ?>
     
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <?=$this->render('footer', [    
+        'dirAssests' => $dirAssests,
+]);
+?>
+
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
 <?php $this->endBody() ?>
 </body>
 </html>
