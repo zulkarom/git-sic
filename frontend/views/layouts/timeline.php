@@ -52,7 +52,7 @@ use yii\helpers\Url;
           <div class="timeline-badge primary"><i class="fa fa-calendar-check"></i> </div>
           <div class="timeline-panel">
             <div class="timeline-heading">
-              <h4 class="timeline-title">September 2021</h4>
+              <h4 class="timeline-title">November 2021</h4>
             </div>
             <div class="timeline-body">
             <hr>
@@ -64,7 +64,7 @@ use yii\helpers\Url;
         <div class="timeline-badge primary"><i class="fa fa-calendar-check"></i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
-              <h4 class="timeline-title">October 2021</h4>
+              <h4 class="timeline-title">Jan 2022</h4>
             </div>
             <div class="timeline-body">
              <hr>
@@ -78,7 +78,7 @@ use yii\helpers\Url;
           <div class="timeline-badge success"><i class="fa fa-trophy"></i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
-              <h4 class="timeline-title"> October 2021</h4>
+              <h4 class="timeline-title">Jan 2022</h4>
             </div>
             <div class="timeline-body">
             <hr>
