@@ -127,9 +127,9 @@ class ApplicationController extends Controller
     {
         $model = $this->findModel($id);
         
-        if($model->category != 1){
+       /*  if($model->category != 1){
             return $this->redirect(['payment-free', 'id' => $model-> id]);
-        }
+        } */
 
         
         

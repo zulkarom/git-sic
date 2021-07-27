@@ -36,7 +36,7 @@ $startup = [
     'PROTOTYPE'	=>'Not Required',
     'PRESENTATION'=>	'3 Minutes Oral Q&A Session',
     'JUDGING FORMAT'	=>'Product Innovation, Team, Presentation, Start-up, Scalability, Commercialisation potential, Impact & Sustainability, Q&A',
-    'REGISTRATION FEE'=> 	'FREE',
+    'REGISTRATION FEE'=> 	'RM200',
     
 ];
 
@@ -50,7 +50,7 @@ $youth = [
     'PROTOTYPE'	=>'Not Required',
     'PRESENTATION'	=>'3 Minutes Oral Q&A Session',
      'JUDGING FORMAT'	=>'Product Innovation, Team, Presentation, Start-up, Scalability, Commercialisation potential, Impact & Sustainability, Q&A',
-    'REGISTRATION FEE'=> 	'FREE',
+    'REGISTRATION FEE'=> 	'RM200',
 ];
 
 

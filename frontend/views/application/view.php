@@ -202,7 +202,7 @@ $col1 = 4;
                 ]) ?>
                 
                 
-       <?php } else if (is_null($model->payment_at) && $model->category == 1){
+       <?php } else if (is_null($model->payment_at)){
            echo Html::a('Make Payment', ['payment', 'id' => $model->id], ['class' => 'btn btn-primary']);
        }
        

@@ -362,6 +362,11 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
 
 <p style="text-align:justify;font-size:16px">The participants in this competition will be SME’s, start-ups and higher education institution students from all ASEAN countries. This program aims to help entrepreneurs and potential entrepreneurs in innovation-based business and commercial development.
 </p>
+
+<p style="text-align:justify;font-size:16px">
+The main objective of SIC is to encourage innovative thinking, ideas and product development from the community and students. Secondly, is conducting a pilot study of international entrepreneurial potential and writing a case study of entrepreneurial innovation in Malaysia. Third, is to identify products that are innovative and have the potential to be commercialized either locally or internationally. Fourth, is to develop innovation’s culture among the community and students in a country. The SIC fee will be RM200 per group for all categories............. Come and join us at THE SWISS INNOVATION CHALLENGE 2021!
+</p>
+
       </article>
       <article class="one_half">
 
