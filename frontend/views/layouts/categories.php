@@ -28,7 +28,7 @@ $open = [
         'PROTOTYPE'=> 	'New Innovative Product',
         //'PRESENTATION'	=> '3 Minutes Oral Q&A Session',
        // 'JUDGING FORMAT'=> 	'Product Innovation, Team Presentation, Creativity, Scalability, Commercialisation potential, Impact & Sustainability, Q&A',
-        //'REGISTRATION FEE'=> 	'RM200',
+        'REGISTRATION FEE'=> 	'RM200',
     ];
     
     
@@ -41,7 +41,7 @@ $open = [
     'PROTOTYPE'	=>'Not Required',
     //'PRESENTATION'=>	'3 Minutes Oral Q&A Session',
     //'JUDGING FORMAT'	=>'Product Innovation, Team, Presentation, Start-up, Scalability, Commercialisation potential, Impact & Sustainability, Q&A',
-    //'REGISTRATION FEE'=> 	'FREE',
+    'REGISTRATION FEE'=> 	'RM150',
     
     ];
     
@@ -55,7 +55,7 @@ $open = [
     'PROTOTYPE'	=>'Not Required',
     //'PRESENTATION'	=>'3 Minutes Oral Q&A Session',
    // 'JUDGING FORMAT'	=>'Product Innovation, Team, Presentation, Start-up, Scalability, Commercialisation potential, Impact & Sustainability, Q&A',
-   // 'REGISTRATION FEE'=> 	'FREE',
+    'REGISTRATION FEE'=> 	'RM100',
     ];
     
     

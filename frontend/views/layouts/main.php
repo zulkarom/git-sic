@@ -355,7 +355,7 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
 <div class="wrapper web-display  row3">
   <main class="hoc container clear"> 
 
-    <div class="group center btmspace-80">
+    <div class="group btmspace-80">
       <article class="one_half first">
         <h6 class="heading" style="font-size:30px">What is the Swiss Innovation Challenge?</h6>
         <p style="text-align:justify;font-size:16px">Swiss Innovation Challenge (SIC) is an  innovation promotion programme in Switzerland with an integrated competition that takes a holistic approach to realising innovative business ideas along the lifecycle of the enterprise. SIC is an annual prestigious program led by the University of Applied Sciences and Arts Northwestern Switzerland (FHNW) with the full support from the Swiss Government. To date, SIC has already developed worldwide including Indonesia, Vietnam, Thailand, China and Malaysia. This year, UMK is working together with Putra Business School, DRB-Hicom University of Automotive Malaysia, Management and Science University and Swiss Malaysia Chamber of Commerce as strategic partners to  host the Swiss Innovation Challenge (SIC 2021) which will commence from July 2021 til Jan 2022. </p>
@@ -364,11 +364,15 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
 </p>
 
 <p style="text-align:justify;font-size:16px">
-The main objective of SIC is to encourage innovative thinking, ideas and product development from the community and students. Secondly, is conducting a pilot study of international entrepreneurial potential and writing a case study of entrepreneurial innovation in Malaysia. Third, is to identify products that are innovative and have the potential to be commercialized either locally or internationally. Fourth, is to develop innovation’s culture among the community and students in a country. The SIC fee will be RM200 per group for all categories............. Come and join us at THE SWISS INNOVATION CHALLENGE 2021!
+The main objective of SIC is to encourage innovative thinking, ideas and product development from the community and students. Secondly, is conducting a pilot study of international entrepreneurial potential and writing a case study of entrepreneurial innovation in Malaysia. Third, is to identify products that are innovative and have the potential to be commercialized either locally or internationally. Fourth, is to develop innovation’s culture among the community and students in a country. 
+
+</p>
+
+<p style="text-align:left;font-size:16px"><strong>Come and join us at THE SWISS INNOVATION CHALLENGE 2021!</strong>
 </p>
 
       </article>
-      <article class="one_half">
+      <article class="one_half center">
 
         <img src="<?= $dirAssests?>/images/join.png" /><br />
         Due date to submit application: <br />
