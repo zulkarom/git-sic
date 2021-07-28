@@ -13,6 +13,10 @@ use common\widgets\Menu;
 			['label' => \Yii::t('app', 'All Applications'), 'level' => 1,'url' => ['/admin-application/index'], 'icon' => 'mdi mdi-settings-box'],
 
 			['label' => \Yii::t('app', 'All Users'), 'level' => 1, 'url' => ['/user-list/index']],
+                            
+           ['label' => \Yii::t('app', 'Update Intro'), 'level' => 1, 'url' => ['/admin-setting/index']],
+                            
+           ['label' => \Yii::t('app', 'Update Dates'), 'level' => 1, 'url' => ['/admin-setting/dates']],
 		]
 	
 	)?>

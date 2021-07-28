@@ -6,6 +6,8 @@
 use yii\helpers\Html;
 use frontend\assets\AppAsset;
 use frontend\assets\SwissAsset;
+use frontend\models\Website;
+use frontend\models\Timeline;
 
 AppAsset::register($this);
 SwissAsset::register($this);
@@ -359,21 +361,8 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
       <article class="one_half first">
         <h6 class="heading" style="font-size:30px">What is the Swiss Innovation Challenge?</h6>
         <div style="text-align:justify;font-size:16px"> 
-        
-         <p >Swiss Innovation Challenge (SIC) is an  innovation promotion programme in Switzerland with an integrated competition that takes a holistic approach to realising innovative business ideas along the lifecycle of the enterprise. SIC is an annual prestigious program led by the University of Applied Sciences and Arts Northwestern Switzerland (FHNW) with the full support from the Swiss Government. To date, SIC has already developed worldwide including Indonesia, Vietnam, Thailand, China and Malaysia. This year, Universiti Malaysia Kelantan (UMK) through the Faculty of Entrepreneurship and Business is working together with University of Applied Science & Art North Western Switzerland, DRB-HICOM University, PUTRA Business School (UPM) and Management and Science University (MSU) as strategic partners to  host the Swiss Innovation Challenge (SIC 2021) which will commence from July 2021 till Jan 2022. </p>
+  <?=Website::findOne(1)->content?>      
 
-<p>The participants in this competition will be SME’s, start-ups and higher education institution students from all ASEAN countries. This program aims to help entrepreneurs and potential entrepreneurs in innovation-based business and commercial development.
-</p>
-
-<p>
-The main objective of SIC is to encourage innovative thinking, ideas and product development from the community and students. Secondly, is conducting a pilot study of international entrepreneurial potential and writing a case study of entrepreneurial innovation in Malaysia. Third, is to identify products that are innovative and have the potential to be commercialized either locally or internationally. Fourth, is to develop innovation’s culture among the community and students in a country. 
-
-</p>
-
-<p><strong>Come and join us at THE SWISS INNOVATION CHALLENGE 2021!</strong>
-</p>
-        
-        
         </div>
        
 
@@ -382,7 +371,7 @@ The main objective of SIC is to encourage innovative thinking, ideas and product
 
         <img src="<?= $dirAssests?>/images/join.png" /><br />
         Due date to submit application: <br />
-       <b>29 August 2021 </b>
+       <b><?php echo Timeline::findOne(1)->date?> </b>
       </article>
 
     </div>

@@ -1,6 +1,10 @@
 <?php 
 use yii\helpers\Url;
+use frontend\models\Timeline;
 
+
+
+$list = Timeline::find()->all();
 ?>
 
 
@@ -23,70 +27,35 @@ use yii\helpers\Url;
 	<div class="container">
 
     <ul class="timeline">
-        <li>
-          <div class="timeline-badge primary"><i class="fa fa-calendar-check"></i></div>
+    
+    <?php  
+    $state = 1;
+    foreach($list as $time){
+        $state = ($state == 1 ? 0 : 1);
+        
+        $class = $state == 0 ? '' : 'class="timeline-inverted"';
+        ?>
+        <li<?=' '.$class?>>
+          <div class="timeline-badge <?=$time->color?>"><i class="fa fa-<?=$time->icon?>"></i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
-              <h4 class="timeline-title">29 August 2021</h4>
+              <h4 class="timeline-title"><?=$time->date?></h4>
 
             </div>
             <div class="timeline-body">
             <hr>
-              <h5>Due date to submit application</h5>
+              <h5><?=$time->title?></h5>
             </div>
           </div>
         </li>
-        <li class="timeline-inverted">
-          <div class="timeline-badge primary"><i class="fa fa-calendar-check"></i> </div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title">September 2021</h4>
-            </div>
-            <div class="timeline-body">
-            <hr>
-              <h5>1st Pitching </h5>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="timeline-badge primary"><i class="fa fa-calendar-check"></i> </div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title">November 2021</h4>
-            </div>
-            <div class="timeline-body">
-            <hr>
-              <h5>2nd Pitching</h5>
-            </div>
-          </div>
-        </li>
-        <li class="timeline-inverted">
-        <div class="timeline-badge primary"><i class="fa fa-calendar-check"></i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title">Jan 2022</h4>
-            </div>
-            <div class="timeline-body">
-             <hr>
-             
-             
-              <h5>Final Pitching</h5>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="timeline-badge success"><i class="fa fa-trophy"></i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title">Jan 2022</h4>
-            </div>
-            <div class="timeline-body">
-            <hr>
-              <h5>Award Ceremony & Gala Dinner</h5>
-         
-            </div>
-          </div>
-        </li>
+        
+        
+        <?php 
+    }
+
+    ?>
+    
+    
       
     </ul>
 </div>
