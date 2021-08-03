@@ -424,7 +424,7 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
 </p>
 
 <p style="text-align:center;font-size:18px;">Dr. Zaminor Binti Zamzamir @ Zamzamin
-        <br />6019-220 0547 <br /> zaminor@umk.edu.my
+        <br />+6019-220 0547 <br /> zaminor@umk.edu.my
 </p>
 
 
