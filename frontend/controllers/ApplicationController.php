@@ -6,6 +6,7 @@ use Yii;
 use frontend\models\Application;
 use frontend\models\ApplicationItem;
 use frontend\models\ApplicationSearch;
+use frontend\models\ApplicationPaymentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
@@ -69,7 +70,9 @@ class ApplicationController extends Controller
     public function actionPayment()
     {
         $app = Application::find()
-        ->where(['user_id' => Yii::$app->user->identity->id])->all();
+        ->where(['user_id' => Yii::$app->user->identity->id])
+        ->andWhere(['>', 'status', 0])
+        ->all();
         if($app){
             if( count($app) == 1){
                 $a = $app[0];
@@ -84,7 +87,7 @@ class ApplicationController extends Controller
             
         }
         
-        $searchModel = new ApplicationSearch();
+        $searchModel = new ApplicationPaymentSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         
         return $this->render('payment', [

@@ -21,6 +21,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="application-index">
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    
+    <?php if($dataProvider->getTotalCount() > 0) {?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -63,6 +65,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
         ],
     ]); ?>
+    
+    
+    <?php }else{
+            echo '<h4>Please submit application first</h4>';
+    }
+    
+    ?>
 
 
 </div>
