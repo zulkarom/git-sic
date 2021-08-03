@@ -12,15 +12,15 @@ $list = Timeline::find()->all();
   <section class="hoc container clear"> 
     <!-- ################################################################################################ -->
     <div class="sectiontitle" style="margin-bottom: 5px">
-      <h3 class="heading" style="font-size: 30px;" id="important-dates">IMPORTANT DATES</h3>
+      <h3 class="heading" style="font-size: 30px;" id="important-dates">IMPORTANT DATES & TIMELINE</h3>
 
     </div>
     
     
     
     <div class="row">
-	<div class="col-md-3"></div>
-	<div class="col-md-6">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
 	
 	
 	
@@ -39,12 +39,14 @@ $list = Timeline::find()->all();
           <div class="timeline-badge <?=$time->color?>"><i class="fa fa-<?=$time->icon?>"></i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
-              <h4 class="timeline-title"><?=$time->date?></h4>
+              <h4 class="timeline-title"><?=$time->title?></h4>
 
             </div>
             <div class="timeline-body">
+       
+            <i class="fa fa-calendar-check"></i> <?=$time->date?>
             <hr>
-              <h5><?=$time->title?></h5>
+              <p><?=$time->description?></p>
             </div>
           </div>
         </li>

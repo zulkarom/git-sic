@@ -16,7 +16,7 @@ use common\widgets\Menu;
                             
            ['label' => \Yii::t('app', 'Update Intro'), 'level' => 1, 'url' => ['/admin-setting/index']],
                             
-           ['label' => \Yii::t('app', 'Update Dates'), 'level' => 1, 'url' => ['/admin-setting/dates']],
+           ['label' => \Yii::t('app', 'Update Timeline'), 'level' => 1, 'url' => ['/admin-setting/dates']],
 		]
 	
 	)?>

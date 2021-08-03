@@ -28,6 +28,7 @@ class Timeline extends \yii\db\ActiveRecord
     {
         return [
             [['date', 'title'], 'string', 'max' => 100],
+            [['description'], 'string'],
         ];
     }
 

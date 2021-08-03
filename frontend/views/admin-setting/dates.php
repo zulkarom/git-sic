@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use dosamigos\tinymce\TinyMce;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\ApplicationSearch */
@@ -17,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php $form = ActiveForm::begin(); ?>
 
 <div class="row">
-<div class="col-md-6">
+<div class="col-md-12">
 
 
 <table class="table">
@@ -26,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
       <th scope="col">#</th>
       <th scope="col">Events</th>
       <th scope="col">Dates</th>
+      <th scope="col">Description</th>
     </tr>
   </thead>
   <tbody>
@@ -36,8 +38,25 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <tr>
       <th scope="row"><?php echo ($x + 1)?>. </th>
-      <td><?php echo $date->title?></td>
+      <td><?= $form->field($date, "[{$x}]title")->label(false) ?></td>
       <td><?= $form->field($date, "[{$x}]date")->label(false) ?></td>
+      <td>
+      
+      <?= $form->field($date, "[{$x}]description")->widget(TinyMce::className(), [
+    'options' => ['rows' => 4],
+    'language' => 'en',
+    'clientOptions' => [
+        'plugins' => [
+            "advlist autolink lists link charmap",
+            "searchreplace visualblocks code fullscreen",
+            "paste"
+        ],
+        'menubar' => false,
+        'toolbar' => "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent link"
+    ]
+])->label(false);?>
+      
+      </td>
 
     </tr>
         <?php 
