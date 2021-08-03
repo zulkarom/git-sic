@@ -330,6 +330,12 @@ class AdminApplicationController extends Controller
         
         return [false, $items];
     }
+    
+    public function actionPaymentFile($id){
+        $model = $this->findModel($id);
+        
+        UploadFile::downloadPayment($model);
+    }
 
     /**
      * Deletes an existing Application model.
