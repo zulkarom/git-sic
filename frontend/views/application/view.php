@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -17,6 +18,8 @@ $col1 = 4;
 
 <div class="row form-group">
       <div class="col-md-8"><h3><?= Html::encode($this->title) ?></h3></div>
+      
+      <div class="col-md-4" align="right"><a href="<?=Url::to(['application/create'])?>" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>  Add Application</a></div>
 
 
     </div>
@@ -203,7 +206,7 @@ $col1 = 4;
                 
                 
        <?php } else if (is_null($model->payment_at)){
-           echo Html::a('Make Payment', ['payment', 'id' => $model->id], ['class' => 'btn btn-primary']);
+           echo Html::a('Make Payment', ['payment-create', 'id' => $model->id], ['class' => 'btn btn-primary']);
        }
        
        
