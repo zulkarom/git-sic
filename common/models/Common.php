@@ -152,7 +152,7 @@ class Common {
 	}
 
 	public static function category(){
-		return [1 => 'SIC Open', 2 => 'SIC Startup', 3 => 'SIC Youth'];
+		return [1 => 'SIC Open (Fee: RM200)', 2 => 'SIC Startup (Fee: RM150)', 3 => 'SIC Youth (Fee: RM100)'];
 	}
 
 	public static function medium(){
