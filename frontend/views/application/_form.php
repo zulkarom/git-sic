@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use kartik\widgets\ActiveForm;
 use common\models\Common;
 use kartik\checkbox\CheckboxX;
@@ -202,7 +203,7 @@ use kartik\widgets\FileInput;
     </div>
     <div class="row">
         <div class="col-12">
-            <?= $form->field($model, 'project_description', ['template' => '{label}{input}<i>(Description should be not more than 300 words and must include specify which development phase is the involves innovation (i.e ideation/prototype/Commercialization /market testing)</i>{error}
+            <?= $form->field($model, 'project_description', ['template' => '{label}{input}<i>(Description should be not more than 300 words and must specify which development phase involves innovation (i.e ideation/prototype/Commercialization /market testing)</i>{error}
             '])->textarea(['rows' => 12])?>
         </div>
     </div>
@@ -229,7 +230,7 @@ use kartik\widgets\FileInput;
     </div>
     <div class="row">
         <div class="col-md-12">
-             I/We have read and agree to the Swiss Innovation Challenge Malaysia (SIC) 2021 Format, Rules and Regulations (link to the rules). I/We understand that SIC has the right to refuse my/our application if any non-conformance to the Rules and Regulations is found.
+             I/We have read and agree to the Swiss Innovation Challenge Malaysia (SIC) 2021 Format, Rules and Regulations (<a href="<?=Url::to(['/page/requirements'])?>" target="_blank">link to the rules</a>). I/We understand that SIC has the right to refuse my/our application if any non-conformance to the Rules and Regulations is found.
         </div>
     </div>
 
