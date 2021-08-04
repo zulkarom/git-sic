@@ -83,7 +83,7 @@ $first = $i == 0 ? 'first' : '';
     
           <div class="form-group" align="center">
 
-      <a href="<?php echo Url::to(['page/requirements'])?>" class="btn btn-outline-primary btn-lg">Read more on Requirements and Competition Format</a>
+      <a href="<?php echo Url::to(['page/requirements'])?>" class="btn btn-outline-primary btn-lg">Read more on Requirements, Competition Format and Payment Instruction</a>
 
 </div>
 
