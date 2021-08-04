@@ -3,6 +3,7 @@
 use kartik\widgets\ActiveForm;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use frontend\models\Website;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Application */
@@ -19,14 +20,24 @@ $col1 = 4;
 <div class="row form-group">
       <div class="col-md-8"><h3><?= Html::encode($this->title) ?></h3></div>
 
-
     </div>
+    
+    
+<?=Website::findOne(2)->content?>
+    
+    
    <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?> 
  <div class="card">
         <div class="card-body">
         <div class="row form-group">
             <div class="col-10" style="text-align: justify">
                <strong><b>Project / Idea Name: </b></strong> <?= $model->project_name?>
+            </div>
+        </div>
+        
+         <div class="row form-group">
+            <div class="col-10" style="text-align: justify">
+               <strong><b>Category: </b></strong> <?= $model->categoryText?>
             </div>
         </div> 
         
@@ -43,7 +54,7 @@ $col1 = 4;
         </div>
 
         <div class="form-group">
-        <?= Html::submitButton('<i class="fa fa-save"></i> Save Payment', ['class' => 'btn btn-info', 'name' => 'btn-submit']) ?>
+        <?= Html::submitButton('Submit Payment', ['class' => 'btn btn-primary', 'name' => 'btn-submit']) ?>
         </div>
             
             
