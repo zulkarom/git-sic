@@ -41,6 +41,12 @@ $col1 = 4;
             </div>
         </div> 
         
+        <div class="row form-group">
+            <div class="col-10" style="text-align: justify">
+               <strong><b>Registration Fee: </b></strong> <?= $model->categoryModel->reg_fee?>
+            </div>
+        </div> 
+        
         
         <div class="row">
             <div class="col-8">

@@ -103,6 +103,8 @@ class Application extends \yii\db\ActiveRecord
             'aggrement_disclaimer' => 'Declaration',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'payment_file' => 'Proof of Payment',
+            'payment_note' => 'Transaction Details'
         ];
     }
     
@@ -120,6 +122,10 @@ class Application extends \yii\db\ActiveRecord
             return $arr[$this->category];
         }
         
+    }
+    
+    public function getCategoryModel(){
+        return $this->hasOne(Categories::className(), ['id' => 'category']);
     }
 
     public function getGenderText(){
