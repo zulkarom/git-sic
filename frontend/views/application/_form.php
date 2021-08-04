@@ -10,6 +10,7 @@ use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use wbraganca\dynamicform\DynamicFormWidget;
 use kartik\widgets\FileInput;
+use frontend\models\Categories;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Application */
@@ -28,7 +29,14 @@ use kartik\widgets\FileInput;
     <?= $form->errorSummary($model); ?>
     <div class="row">
         <div class="col-md-12">
-            <?= $form->field($model, 'category')->radioList(Common::category(), ['inline'=>true])->label('<b>Choose Your Category</b>') ?>
+        
+        <?php 
+        $categories = Categories::find()->all();
+        $categories = ArrayHelper::map($categories, 'id', 'categoryFees');
+        
+        ?>
+        
+            <?= $form->field($model, 'category')->radioList($categories)->label('<b>Choose Your Category</b>') ?>
         </div>
     </div>
     <div class="row">

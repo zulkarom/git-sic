@@ -56,4 +56,8 @@ class Categories extends \yii\db\ActiveRecord
     public function sorting(){
         return ['age', 'biz_operation', 'group_member', 'scope', 'prototype', 'reg_fee'];
     }
+    
+    public function getCategoryFees(){
+        return $this->cat_name . ' | Fee: ' . $this->reg_fee ;
+    }
 }
