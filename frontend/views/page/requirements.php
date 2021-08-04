@@ -42,7 +42,7 @@ $startup = [
 
 
 $youth = [
-    'AGE'	=>'25 years (Students)',
+    'AGE'	=>'25 years and less',
     'BUSINESS OPERATION'	=>'Pre-Startup Stage',
     'TEAM MEMBER'	=>'2-5 Person per Project',
     'SCOPE'	=>'New Innovation (Ideation or Prototype Development Phase)',
