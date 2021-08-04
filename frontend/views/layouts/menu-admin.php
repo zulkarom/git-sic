@@ -14,9 +14,16 @@ use common\widgets\Menu;
 
 			['label' => \Yii::t('app', 'All Users'), 'level' => 1, 'url' => ['/user-list/index']],
                             
-           ['label' => \Yii::t('app', 'Update Intro'), 'level' => 1, 'url' => ['/admin-setting/index']],
+           ['label' => \Yii::t('app', 'Web Intro'), 'level' => 1, 'url' => ['/admin-setting/index']],
                             
-           ['label' => \Yii::t('app', 'Update Timeline'), 'level' => 1, 'url' => ['/admin-setting/dates']],
+           ['label' => \Yii::t('app', 'Dates and Timeline'), 'level' => 1, 'url' => ['/admin-setting/dates']],
+                            
+           ['label' => \Yii::t('app', 'Categories'), 'level' => 1, 'url' => ['/admin-setting/categories']],
+                            
+
+           ['label' => \Yii::t('app', 'Payment Info'), 'level' => 1, 'url' => ['/admin-setting/payment']],
+                            
+           ['label' => \Yii::t('app', 'Requirement Page'), 'level' => 1, 'url' => ['/admin-setting/requirement']],
 		]
 	
 	)?>

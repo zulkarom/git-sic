@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $searchModel frontend\models\ApplicationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Website Introduction';
+$this->title = 'Requirement Page';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php $form = ActiveForm::begin(); ?>
 
 <?= $form->field($website, 'content')->widget(TinyMce::className(), [
-    'options' => ['rows' => 30],
+    'options' => ['rows' => 40],
     'language' => 'en',
     'clientOptions' => [
         'plugins' => [

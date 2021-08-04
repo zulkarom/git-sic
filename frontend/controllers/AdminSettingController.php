@@ -18,6 +18,7 @@ use yii\db\Exception;
 use yii\db\Expression;
 use frontend\models\Website;
 use frontend\models\Timeline;
+use frontend\models\Categories;
 
 /**
  * AdminApplicationController implements the CRUD actions for Application model.
@@ -65,6 +66,40 @@ class AdminSettingController extends Controller
         return $this->render('index', compact('website'));
     }
     
+    public function actionPayment()
+    {
+        $website = Website::findOne(2);
+        
+        if ($website->load(Yii::$app->request->post())) {
+            
+            if($website->save()){
+                Yii::$app->session->addFlash('success', "Data Updated");
+                return $this->refresh();
+                
+            }
+        }
+        
+        
+        return $this->render('payment', compact('website'));
+    }
+    
+    public function actionRequirement()
+    {
+        $website = Website::findOne(4);
+        
+        if ($website->load(Yii::$app->request->post())) {
+            
+            if($website->save()){
+                Yii::$app->session->addFlash('success', "Data Updated");
+                return $this->refresh();
+                
+            }
+        }
+        
+        
+        return $this->render('requirement', compact('website'));
+    }
+    
     public function actionDates()
     {
         $dates = Timeline::find()->all();
@@ -84,6 +119,27 @@ class AdminSettingController extends Controller
         
         
         return $this->render('dates', compact('dates'));
+    }
+    
+    public function actionCategories()
+    {
+        $categories = Categories::find()->all();
+        
+        if (Yii::$app->request->post()) {
+            
+            if (Model::loadMultiple($categories, Yii::$app->request->post()) && Model::validateMultiple($categories)) {
+                foreach ($categories as $category) {
+                    $category->save(false);
+                }
+                Yii::$app->session->addFlash('success', "Data Updated");
+                
+                return $this->refresh();
+            }
+            
+        }
+        
+        
+        return $this->render('categories', compact('categories'));
     }
 
 }

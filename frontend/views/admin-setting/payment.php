@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $searchModel frontend\models\ApplicationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Website Introduction';
+$this->title = 'Payment Information';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
