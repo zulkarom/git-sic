@@ -9,7 +9,7 @@ use dosamigos\tinymce\TinyMce;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $categories mixed*/
 
-$this->title = 'Important Dates';
+$this->title = 'Categories';
 $this->params['breadcrumbs'][] = $this->title;
 
 
