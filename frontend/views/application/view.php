@@ -40,7 +40,7 @@ $col1 = 4;
 
                 <div class="col-<?php echo $col1?>">
                     <div class="float-left">
-                    <strong><b>Applicant Name : </b></strong> <?=$model->applicant_name?>
+                    <strong><b>Applicant Name : </b></strong> <?=Html::encode($model->applicant_name)?>
                    </div>
                </div>
       
@@ -61,7 +61,7 @@ $col1 = 4;
             
 
                 <div class="col-<?php echo $col1?>">
-                    <strong><b>Identity document/Passport No. </b></strong>  <?=$model->id_number?><br/>
+                    <strong><b>Identity document/Passport No. </b></strong>  <?=Html::encode($model->id_number)?><br/>
                 </div>
 
             
@@ -81,15 +81,15 @@ $col1 = 4;
 
             <div class="row">
                 <div class="col-<?php echo $col1?>">
-                    <strong><b>Mobile Phone: </b></strong> <?=$model->phoneNo?>
+                    <strong><b>Mobile Phone: </b></strong> <?=Html::encode($model->phoneNo)?>
                 </div>
                 
                 <div class="col-<?php echo $col1?>">
-                   <strong><b>Office No: </b></strong> <?=$model->officeNo?>
+                   <strong><b>Office No: </b></strong> <?=Html::encode($model->officeNo)?>
                 </div>
                 
                 <div class="col-<?php echo $col1?>">
-                    <strong><b>Fax No: </b></strong> <?=$model->faxNo?>
+                    <strong><b>Fax No: </b></strong> <?=Html::encode($model->faxNo)?>
                 </div>
          
             </div>
@@ -101,18 +101,18 @@ $col1 = 4;
         
 
                 <div class="col-<?php echo $col1?>">
-                   <strong><b>Institution/Business Name: </b></strong> <?=$model->instiBusName?>
+                   <strong><b>Institution/Business Name: </b></strong> <?=Html::encode($model->instiBusName)?>
                 </div>
        
     
                 <div class="col-<?php echo $col1?>">
-                   <strong><b>Type of Business: </b></strong> <?=$model->type?>
+                   <strong><b>Type of Business: </b></strong> <?=Html::encode($model->type)?>
                 </div>
            
             </div>      
             <div class="row">
                 <div class="col-6">
-                   <strong><b>Address: </b></strong> <?=$model->address?>
+                   <strong><b>Address: </b></strong> <?=Html::encode($model->address)?>
                 </div>
               
             </div>  
@@ -143,10 +143,10 @@ $col1 = 4;
           <tbody>
             <?php foreach ($items as $item) : ?>
             <tr>
-                <td><center><?= $item->name?></center></td>
-                <td><center><?= $item->idNumber?></center></td>
-                <td><center><?= $item->instiBusName?></center></td>
-                <td><center><?= $item->phoneNo?></center></td>
+                <td><center><?= Html::encode($item->name)?></center></td>
+                <td><center><?= Html::encode($item->idNumber)?></center></td>
+                <td><center><?= Html::encode($item->instiBusName)?></center></td>
+                <td><center><?= Html::encode($item->phoneNo)?></center></td>
                 <td><center><?= $item->email?></center></td>
             </tr>
             <?php endforeach; ?>
@@ -156,7 +156,7 @@ $col1 = 4;
     
      <div class="row form-group">
                 <div class="col-10" style="text-align: justify">
-                   <strong><b>Project / Idea Name: </b></strong> <?= $model->project_name?>
+                   <strong><b>Project / Idea Name: </b></strong> <?= Html::encode($model->project_name)?>
                 </div>
         
 
