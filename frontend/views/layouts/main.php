@@ -24,10 +24,14 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
     <link href="<?= $dirAssests?>/images/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <meta name="description" content="Swiss Innovation Challenge (SIC) an annual prestigious program led by the University of Applied Sciences and Arts Northwestern Switzerland (FHNW) with the full support from the Swiss Government. This year 2021, Universiti Malaysia Kelantan (UMK) through the Faculty of Entrepreneurship and Business is working together with University of Applied Science & Art North Western Switzerland (FHNW), DRB-HICOM University (DHU), PUTRA Business School (PBS) and Management and Science University (MSU) as strategic partners to host the Swiss Innovation Challenge (SIC 2021)." />
+    
+    <meta name="keywords" content="Swiss Innovation Challenge (SIC), SIC2021, SIC 2021, UMK, Swiss Innovation Challenge 2021" />
 
     
     <?= Html::csrfMetaTags() ?>
-    <title>SWISS INNOVATION CHALLENGE 2021</title>
+    <title>SWISS INNOVATION CHALLENGE 2021 (SIC 2021)</title>
     <?php $this->registerCsrfMetaTags() ?>
 
     <?php $this->head() ?>
