@@ -24,6 +24,8 @@ use common\widgets\Menu;
            ['label' => \Yii::t('app', 'Payment Info'), 'level' => 1, 'url' => ['/admin-setting/payment']],
                             
            ['label' => \Yii::t('app', 'Requirement Page'), 'level' => 1, 'url' => ['/admin-setting/requirement']],
+                            
+           ['label' => \Yii::t('app', 'Contact'), 'level' => 1, 'url' => ['/admin-setting/contact']],
 		]
 	
 	)?>

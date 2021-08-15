@@ -100,6 +100,22 @@ class AdminSettingController extends Controller
         return $this->render('requirement', compact('website'));
     }
     
+    public function actionContact()
+    {
+        $website = Website::findOne(5);
+        
+        if ($website->load(Yii::$app->request->post())) {
+            
+            if($website->save()){
+                Yii::$app->session->addFlash('success', "Data Updated");
+                return $this->refresh();
+                
+            }
+        }
+        
+        return $this->render('contact', compact('website'));
+    }
+    
     public function actionDates()
     {
         $dates = Timeline::find()->all();

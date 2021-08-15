@@ -423,13 +423,8 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
         <h6 class="heading">Contact </h6>
         
 
-        <p style="text-align:center;font-size:18px;">Dr. Norzalizah Binti Bahari
-        <br />+6017-607 8767 <br /> norzalizah.b@umk.edu.my
-</p>
+<?php  echo Website::findOne(5)->content;?>
 
-<p style="text-align:center;font-size:18px;">Dr. Zaminor Binti Zamzamir @ Zamzamin
-        <br />+6019-220 0547 <br /> zaminor@umk.edu.my
-</p>
 
 
 
