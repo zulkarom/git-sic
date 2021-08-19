@@ -400,6 +400,11 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
 ]);
 ?>
 
+<?=$this->render('board', [    
+    'dirAssests' => $dirAssests,
+]);
+?>
+
 
 
 <div class="wrapper row3">

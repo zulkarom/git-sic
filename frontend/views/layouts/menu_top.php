@@ -15,6 +15,7 @@ if (\Yii::$app->user->isGuest) {
         'Competition Type' => ['/site/index', '#' => 'type-competition'],
         'Awards' => ['/site/index', '#' => 'awards'],
         'Important Dates' => ['/site/index', '#' => 'important-dates'],
+        'Main Committee' => ['/site/index', '#' => 'board'],
         'Login' => ['/site/login'],
         'Contact Us' => ['/site/index', '#' => 'contact-us'],
     ];
