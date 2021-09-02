@@ -46,6 +46,10 @@ class UserSearch extends User
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 100,
+            ],
+            
             'sort'=> ['defaultOrder' => ['status'=>SORT_DESC, 'is_admin' => SORT_DESC, 'is_judge' => SORT_DESC, 'is_reviewer' => SORT_DESC]]
         ]);
 
