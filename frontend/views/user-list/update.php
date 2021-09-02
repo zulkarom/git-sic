@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use SebastianBergmann\CodeCoverage\Report\PHP;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
@@ -33,6 +34,14 @@ $this->params['breadcrumbs'][] = 'Update';
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
     
      <?= $form->field($model, 'rawPassword')->passwordInput(['maxlength' => true])->label('Reset Password (leave blank if no change)') ?>
+     
+    <?php
+    if($model->status == 10){
+        $model->active = 1;
+    }else{
+        $model->active = 0;
+    }
+    echo $form->field($model, 'active')->checkbox(['value' => '1', 'label'=> 'Active']); ?>
 
 
     <div class="form-group">

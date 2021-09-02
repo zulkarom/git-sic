@@ -98,6 +98,12 @@ class UserListController extends Controller
             if($model->rawPassword){
                 $model->setPassword($model->rawPassword);
             }
+            if($model->active == 1){
+                $model->status = 10;
+            }else{
+                $model->status = 9;
+            }
+            
             $model->username = $model->email;
             if($model->save()){
                 

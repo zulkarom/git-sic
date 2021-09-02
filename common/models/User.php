@@ -28,6 +28,7 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = 10;
 
     public $rawPassword;
+    public $active;
 
 
     /**
@@ -61,7 +62,7 @@ class User extends ActiveRecord implements IdentityInterface
 
             [['is_admin', 'is_reviewer', 'is_judge'], 'required', 'on' => 'assign'],
 
-            [['is_admin', 'is_reviewer', 'is_judge'], 'integer'],
+            [['is_admin', 'is_reviewer', 'is_judge', 'active'], 'integer'],
             [['fullname', 'institution'], 'string', 'max' => 255],
             [['rawPassword'], 'string', 'min' => 6],
         ];
@@ -85,6 +86,19 @@ class User extends ActiveRecord implements IdentityInterface
     
     public function getJudgeLabel(){
         return $this->showLabelYesNo($this->is_judge);
+    }
+    
+    public function getStatusLabel(){
+        $status = $this->status == 10 ? 1 : 0;
+        return $this->showLabelActive($status);
+    }
+    
+    public function showLabelActive($value){
+        if($value == 1){
+            return '<span class="label label-success">ACTIVE</span>';
+        }else{
+            return '<span class="label label-secondary">INACTIVE</span>';
+        }
     }
     
     public function showLabelYesNo($value){

@@ -41,6 +41,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ,
             'institution',
             [
+                'attribute' =>'status',
+                'format' => 'html',
+                'filter' => Html::activeDropDownList($searchModel, 'status', [10 => 'ACTIVE', 9 => 'INACTIVE'],['class'=> 'form-control','prompt' => 'Choose']),
+                'label' => 'Status',
+                'value' => function($model){
+                return $model->statusLabel;
+                }
+            ],
+                
+            [
                 'attribute' =>'is_admin',
                 'format' => 'html',
                 'filter' => Html::activeDropDownList($searchModel, 'is_admin', [1 => 'YES', 0 => 'NO'],['class'=> 'form-control','prompt' => 'Choose']),
@@ -49,6 +59,16 @@ $this->params['breadcrumbs'][] = $this->title;
                           return $model->adminLabel;
                     }
             ],
+            
+            [
+                'attribute' =>'is_judge',
+                'format' => 'html',
+                'filter' => Html::activeDropDownList($searchModel, 'is_judge', [1 => 'YES', 0 => 'NO'],['class'=> 'form-control','prompt' => 'Choose']),
+                'label' => 'Judge',
+                'value' => function($model){
+                return $model->judgeLabel;
+                }
+                ],
             
             [
                 'attribute' =>'is_reviewer',
@@ -60,15 +80,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             
-            [
-                'attribute' =>'is_judge',
-                'format' => 'html',
-                'filter' => Html::activeDropDownList($searchModel, 'is_judge', [1 => 'YES', 0 => 'NO'],['class'=> 'form-control','prompt' => 'Choose']),
-                'label' => 'Judge',
-                'value' => function($model){
-                return $model->judgeLabel;
-                }
-            ],
+            
                 
  
 

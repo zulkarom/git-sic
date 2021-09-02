@@ -15,7 +15,7 @@ class SwissAsset extends AssetBundle
     public $sourcePath = '@frontend/assets/swissAsset';
 
     public $css = [
-        'css/styles/layout.css',
+        'css/styles/layout2.css',
         'css/styles/bootstrap.css',
         'menu/menu.css',
         'menu/hamburgers.min.css',
