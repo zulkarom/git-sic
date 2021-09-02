@@ -13,7 +13,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
  <div class="row form-group">
         <div class="col-md-6"><h3><?= Html::encode($this->title) ?></h3></div>
+         <div class="col-md-6" align="right"><?= Html::a('<i class="fa fa-plus"></i>  New User', ['create'], ['class' => 'btn btn-success btn-sm']) ?></div>
 </div>
+
+    
+
 
 <div class="user-index">
 <div class="table-responsive">

@@ -70,9 +70,32 @@ class UserListController extends Controller
     public function actionCreate()
     {
         $model = new User();
+        $model->scenario = 'create';
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            
+            if($model->rawPassword){
+                $model->setPassword($model->rawPassword);
+            }
+            
+            $model->username = $model->email;
+            
+            if($model->active == 1){
+                $model->status = 10;
+            }else{
+                $model->status = 9;
+            }
+            
+            $model->created_at = new Expression('NOW()');
+            $model->updated_at = new Expression('NOW()');
+            
+            if($model->save()){
+                Yii::$app->session->addFlash('success', "A new user added");
+                return $this->redirect(['index']);
+
+            }
+            
+            
         }
 
         return $this->render('create', [

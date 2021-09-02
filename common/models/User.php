@@ -59,6 +59,10 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
 
             [['username', 'fullname', 'email', 'institution'], 'required', 'on' => 'update'],
+            
+            [['email'], 'unique'],
+            
+            [['username', 'fullname', 'email', 'institution', 'rawPassword'], 'required', 'on' => 'create'],
 
             [['is_admin', 'is_reviewer', 'is_judge'], 'required', 'on' => 'assign'],
 
