@@ -48,6 +48,36 @@ class UserListController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    
+    public function actionLoginAs($user){
+        if(Yii::$app->user->identity->is_admin == 1){
+            $user = User::findIdentity($user);
+            $original = Yii::$app->user->identity->id;
+            if(Yii::$app->user->login($user)){
+                $session = Yii::$app->session;
+                $session->set('or-usr', $original);
+                return $this->redirect(['application/index']);
+            }
+        }
+        
+    }
+    
+    public function actionReturnRole()
+    {
+        $session = Yii::$app->session;
+        if ($session->has('or-usr')){
+            $id = $session->get('or-usr');
+            $user = User::findIdentity($id);
+            if(Yii::$app->user->login($user)){
+                $session->remove('or-usr');
+                return $this->redirect(['admin-application/index']);
+            }
+            
+        }else{
+            throw new NotFoundHttpException('The requested page does not exist..');
+        }
+        
+    }
 
     /**
      * Displays a single User model.

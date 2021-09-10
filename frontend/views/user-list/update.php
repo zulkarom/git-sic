@@ -46,6 +46,13 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        
+         <?php 
+         if(!$model->isNewRecord){
+             echo Html::a('Login as',['user-list/login-as', 'user' => $model->id],['class' => 'btn btn-danger']);
+         }
+         
+         ?>
     </div>
 
     <?php ActiveForm::end(); ?>
