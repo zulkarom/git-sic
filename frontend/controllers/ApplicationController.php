@@ -178,7 +178,11 @@ class ApplicationController extends Controller
 
             $action = Yii::$app->request->post('btn-submit');
 
-            $model->status = $action;
+            if($action == 'draft'){
+                $model->status = 0;
+            }else if($action == 'submit'){
+                $model->status = 10;
+            }
             $model->created_at = new Expression('NOW()');
             $model->user_id = Yii::$app->user->identity->id;
             
