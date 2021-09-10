@@ -193,7 +193,7 @@ $col1 = 4;
     <p>
     
     <?php if($model->status == 0) {?>
-                <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+               
      
                 
                 <?= Html::a('Delete', ['delete', 'id' => $model->id], [
@@ -211,7 +211,9 @@ $col1 = 4;
        
        
        
-       ?>         
+       ?>    
+       
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>     
             </p>
     
     

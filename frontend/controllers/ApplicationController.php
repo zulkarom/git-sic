@@ -271,7 +271,12 @@ class ApplicationController extends Controller
         if ($model->load(Yii::$app->request->post())) {
 
             $action = Yii::$app->request->post('btn-submit');
-            $model->status = $action;
+            if($action == 'draft'){
+                $model->status = 0;
+            }else if($action == 'submit'){
+                $model->status = 10;
+            }
+            
             $model->updated_at = new Expression('NOW()');
 
             $result = $this->processApplication($model, $items);
