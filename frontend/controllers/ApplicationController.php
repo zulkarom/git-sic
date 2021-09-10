@@ -326,6 +326,37 @@ class ApplicationController extends Controller
 
         return $this->redirect(['index']);
     }
+    
+    public function actionProfile()
+    {
+        $model = Yii::$app->user->identity;
+        $model->scenario = 'update';
+        $model->updated_at = new Expression('NOW()');
+        
+        if ($model->load(Yii::$app->request->post())) {
+            
+            if($model->rawPassword){
+                $model->setPassword($model->rawPassword);
+            }
+            
+
+            
+            if($model->save()){
+                
+                Yii::$app->session->addFlash('success', "Profile Updated");
+                return $this->refresh();
+            }else{
+                $model->flashError();
+            }
+            
+            
+            
+        } else {
+            return $this->render('profile', [
+                'model' => $model,
+            ]);
+        }
+    }
 
     /**
      * Finds the Application model based on its primary key value.
