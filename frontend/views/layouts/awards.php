@@ -26,7 +26,7 @@ use yii\helpers\Url;
                     <div class="pricing-content">
                   
                         <div class="price-value">
-                            <span class="amount">RM 5000.00</span>
+                            <span class="amount">RM 10,000.00</span>
                             <span class="duration">SIC OPEN</span>
                         </div>
                         <br /> <br />
