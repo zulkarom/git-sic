@@ -105,7 +105,7 @@ use frontend\models\Categories;
             <b>TEAM MEMBERS INFORMATION (INCLUDE MAIN APPLICANT AND NOT MORE THAN FIVE MEMBERS):</b>
 
             <?php DynamicFormWidget::begin([
-                'widgetContainer' => 'dynamicform_wrapper',
+                'widgetContainer' => 'dynamicform_wrapperxxx',
                 'widgetBody' => '.container-items',
                 'widgetItem' => '.row-item',
                 'limit' => 5,
@@ -280,5 +280,24 @@ use frontend\models\Categories;
     <?php ActiveForm::end(); ?>
 
 </div>
+
+
+<?php
+
+$js = <<<'EOD'
+
+jQuery(".dynamicform_wrapperxxx").on("afterInsert", function(e, item) {
+    var first = $(item).find("input")[0];
+    first.setAttribute("value", "");         
+});
+
+
+EOD;
+
+
+$this->registerJs($js);
+?>
+
+
 
 
