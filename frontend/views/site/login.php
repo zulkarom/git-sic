@@ -90,7 +90,10 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         
         </div>
-         <?php } ?>
+         <?php }else{
+			 
+			 echo '<p>Kindly be informed that the new registration has been closed </p>';
+		 } ?>
       
       
     
