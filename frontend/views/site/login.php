@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
       <h3>REGISTER</h3>
        <br />
-      <?php Application::isOpen(){?>
+      <?php if(Application::isOpen()){?>
       <div class="row">
         <div class="col-md-10">
         
