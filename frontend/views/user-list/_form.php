@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use kartik\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
@@ -12,17 +12,18 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+     
     <?= $form->field($model, 'fullname')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'institution')->textInput(['maxlength' => true]) ?>
+    
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    
+     <?= $form->field($model, 'rawPassword')->passwordInput(['maxlength' => true])->label('Password') ?>
+     
+    <?php
 
-    <?= $form->field($model, 'is_admin')->textInput() ?>
-
-    <?= $form->field($model, 'is_reviewer')->textInput() ?>
-
-    <?= $form->field($model, 'is_judge')->textInput() ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
+    echo $form->field($model, 'active')->checkbox(['value' => '1', 'label'=> 'Active']); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

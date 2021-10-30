@@ -9,7 +9,7 @@ use frontend\models\Application;
 /**
  * AdminApplicationSearch represents the model behind the search form of `frontend\models\Application`.
  */
-class AdminApplicationSearch extends Application
+class AdminApplicationDraftSearch extends Application
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class AdminApplicationSearch extends Application
      */
     public function search($params)
     {
-        $query = Application::find()->where(['>', 'status', 0]);
+        $query = Application::find()->where(['=', 'status', 0]);
 
         // add conditions that should always apply here
 

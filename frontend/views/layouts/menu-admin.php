@@ -10,7 +10,9 @@ use common\widgets\Menu;
                         <?=Menu::widget([
 		//	['label' => \Yii::t('app', 'Home'), 'level' => 1, 'url' => ['/dashboard/index-admin']],
 
-			['label' => \Yii::t('app', 'All Applications'), 'level' => 1,'url' => ['/admin-application/index'], 'icon' => 'mdi mdi-settings-box'],
+			['label' => \Yii::t('app', 'Submitted Applications'), 'level' => 1,'url' => ['/admin-application/index'], 'icon' => 'mdi mdi-settings-box'],
+                            
+            ['label' => \Yii::t('app', 'Draft Applications'), 'level' => 1,'url' => ['/admin-application/draft'], 'icon' => 'mdi mdi-settings-box'],
 
 			['label' => \Yii::t('app', 'All Users'), 'level' => 1, 'url' => ['/user-list/index']],
                             

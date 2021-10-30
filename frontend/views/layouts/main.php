@@ -372,10 +372,26 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
 
       </article>
       <article class="one_half center">
-
-        <img src="<?= $dirAssests?>/images/join.png" /><br />
+      
+      <div class="row">
+	<div class="col-md-6">
+	
+	
+	 <img src="<?= $dirAssests?>/images/join.png" /><br />
         Due date to submit application: <br />
        <b><?php echo Timeline::findOne(1)->date?> </b>
+	
+	</div>
+	<div class="col-md-6">
+	<br />
+	<p>
+	<iframe style="border: none; overflow: hidden;" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSICA2021UMK%2F&amp;tabs=timeline&amp;width=340&amp;height=500&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId" width="340" height="500" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
+	</p>
+	
+	</div>
+</div>
+
+       
       </article>
 
     </div>

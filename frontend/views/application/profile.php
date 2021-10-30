@@ -31,28 +31,15 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?= $form->field($model, 'institution')->textInput(['maxlength' => true]) ?>
     
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'disabled' => true]) ?>
     
      <?= $form->field($model, 'rawPassword')->passwordInput(['maxlength' => true])->label('Reset Password (leave blank if no change)') ?>
      
-    <?php
-    if($model->status == 10){
-        $model->active = 1;
-    }else{
-        $model->active = 0;
-    }
-    echo $form->field($model, 'active')->checkbox(['value' => '1', 'label'=> 'Active']); ?>
-
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton('Update', ['class' => 'btn btn-primary']) ?>
         
-         <?php 
-         if(!$model->isNewRecord){
-             echo Html::a('Login as',['user-list/login-as', 'user' => $model->id],['class' => 'btn btn-danger']);
-         }
-         
-         ?>
+
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -39,7 +39,14 @@ if (\Yii::$app->user->isGuest) {
     if(Yii::$app->user->identity->is_admin == 1){
         $items['Manage'] =  ['/admin-application/index'];
     }
-    $items['<i class="fas fa-sign-out-alt"></i> Log Out'] =  ['/site/logout'];
+    
+    $session = Yii::$app->session;
+    if ($session->has('or-usr')){
+        $items['<i class="fas fa-sign-out-alt"></i> Return Role'] =  ['/user-list/return-role'];
+    }else{
+        $items['<i class="fas fa-sign-out-alt"></i> Log Out'] =  ['/site/logout'];
+    }
+    
     
     
     

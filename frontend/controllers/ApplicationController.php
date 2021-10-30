@@ -180,7 +180,11 @@ class ApplicationController extends Controller
 
             $action = Yii::$app->request->post('btn-submit');
 
-            $model->status = $action;
+            if($action == 'draft'){
+                $model->status = 0;
+            }else if($action == 'submit'){
+                $model->status = 10;
+            }
             $model->created_at = new Expression('NOW()');
             $model->user_id = Yii::$app->user->identity->id;
             
@@ -278,7 +282,12 @@ class ApplicationController extends Controller
         if ($model->load(Yii::$app->request->post())) {
 
             $action = Yii::$app->request->post('btn-submit');
-            $model->status = $action;
+            if($action == 'draft'){
+                $model->status = 0;
+            }else if($action == 'submit'){
+                $model->status = 10;
+            }
+            
             $model->updated_at = new Expression('NOW()');
 
             $result = $this->processApplication($model, $items);
@@ -327,6 +336,37 @@ class ApplicationController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+    
+    public function actionProfile()
+    {
+        $model = Yii::$app->user->identity;
+        $model->scenario = 'update';
+        $model->updated_at = new Expression('NOW()');
+        
+        if ($model->load(Yii::$app->request->post())) {
+            
+            if($model->rawPassword){
+                $model->setPassword($model->rawPassword);
+            }
+            
+
+            
+            if($model->save()){
+                
+                Yii::$app->session->addFlash('success', "Profile Updated");
+                return $this->refresh();
+            }else{
+                $model->flashError();
+            }
+            
+            
+            
+        } else {
+            return $this->render('profile', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**

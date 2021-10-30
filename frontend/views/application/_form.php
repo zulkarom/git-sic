@@ -27,6 +27,8 @@ use frontend\models\Categories;
 
     <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
     <?= $form->errorSummary($model); ?>
+    
+    <?php if($model->status == 0) {?>
     <div class="row">
         <div class="col-md-12">
         
@@ -39,6 +41,8 @@ use frontend\models\Categories;
             <?= $form->field($model, 'category')->radioList($categories)->label('<b>Choose Your Category</b>') ?>
         </div>
     </div>
+    <?php } ?>
+    
     <div class="row">
         <div class="col-md-6">
             <?= $form->field($model, 'applicant_name')->textInput(['maxlength' => true]) ?>
@@ -101,7 +105,7 @@ use frontend\models\Categories;
             <b>TEAM MEMBERS INFORMATION (INCLUDE MAIN APPLICANT AND NOT MORE THAN FIVE MEMBERS):</b>
 
             <?php DynamicFormWidget::begin([
-                'widgetContainer' => 'dynamicform_wrapper',
+                'widgetContainer' => 'dynamicform_wrapperxxx',
                 'widgetBody' => '.container-items',
                 'widgetItem' => '.row-item',
                 'limit' => 5,
@@ -215,7 +219,7 @@ use frontend\models\Categories;
             '])->textarea(['rows' => 12])?>
         </div>
     </div>
-
+ <?php if($model->status == 0) {?>
     <div class="row">
         <div class="col-12">
             <b>INFORMATION ABOUT SWISS INNOVATION CHALLENGE:</b>
@@ -231,6 +235,7 @@ use frontend\models\Categories;
             <?= $form->field($model, 'reference')->textInput()->label(false)?>
         </div>
     </div>
+  
     <div class="row">
         <div class="col-md-12">
              <b>DECLARATION</b>
@@ -250,15 +255,49 @@ use frontend\models\Categories;
     </div>
 
     <div class="form-group">
-        <?= Html::submitButton('<i class="fa fa-save"></i> Save as Draft', ['class' => 'btn btn-info', 'name' => 'btn-submit', 'value' => 0]) ?> 
-         <?= Html::submitButton('<i class="fa fa-submit"></i> Submit Application', ['class' => 'btn btn-success', 'name' => 'btn-submit', 'value' => 10, 'data' => [
+        <?= Html::submitButton('<i class="fa fa-save"></i> Save as Draft', ['class' => 'btn btn-info', 'name' => 'btn-submit', 'value' => 'draft']) ?> 
+         <?= Html::submitButton('<i class="fa fa-submit"></i> Submit Application', ['class' => 'btn btn-success', 'name' => 'btn-submit', 'value' => 'submit', 'data' => [
                         'confirm' => 'Are you sure you want to submit this application?',
                         'method' => 'post',
                     ]]) ?>
     </div>
+    
+    <?php 
+    } else {
+        ?>
+        <div class="form-group">
+        <?= Html::submitButton('<i class="fa fa-save"></i> Update', ['class' => 'btn btn-primary', 'name' => 'btn-submit', 'value' => 999]) ?>
+
+    </div>
+    <?php 
+    }
+    
+    
+    
+    ?>
+    
 
     <?php ActiveForm::end(); ?>
 
 </div>
+
+
+<?php
+
+$js = <<<'EOD'
+
+jQuery(".dynamicform_wrapperxxx").on("afterInsert", function(e, item) {
+    var first = $(item).find("input")[0];
+    first.setAttribute("value", "");         
+});
+
+
+EOD;
+
+
+$this->registerJs($js);
+?>
+
+
 
 

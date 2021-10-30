@@ -48,6 +48,36 @@ class UserListController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    
+    public function actionLoginAs($user){
+        if(Yii::$app->user->identity->is_admin == 1){
+            $user = User::findIdentity($user);
+            $original = Yii::$app->user->identity->id;
+            if(Yii::$app->user->login($user)){
+                $session = Yii::$app->session;
+                $session->set('or-usr', $original);
+                return $this->redirect(['application/index']);
+            }
+        }
+        
+    }
+    
+    public function actionReturnRole()
+    {
+        $session = Yii::$app->session;
+        if ($session->has('or-usr')){
+            $id = $session->get('or-usr');
+            $user = User::findIdentity($id);
+            if(Yii::$app->user->login($user)){
+                $session->remove('or-usr');
+                return $this->redirect(['admin-application/index']);
+            }
+            
+        }else{
+            throw new NotFoundHttpException('The requested page does not exist..');
+        }
+        
+    }
 
     /**
      * Displays a single User model.
@@ -70,9 +100,32 @@ class UserListController extends Controller
     public function actionCreate()
     {
         $model = new User();
+        $model->scenario = 'create';
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            
+            if($model->rawPassword){
+                $model->setPassword($model->rawPassword);
+            }
+            
+            $model->username = $model->email;
+            
+            if($model->active == 1){
+                $model->status = 10;
+            }else{
+                $model->status = 9;
+            }
+            
+            $model->created_at = new Expression('NOW()');
+            $model->updated_at = new Expression('NOW()');
+            
+            if($model->save()){
+                Yii::$app->session->addFlash('success', "A new user added");
+                return $this->redirect(['index']);
+
+            }
+            
+            
         }
 
         return $this->render('create', [
@@ -98,6 +151,12 @@ class UserListController extends Controller
             if($model->rawPassword){
                 $model->setPassword($model->rawPassword);
             }
+            if($model->active == 1){
+                $model->status = 10;
+            }else{
+                $model->status = 9;
+            }
+            
             $model->username = $model->email;
             if($model->save()){
                 

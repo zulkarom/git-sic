@@ -7,6 +7,7 @@ use common\models\Model;
 use frontend\models\Application;
 use frontend\models\ApplicationItem;
 use frontend\models\AdminApplicationSearch;
+use frontend\models\AdminApplicationDraftSearch;
 use frontend\models\ApplicationReviewer;
 use frontend\models\ApplicationJudge;
 use frontend\models\UploadFile;
@@ -52,6 +53,17 @@ class AdminApplicationController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+    
+    public function actionDraft()
+    {
+        $searchModel = new AdminApplicationDraftSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+        return $this->render('draft', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
