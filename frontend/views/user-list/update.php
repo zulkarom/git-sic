@@ -45,14 +45,33 @@ $this->params['breadcrumbs'][] = 'Update';
 
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+	
+	<div class="row">
+<div class="col-md-9">
+
+ <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         
          <?php 
          if(!$model->isNewRecord){
-             echo Html::a('Login as',['user-list/login-as', 'user' => $model->id],['class' => 'btn btn-danger']);
+             echo Html::a('Login as',['user-list/login-as', 'user' => $model->id],['class' => 'btn btn-info']);
          }
          
          ?>
+
+</div>
+
+<div class="col-md-3" align="right">
+<?php 
+         if(!$model->isNewRecord){
+             echo Html::a('Delete',['user-list/delete', 'id' => $model->id],['class' => 'btn btn-danger', 'data-confirm' => 'Are you sure to delete this user?']);
+         }
+         
+         ?>
+</div>
+
+</div>
+	
+       
     </div>
 
     <?php ActiveForm::end(); ?>
