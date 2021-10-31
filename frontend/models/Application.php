@@ -47,7 +47,7 @@ class Application extends \yii\db\ActiveRecord
     }
 	
 	public static function isOpen(){
-		return true;
+		return false;
 	}
 
     /**

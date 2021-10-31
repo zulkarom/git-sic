@@ -164,9 +164,9 @@ class ApplicationController extends Controller
      */
     public function actionCreate()
     {
-		if(!Application::isOpen()){
+		/* if(!Application::isOpen()){
 			return $this->redirect(['close']);
-		}
+		} */
         $model = new Application();
         $model->scenario = 'apply';
         $items = [new ApplicationItem];
