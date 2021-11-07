@@ -23,6 +23,7 @@ class SwissAsset extends AssetBundle
     public $js = [
         // 'js/scripts/jquery.min.js',
         'js/scripts/jquery.backtotop.js',
+		'bootstrap/js/bootstrap.min.js',
         //'js/scripts/jquery.mobilemenu.js',
         'menu/menu.js',
     ];
