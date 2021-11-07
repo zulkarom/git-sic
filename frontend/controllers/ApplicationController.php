@@ -164,7 +164,9 @@ class ApplicationController extends Controller
      */
     public function actionCreate()
     {
-
+		/* if(!Application::isOpen()){
+			return $this->redirect(['close']);
+		} */
         $model = new Application();
         $model->scenario = 'apply';
         $items = [new ApplicationItem];
@@ -205,6 +207,11 @@ class ApplicationController extends Controller
             'model' => $model,
             'items' => $items,
         ]);
+    }
+	
+	public function actionClose()
+    {
+        return $this->render('close');
     }
 
     private function processApplication($model, $items){

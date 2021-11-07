@@ -208,9 +208,22 @@ class UserListController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+		if($model->applications){
+			Yii::$app->session->addFlash('error', "Application already exist!");
+			return $this->redirect(['update', 'id' => $id]);
+		}else{
+			if($model->delete()){
+				Yii::$app->session->addFlash('success', "Deleting User Successful");
+			}
+			
+			return $this->redirect(['index']);
+		}
+		
+		
+		
 
-        return $this->redirect(['index']);
+        
     }
 
     /**

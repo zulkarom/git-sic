@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use frontend\models\Application;
 
 $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAsset');
 
@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
       <h3>REGISTER</h3>
        <br />
-      
+      <?php if(Application::isOpen()){?>
       <div class="row">
         <div class="col-md-10">
         
@@ -88,9 +88,12 @@ $this->params['breadcrumbs'][] = $this->title;
         
         
         </div>
-        <div></div>
-        </div>
         
+        </div>
+         <?php }else{
+			 
+			 echo '<p>Kindly be informed that the new registration has been closed </p>';
+		 } ?>
       
       
     

@@ -45,6 +45,10 @@ class Application extends \yii\db\ActiveRecord
     {
         return 'application';
     }
+	
+	public static function isOpen(){
+		return false;
+	}
 
     /**
      * {@inheritdoc}

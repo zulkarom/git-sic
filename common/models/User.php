@@ -6,6 +6,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use frontend\models\Application;
 /**
  * User model
  *
@@ -96,6 +97,12 @@ class User extends ActiveRecord implements IdentityInterface
         $status = $this->status == 10 ? 1 : 0;
         return $this->showLabelActive($status);
     }
+	
+	public function getApplications()
+    {
+        return $this->hasMany(Application::className(), ['user_id' => 'id']);
+    }
+
     
     public function showLabelActive($value){
         if($value == 1){
