@@ -363,16 +363,22 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
 
     <div class="group btmspace-80">
       <article class="one_half first">
-        <h6 class="heading" style="font-size:30px">What is the Swiss Innovation Challenge?</h6>
-        <div style="text-align:justify;font-size:16px"> 
+	  
+
   <?=Website::findOne(1)->content?>      
 
-        </div>
-       
 
       </article>
       <article class="one_half center">
-      
+      	<br />
+	<p>
+	<iframe style="border: none; overflow: hidden;" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSICA2021UMK%2F&amp;tabs=timeline&amp;width=340&amp;height=500&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId" width="340" height="500" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
+	</p>
+
+<?php 
+
+/* 
+
       <div class="row">
 	<div class="col-md-6">
 	
@@ -383,14 +389,14 @@ $dirAssests = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/swissAs
 	
 	</div>
 	<div class="col-md-6">
-	<br />
-	<p>
-	<iframe style="border: none; overflow: hidden;" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSICA2021UMK%2F&amp;tabs=timeline&amp;width=340&amp;height=500&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId" width="340" height="500" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
-	</p>
+
 	
 	</div>
 </div>
 
+ */
+
+?>
        
       </article>
 
