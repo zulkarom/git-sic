@@ -14,7 +14,7 @@ $list = Timeline::find()->all();
     <div class="sectiontitle" style="margin-bottom: 5px">
       <h3 class="heading" style="font-size: 30px;" >MAIN COMMITTEE</h3>
     </div>
-    <div align="center"> <img src="<?=$dirAssests?>/images/advisory_board3.png" /> </div>
+    <div align="center"> <img src="<?=$dirAssests?>/images/advisory_board4.png" /> </div>
     
 
 
